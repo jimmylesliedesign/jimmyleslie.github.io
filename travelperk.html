@@ -86,16 +86,16 @@
         }
 
         .header-container {
-            max-width: 800px;
+            max-width: 640px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0;
         }
 
         /* Header */
         header {
-            padding: 32px 0;
+            padding: 32px 24px;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
             background-color: #ffffff;
             z-index: 100;
@@ -108,7 +108,7 @@
             top: 0;
             left: 0;
             right: 0;
-            padding: 32px 0;
+            padding: 32px 24px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -130,7 +130,6 @@
             background-color: rgba(34, 34, 34, 0.85);
         }
 
-        .header-sticky.dark .logo,
         .header-sticky.dark .time {
             color: rgba(255, 255, 255, 0.6);
             opacity: 0.5;
@@ -151,20 +150,13 @@
 
         .header-sticky .header-container {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            position: relative;
             width: 100%;
         }
 
         .logo {
-            font-weight: 400;
-            font-size: 16px;
-            color: #919191;
-            opacity: 0.5;
-            position: absolute;
-            left: 0;
-            text-decoration: none;
+            display: none;
         }
 
         nav {
@@ -194,8 +186,6 @@
             font-weight: 400;
             color: #919191;
             opacity: 0.5;
-            position: absolute;
-            right: 0;
         }
 
         /* Case Study Title Section */
@@ -522,7 +512,7 @@
         }
 
         .guidelines-card-list li::before {
-            content: 'ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢';
+            content: 'ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â¢';
             position: absolute;
             left: 0;
             color: #919191;
@@ -807,30 +797,10 @@
 
         /* Responsive */
         @media (max-width: 768px) {
-            header {
-                justify-content: center;
-            }
-
-            .logo {
-                display: none;
-            }
-
-            .time {
-                display: none;
-            }
-
             nav {
                 flex-wrap: wrap;
-                justify-content: center;
+                justify-content: flex-start;
                 gap: 24px;
-            }
-
-            .header-sticky .logo {
-                display: none;
-            }
-
-            .header-sticky .time {
-                display: none;
             }
 
             h1 {
@@ -1088,28 +1058,26 @@
     <!-- Sticky Header Clone -->
     <div class="header-sticky" id="header-sticky">
         <div class="header-container">
-            <a href="index.html" class="logo">Jimmy Leslie</a>
             <nav>
                 <a href="#challenge" data-section="challenge" class="sticky-nav-link">Challenge</a>
                 <a href="#approach" data-section="approach" class="sticky-nav-link">Approach</a>
                 <a href="#solution" data-section="solution" class="sticky-nav-link">Solution</a>
                 <a href="#outcome" data-section="outcome" class="sticky-nav-link">Outcome</a>
-                <span class="time">BCN &bull; <span id="time-sticky">--:-- --</span></span>
             </nav>
+            <span class="time">BCN &bull; <span id="time-sticky">--:-- --</span></span>
         </div>
     </div>
 
     <!-- Static Header -->
     <div class="header-container">
         <header>
-            <a href="index.html" class="logo">Jimmy Leslie</a>
             <nav>
                 <a href="#challenge" data-section="challenge">Challenge</a>
                 <a href="#approach" data-section="approach">Approach</a>
                 <a href="#solution" data-section="solution">Solution</a>
                 <a href="#outcome" data-section="outcome">Outcome</a>
-                <span class="time" id="barcelona-time">BCN &bull; <span id="time">--:-- --</span></span>
             </nav>
+            <span class="time" id="barcelona-time">BCN &bull; <span id="time">--:-- --</span></span>
         </header>
     </div>
 
@@ -1205,9 +1173,9 @@
 
             <div class="section-content">
                 <h3>The conflict</h3>
-                <p class="body-text">ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢ Employers actively instruct employees using TravelPerk to avoid upselling attempts, in order to maintain strict policy budgets</p>
-                <p class="body-text">ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢ This creates a fundamental misalignment between Delta's goals and TravelPerk users' goals</p>
-                <p class="body-text">ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢ Not adhering to the guidelines meant risking losing Delta's inventory, which would have been detrimental to TravelPerk's US market presence</p>
+                <p class="body-text">ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â¢ Employers actively instruct employees using TravelPerk to avoid upselling attempts, in order to maintain strict policy budgets</p>
+                <p class="body-text">ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â¢ This creates a fundamental misalignment between Delta's goals and TravelPerk users' goals</p>
+                <p class="body-text">ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â¢ Not adhering to the guidelines meant risking losing Delta's inventory, which would have been detrimental to TravelPerk's US market presence</p>
             </div>
         </div>
     </section>
@@ -1261,10 +1229,10 @@
 
                     <div class="approach-item">
                         <h3>2. Starting with research</h3>
-                        <p class="body-text">ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢ I surveyed 1,000 customers about their flight booking behaviour</p>
-                        <p class="body-text">ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢ The research conclusively showed flight time as customers' top priority when booking flights</p>
-                        <p class="body-text">ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢ Delta's guidelines proposed hiding return flight time options until the user selected an outbound flight</p>
-                        <p class="body-text">ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢ TravelPerk users can only book in-policy journeys, so visibility of outbound and return combinations that are in-policy is critical</p>
+                        <p class="body-text">ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â¢ I surveyed 1,000 customers about their flight booking behaviour</p>
+                        <p class="body-text">ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â¢ The research conclusively showed flight time as customers' top priority when booking flights</p>
+                        <p class="body-text">ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â¢ Delta's guidelines proposed hiding return flight time options until the user selected an outbound flight</p>
+                        <p class="body-text">ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â¢ TravelPerk users can only book in-policy journeys, so visibility of outbound and return combinations that are in-policy is critical</p>
                     </div>
 
                     <div class="approach-item">
@@ -1465,7 +1433,7 @@
     <section class="contact-section" id="contact">
         <div class="contact-content">
             <h3>Contact</h3>
-            <p class="body-text">If you'd like to get in touch, feel free to connect with me on <a href="#">LinkedIn</a>, or send me an email at <span class="email-copy" data-email="jimmyleslie.design@gmail.com">jimmyleslie.design@gmail.com</span> âœŒï¸</p>
+            <p class="body-text">If you'd like to get in touch, feel free to connect with me on <a href="#">LinkedIn</a>, or send me an email at <span class="email-copy" data-email="jimmyleslie.design@gmail.com">jimmyleslie.design@gmail.com</span> Ã¢Å“Å’Ã¯Â¸Â</p>
         </div>
     </section>
 
