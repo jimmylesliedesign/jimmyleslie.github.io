@@ -102,6 +102,81 @@
             position: relative;
         }
 
+        /* Hamburger Menu Button */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            padding: 8px;
+            cursor: none;
+            z-index: 101;
+        }
+
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background-color: #222222;
+            transition: all 0.3s ease;
+            display: block;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* Mobile Nav Overlay */
+        .mobile-nav-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 99;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-nav-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .mobile-nav-overlay nav {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            gap: 40px;
+        }
+
+        .mobile-nav-overlay nav a {
+            color: #222222;
+            text-decoration: none;
+            font-size: 28px;
+            font-weight: 400;
+            transition: opacity 0.2s;
+        }
+
+        .mobile-nav-overlay nav a:hover {
+            opacity: 0.7;
+        }
+
         /* Sticky Header Clone */
         .header-sticky {
             position: fixed;
@@ -148,6 +223,10 @@
             color: #ffffff;
         }
 
+        .header-sticky.dark .hamburger span {
+            background-color: #ffffff;
+        }
+
         .header-sticky .header-container {
             display: flex;
             justify-content: space-between;
@@ -192,7 +271,6 @@
         .title-section {
             margin-top: 100px;
             margin-bottom: 60px;
-            padding: 0 24px;
         }
 
         .title-section h1 {
@@ -513,7 +591,7 @@
         }
 
         .guidelines-card-list li::before {
-            content: 'ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢';
+            content: '•';
             position: absolute;
             left: 0;
             color: #919191;
@@ -725,7 +803,6 @@
         }
 
         /* Contact Section */
-        /* Contact Section */
         .contact-section {
             background-color: #F4FEC1;
             padding: 80px 24px;
@@ -794,85 +871,6 @@
             width: 16px;
             height: 16px;
             transform: rotate(180deg);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            nav {
-                flex-wrap: wrap;
-                justify-content: flex-start;
-                gap: 24px;
-            }
-
-            h1 {
-                font-size: 28px;
-            }
-
-            h2 {
-                font-size: 26px;
-            }
-
-            h3 {
-                font-size: 22px;
-            }
-
-            .body-text {
-                font-size: 18px;
-            }
-
-            .case-study-section {
-                padding: 60px 0;
-            }
-
-            .stats-grid {
-                grid-template-columns: 1fr;
-                gap: 32px;
-            }
-
-            .image-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .guidelines-card {
-                flex: 0 0 340px;
-                padding: 32px;
-            }
-
-            .guidelines-card-list li {
-                font-size: 16px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 24px;
-            }
-
-            h2 {
-                font-size: 22px;
-            }
-
-            h3 {
-                font-size: 20px;
-            }
-
-            .body-text {
-                font-size: 16px;
-            }
-
-            .column .body-text,
-            .approach-item .body-text {
-                font-size: 16px;
-            }
-
-            .guidelines-card {
-                flex: 0 0 300px;
-                padding: 28px;
-            }
-
-            .guidelines-card-list li {
-                font-size: 15px;
-            }
         }
 
         /* Before/After Slider Component */
@@ -996,8 +994,69 @@
             right: 24px;
         }
 
-        /* Responsive adjustments for before/after slider */
+        /* Responsive */
         @media (max-width: 768px) {
+            /* Show hamburger, hide desktop nav */
+            .hamburger {
+                display: flex;
+            }
+
+            .mobile-nav-overlay {
+                display: block;
+            }
+
+            header nav,
+            .header-sticky nav {
+                display: none;
+            }
+
+            .header-sticky .hamburger {
+                display: flex;
+            }
+
+            /* Keep time visible on mobile */
+            .time {
+                display: block;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            h2 {
+                font-size: 26px;
+            }
+
+            h3 {
+                font-size: 22px;
+            }
+
+            .body-text {
+                font-size: 18px;
+            }
+
+            .case-study-section {
+                padding: 60px 0;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .image-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .guidelines-card {
+                flex: 0 0 340px;
+                padding: 32px;
+            }
+
+            .guidelines-card-list li {
+                font-size: 16px;
+            }
+
             .before-after-container .slider-button {
                 width: 48px;
                 height: 48px;
@@ -1024,6 +1083,36 @@
         }
 
         @media (max-width: 480px) {
+            h1 {
+                font-size: 24px;
+            }
+
+            h2 {
+                font-size: 22px;
+            }
+
+            h3 {
+                font-size: 20px;
+            }
+
+            .body-text {
+                font-size: 16px;
+            }
+
+            .column .body-text,
+            .approach-item .body-text {
+                font-size: 16px;
+            }
+
+            .guidelines-card {
+                flex: 0 0 300px;
+                padding: 28px;
+            }
+
+            .guidelines-card-list li {
+                font-size: 15px;
+            }
+
             .before-after-container .slider-button {
                 width: 40px;
                 height: 40px;
@@ -1048,6 +1137,17 @@
                 right: 12px;
             }
         }
+
+        /* Hide cursor on mobile/touch devices */
+        @media (hover: none) and (pointer: coarse) {
+            #custom-cursor {
+                display: none !important;
+            }
+
+            body, a, button, .email-copy {
+                cursor: auto !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1056,33 +1156,53 @@
         <span class="cursor-text">Click to copy</span>
     </div>
 
+    <!-- Mobile Nav Overlay -->
+    <div class="mobile-nav-overlay" id="mobile-nav-overlay">
+        <nav>
+            <a href="#challenge" data-section="challenge" class="mobile-nav-link">Challenge</a>
+            <a href="#approach" data-section="approach" class="mobile-nav-link">Approach</a>
+            <a href="#solution" data-section="solution" class="mobile-nav-link">Solution</a>
+            <a href="#outcome" data-section="outcome" class="mobile-nav-link">Outcome</a>
+        </nav>
+    </div>
+
     <!-- Sticky Header Clone -->
     <div class="header-sticky" id="header-sticky">
         <div class="header-container">
+            <button class="hamburger" id="hamburger-sticky">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <nav>
                 <a href="#challenge" data-section="challenge" class="sticky-nav-link">Challenge</a>
                 <a href="#approach" data-section="approach" class="sticky-nav-link">Approach</a>
                 <a href="#solution" data-section="solution" class="sticky-nav-link">Solution</a>
                 <a href="#outcome" data-section="outcome" class="sticky-nav-link">Outcome</a>
             </nav>
-            <span class="time">BCN &bull; <span id="time-sticky">--:-- --</span></span>
+            <span class="time">BCN • <span id="time-sticky">--:-- --</span></span>
         </div>
     </div>
 
     <!-- Static Header -->
     <div class="header-container">
         <header>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <nav>
                 <a href="#challenge" data-section="challenge">Challenge</a>
                 <a href="#approach" data-section="approach">Approach</a>
                 <a href="#solution" data-section="solution">Solution</a>
                 <a href="#outcome" data-section="outcome">Outcome</a>
             </nav>
-            <span class="time" id="barcelona-time">BCN &bull; <span id="time">--:-- --</span></span>
+            <span class="time" id="barcelona-time">BCN • <span id="time">--:-- --</span></span>
         </header>
     </div>
 
-    <div class="header-container">
+    <div class="container">
         <!-- Title Section -->
         <section class="title-section">
             <div class="section-content">
@@ -1098,9 +1218,7 @@
                 <p class="subtitle">TravelPerk / Delta Airlines</p>
             </div>
         </section>
-    </div>
 
-    <div class="container">
         <!-- Hero Image -->
         <div class="hero-image"></div>
     </div>
@@ -1176,9 +1294,9 @@
 
             <div class="section-content">
                 <h3>The conflict</h3>
-                <p class="body-text">ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ Employers actively instruct employees using TravelPerk to avoid upselling attempts, in order to maintain strict policy budgets</p>
-                <p class="body-text">ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ This creates a fundamental misalignment between Delta's goals and TravelPerk users' goals</p>
-                <p class="body-text">ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ Not adhering to the guidelines meant risking losing Delta's inventory, which would have been detrimental to TravelPerk's US market presence</p>
+                <p class="body-text">• Employers actively instruct employees using TravelPerk to avoid upselling attempts, in order to maintain strict policy budgets</p>
+                <p class="body-text">• This creates a fundamental misalignment between Delta's goals and TravelPerk users' goals</p>
+                <p class="body-text">• Not adhering to the guidelines meant risking losing Delta's inventory, which would have been detrimental to TravelPerk's US market presence</p>
             </div>
         </div>
     </section>
@@ -1232,10 +1350,10 @@
 
                     <div class="approach-item">
                         <h3>2. Starting with research</h3>
-                        <p class="body-text">ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ I surveyed 1,000 customers about their flight booking behaviour</p>
-                        <p class="body-text">ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ The research conclusively showed flight time as customers' top priority when booking flights</p>
-                        <p class="body-text">ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ Delta's guidelines proposed hiding return flight time options until the user selected an outbound flight</p>
-                        <p class="body-text">ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ TravelPerk users can only book in-policy journeys, so visibility of outbound and return combinations that are in-policy is critical</p>
+                        <p class="body-text">• I surveyed 1,000 customers about their flight booking behaviour</p>
+                        <p class="body-text">• The research conclusively showed flight time as customers' top priority when booking flights</p>
+                        <p class="body-text">• Delta's guidelines proposed hiding return flight time options until the user selected an outbound flight</p>
+                        <p class="body-text">• TravelPerk users can only book in-policy journeys, so visibility of outbound and return combinations that are in-policy is critical</p>
                     </div>
 
                     <div class="approach-item">
@@ -1436,11 +1554,11 @@
     <section class="contact-section" id="contact">
         <div class="contact-content">
             <h3>Contact</h3>
-            <p class="body-text">If you'd like to get in touch, feel free to connect with me on <a href="#">LinkedIn</a>, or send me an email at <span class="email-copy" data-email="jimmyleslie.design@gmail.com">jimmyleslie.design@gmail.com</span> ÃƒÂ¢Ã…â€œÃ…â€™ÃƒÂ¯Ã‚Â¸Ã‚Â</p>
+            <p class="body-text">If you'd like to get in touch, feel free to connect with me on <a href="#">LinkedIn</a>, or send me an email at <span class="email-copy" data-email="jimmyleslie.design@gmail.com"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d5bfbcb8b8acb9b0a6b9bcb0fbb1b0a6bcb2bb95b2b8b4bcb9fbb6bab8">[email&#160;protected]</a></span> ✌️</p>
         </div>
     </section>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         function updateBarcelonaTime() {
             const now = new Date();
             const options = {
@@ -1457,6 +1575,35 @@
         // Update time immediately and then every minute
         updateBarcelonaTime();
         setInterval(updateBarcelonaTime, 60000);
+
+        // Hamburger menu functionality
+        const hamburger = document.getElementById('hamburger');
+        const hamburgerSticky = document.getElementById('hamburger-sticky');
+        const mobileNavOverlay = document.getElementById('mobile-nav-overlay');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        function toggleMobileNav() {
+            hamburger.classList.toggle('active');
+            hamburgerSticky.classList.toggle('active');
+            mobileNavOverlay.classList.toggle('active');
+            document.body.style.overflow = mobileNavOverlay.classList.contains('active') ? 'hidden' : '';
+        }
+
+        function closeMobileNav() {
+            hamburger.classList.remove('active');
+            hamburgerSticky.classList.remove('active');
+            mobileNavOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        hamburger.addEventListener('click', toggleMobileNav);
+        hamburgerSticky.addEventListener('click', toggleMobileNav);
+
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                closeMobileNav();
+            });
+        });
 
         // Sticky header on scroll
         const stickyHeader = document.getElementById('header-sticky');
@@ -1799,12 +1946,4 @@
             // Click to move slider
             slider.addEventListener('click', (e) => {
                 if (e.target.closest('.slider-button')) return;
-                updateSlider(e.clientX);
-            });
-
-            // Initialize slider position
-            updateSlider(slider.getBoundingClientRect().left + (slider.getBoundingClientRect().width / 2));
-        }
-    </script>
-</body>
-</html>
+         
