@@ -102,6 +102,81 @@
             position: relative;
         }
 
+        /* Hamburger Menu Button */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            padding: 8px;
+            cursor: none;
+            z-index: 101;
+        }
+
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background-color: #222222;
+            transition: all 0.3s ease;
+            display: block;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* Mobile Nav Overlay */
+        .mobile-nav-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 99;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-nav-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .mobile-nav-overlay nav {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            gap: 40px;
+        }
+
+        .mobile-nav-overlay nav a {
+            color: #222222;
+            text-decoration: none;
+            font-size: 28px;
+            font-weight: 400;
+            transition: opacity 0.2s;
+        }
+
+        .mobile-nav-overlay nav a:hover {
+            opacity: 0.7;
+        }
+
         /* Sticky Header Clone */
         .header-sticky {
             position: fixed;
@@ -146,6 +221,10 @@
 
         .header-sticky.dark nav a:hover {
             color: #ffffff;
+        }
+
+        .header-sticky.dark .hamburger span {
+            background-color: #ffffff;
         }
 
         .header-sticky .header-container {
@@ -638,6 +717,29 @@
 
         /* Responsive */
         @media (max-width: 768px) {
+            /* Show hamburger, hide desktop nav */
+            .hamburger {
+                display: flex;
+            }
+
+            .mobile-nav-overlay {
+                display: block;
+            }
+
+            header nav,
+            .header-sticky nav {
+                display: none;
+            }
+
+            .header-sticky .hamburger {
+                display: flex;
+            }
+
+            /* Keep time visible on mobile */
+            .time {
+                display: block;
+            }
+
             nav {
                 flex-wrap: wrap;
                 justify-content: flex-start;
@@ -691,6 +793,17 @@
                 font-size: 16px;
             }
         }
+
+        /* Hide cursor on mobile/touch devices */
+        @media (hover: none) and (pointer: coarse) {
+            #custom-cursor {
+                display: none !important;
+            }
+
+            body, a, button, .email-copy {
+                cursor: auto !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -699,29 +812,49 @@
         <span class="cursor-text">Click to copy</span>
     </div>
 
+    <!-- Mobile Nav Overlay -->
+    <div class="mobile-nav-overlay" id="mobile-nav-overlay">
+        <nav>
+            <a href="#problem" data-section="problem" class="mobile-nav-link">Problem</a>
+            <a href="#approach" data-section="approach" class="mobile-nav-link">Approach</a>
+            <a href="#solution" data-section="solution" class="mobile-nav-link">Solution</a>
+            <a href="#outcome" data-section="outcome" class="mobile-nav-link">Outcome</a>
+        </nav>
+    </div>
+
     <!-- Sticky Header Clone -->
     <div class="header-sticky" id="header-sticky">
         <div class="header-container">
+            <button class="hamburger" id="hamburger-sticky">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <nav>
                 <a href="#problem" data-section="problem" class="sticky-nav-link">Problem</a>
                 <a href="#approach" data-section="approach" class="sticky-nav-link">Approach</a>
                 <a href="#solution" data-section="solution" class="sticky-nav-link">Solution</a>
                 <a href="#outcome" data-section="outcome" class="sticky-nav-link">Outcome</a>
             </nav>
-            <span class="time">BCN &bull; <span id="time-sticky">--:-- --</span></span>
+            <span class="time">BCN • <span id="time-sticky">--:-- --</span></span>
         </div>
     </div>
 
     <!-- Static Header -->
     <div class="header-container">
         <header>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <nav>
                 <a href="#problem" data-section="problem">Problem</a>
                 <a href="#approach" data-section="approach">Approach</a>
                 <a href="#solution" data-section="solution">Solution</a>
                 <a href="#outcome" data-section="outcome">Outcome</a>
             </nav>
-            <span class="time" id="barcelona-time">BCN &bull; <span id="time">--:-- --</span></span>
+            <span class="time" id="barcelona-time">BCN • <span id="time">--:-- --</span></span>
         </header>
     </div>
 
@@ -779,7 +912,7 @@
 
                 <div class="info-section">
                     <h3>My role</h3>
-                    <p class="body-text">Product design lead and strategist Ã¢â‚¬â€œ I led a small team of product owners, engineers and researchers to develop and scale a solution. After the launch of an initial app, I then continued to lead design and played a key role in product strategy to launch several updates and a companion app for tradespeople.</p>
+                    <p class="body-text">Product design lead and strategist ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“ I led a small team of product owners, engineers and researchers to develop and scale a solution. After the launch of an initial app, I then continued to lead design and played a key role in product strategy to launch several updates and a companion app for tradespeople.</p>
                 </div>
 
                 <div class="info-section">
@@ -1019,7 +1152,7 @@
                 </div>
 
                 <p class="body-text">The beta trial was a huge success, and gave us a projected app rating, indication of retention rate and qualitative insights to use moving forward.</p>
-                <p class="body-text">Despite the success, the Product Finder app was disappointingly deprioritised, as the company decided to direct all funding towards a new ecommerce re-platformÃ¢â‚¬Â¦ But thankfully, all was not lost Ã¢â‚¬â€œ and news of the COVID-19 pandemic provided the app with new strategic importance.</p>
+                <p class="body-text">Despite the success, the Product Finder app was disappointingly deprioritised, as the company decided to direct all funding towards a new ecommerce re-platformÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ But thankfully, all was not lost ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“ and news of the COVID-19 pandemic provided the app with new strategic importance.</p>
                 <p class="body-text">By repositioning the app as a way to minimise in-store contact time, it became a critical component of Bunnings' essential service strategy: helping secure government permission to keep stores open while competitors were forced to close.</p>
                 <p class="body-text">The project was rapidly reprioritised, accelerating our delivery timeline and transforming the app from a customer convenience to a business-critical service that helped Bunnings weather the pandemic while capturing great reviews and media praise.</p>
             </div>
@@ -1132,7 +1265,7 @@
                 
                 <p class="body-text">This was an enormous initiative, and I learned a ridiculous amount in my time spend working on it. My learnings range from stakeholder management through branding application, design systems and feature prioritisation.</p>
                 <p class="body-text">Most importantly, I learned the value of maintaining a constant focus on the core problem. When we work in experimental environments with lots of freedom, it's easy to get carried away with cool ideas just because we can.</p>
-                <p class="body-text">Maintaining a regular feedback cycle with users Ã¢â‚¬â€œ not just for usability, but also for sentiment analysis on features and capabilities Ã¢â‚¬â€œ meant that the final product struck an amazing balance between solving a genuine customer need and creating a new successful & scalable revenue opportunity for the business.</p>
+                <p class="body-text">Maintaining a regular feedback cycle with users ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“ not just for usability, but also for sentiment analysis on features and capabilities ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“ meant that the final product struck an amazing balance between solving a genuine customer need and creating a new successful & scalable revenue opportunity for the business.</p>
             </div>
         </div>
     </section>
@@ -1141,7 +1274,7 @@
     <section class="contact-section" id="contact">
         <div class="contact-content">
             <h3>Contact</h3>
-            <p class="body-text">If you'd like to get in touch, feel free to connect with me on <a href="#">LinkedIn</a>, or send me an email at <span class="email-copy" data-email="jimmyleslie.design@gmail.com">jimmyleslie.design@gmail.com</span> Ã¢Å“Å’Ã¯Â¸Â</p>
+            <p class="body-text">If you'd like to get in touch, feel free to connect with me on <a href="#">LinkedIn</a>, or send me an email at <span class="email-copy" data-email="jimmyleslie.design@gmail.com">jimmyleslie.design@gmail.com</span> ÃƒÂ¢Ã…â€œÃ…â€™ÃƒÂ¯Ã‚Â¸Ã‚Â</p>
         </div>
     </section>
 
@@ -1162,6 +1295,35 @@
         // Update time immediately and then every minute
         updateBarcelonaTime();
         setInterval(updateBarcelonaTime, 60000);
+
+        // Hamburger menu functionality
+        const hamburger = document.getElementById('hamburger');
+        const hamburgerSticky = document.getElementById('hamburger-sticky');
+        const mobileNavOverlay = document.getElementById('mobile-nav-overlay');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        function toggleMobileNav() {
+            hamburger.classList.toggle('active');
+            hamburgerSticky.classList.toggle('active');
+            mobileNavOverlay.classList.toggle('active');
+            document.body.style.overflow = mobileNavOverlay.classList.contains('active') ? 'hidden' : '';
+        }
+
+        function closeMobileNav() {
+            hamburger.classList.remove('active');
+            hamburgerSticky.classList.remove('active');
+            mobileNavOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        hamburger.addEventListener('click', toggleMobileNav);
+        hamburgerSticky.addEventListener('click', toggleMobileNav);
+
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                closeMobileNav();
+            });
+        });
 
         // Sticky header on scroll
         const stickyHeader = document.getElementById('header-sticky');
