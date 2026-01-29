@@ -83,14 +83,14 @@
         .header-container {
             max-width: 640px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0;
         }
 
         /* Header */
         header {
-            padding: 32px 0;
+            padding: 32px 24px;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
             background-color: #ffffff;
             z-index: 100;
@@ -103,7 +103,7 @@
             top: 0;
             left: 0;
             right: 0;
-            padding: 32px 0;
+            padding: 32px 24px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -123,19 +123,13 @@
 
         .header-sticky .header-container {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            position: relative;
             width: 100%;
         }
 
         .logo {
-            font-weight: 400;
-            font-size: 16px;
-            color: #919191;
-            opacity: 0.5;
-            position: absolute;
-            left: 0;
+            display: none;
         }
 
         nav {
@@ -165,8 +159,6 @@
             font-weight: 400;
             color: #919191;
             opacity: 0.5;
-            position: absolute;
-            right: 0;
         }
 
         /* Hero Section */
@@ -565,30 +557,10 @@
 
         /* Responsive */
         @media (max-width: 768px) {
-            header {
-                justify-content: center;
-            }
-
-            .logo {
-                display: none;
-            }
-
-            .time {
-                display: none;
-            }
-
             nav {
                 flex-wrap: wrap;
-                justify-content: center;
+                justify-content: flex-start;
                 gap: 24px;
-            }
-
-            .header-sticky .logo {
-                display: none;
-            }
-
-            .header-sticky .time {
-                display: none;
             }
 
             .hero-box {
@@ -650,26 +622,24 @@
     <!-- Sticky Header Clone -->
     <div class="header-sticky" id="header-sticky">
         <div class="header-container">
-            <div class="logo">Jimmy Leslie</div>
             <nav>
                 <a href="#about" data-section="about" class="sticky-nav-link">About</a>
                 <a href="#work" data-section="work" class="sticky-nav-link">Work</a>
                 <a href="#contact" data-section="contact" class="sticky-nav-link">Contact</a>
-                <span class="time">BCN &bull; <span id="time-sticky">--:-- --</span></span>
             </nav>
+            <span class="time">BCN &bull; <span id="time-sticky">--:-- --</span></span>
         </div>
     </div>
 
     <!-- Static Header -->
     <div class="header-container">
         <header>
-            <div class="logo">Jimmy Leslie</div>
             <nav>
                 <a href="#about" data-section="about">About</a>
                 <a href="#work" data-section="work">Work</a>
                 <a href="#contact" data-section="contact">Contact</a>
-                <span class="time" id="barcelona-time">BCN &bull; <span id="time">--:-- --</span></span>
             </nav>
+            <span class="time" id="barcelona-time">BCN &bull; <span id="time">--:-- --</span></span>
         </header>
     </div>
 
@@ -808,7 +778,7 @@
     <section class="contact-section" id="contact">
         <div class="contact-content">
             <h3>Contact</h3>
-            <p class="body-text">If you'd like to get in touch, feel free to connect with me on <a href="#">LinkedIn</a>, or send me an email at <span class="email-copy" data-email="jimmyleslie.design@gmail.com">jimmyleslie.design@gmail.com</span> ✌️</p>
+            <p class="body-text">If you'd like to get in touch, feel free to connect with me on <a href="#">LinkedIn</a>, or send me an email at <span class="email-copy" data-email="jimmyleslie.design@gmail.com">jimmyleslie.design@gmail.com</span> âœŒï¸</p>
         </div>
     </section>
 
@@ -848,20 +818,18 @@
             const aboutTop = aboutSection.offsetTop;
             const workTop = workSection.offsetTop;
             const contactTop = contactSection.offsetTop;
-            const contactBottom = contactTop + contactSection.offsetHeight;
             const windowHeight = window.innerHeight;
-            const windowBottom = scrollPosition + windowHeight;
             
             // Remove all active classes
             navLinks.forEach(link => link.classList.remove('active'));
             stickyNavLinks.forEach(link => link.classList.remove('active'));
             
             // Determine which section should be active
-            if (windowBottom >= contactBottom) {
-                // Contact is fully in view
+            // Contact activates when its heading is visible in viewport
+            if (scrollPosition + windowHeight > contactTop && scrollPosition < contactTop + contactSection.offsetHeight) {
                 document.querySelector('nav a[data-section="contact"]')?.classList.add('active');
                 document.querySelector('.sticky-nav-link[data-section="contact"]')?.classList.add('active');
-            } else if (scrollPosition + stickyHeaderHeight >= workTop) {
+            } else if (scrollPosition + stickyHeaderHeight >= workTop && scrollPosition + stickyHeaderHeight < contactTop) {
                 // Work section has scrolled past sticky nav
                 document.querySelector('nav a[data-section="work"]')?.classList.add('active');
                 document.querySelector('.sticky-nav-link[data-section="work"]')?.classList.add('active');
