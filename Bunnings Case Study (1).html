@@ -1,0 +1,1521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turning customer's number one problem into a $500m revenue channel - Jimmy Leslie</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #222222;
+            line-height: 1.5;
+            cursor: none;
+        }
+
+        /* Custom Cursor */
+        #custom-cursor {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #222222;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: opacity 0.2s;
+            opacity: 1;
+            background-color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: #222222;
+            font-family: 'Inter', sans-serif;
+            white-space: nowrap;
+            padding: 0;
+        }
+
+        #custom-cursor.hover {
+            transform: translate(-50%, -50%) scale(1.5);
+            transition: transform 0.2s, opacity 0.2s;
+        }
+
+        #custom-cursor.copy-mode {
+            width: auto;
+            height: auto;
+            border-radius: 20px;
+            padding: 8px 16px;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        #custom-cursor .cursor-text {
+            display: none;
+        }
+
+        #custom-cursor.copy-mode .cursor-text {
+            display: block;
+        }
+
+        #custom-cursor.dark-section {
+            border-color: #ffffff;
+            background-color: #222222;
+        }
+
+        a, button, .email-copy {
+            cursor: none;
+        }
+
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .header-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        header {
+            padding: 32px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #ffffff;
+            z-index: 100;
+            position: relative;
+        }
+
+        /* Sticky Header Clone */
+        .header-sticky {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 32px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            z-index: 100;
+            transform: translateY(-100%);
+            opacity: 0;
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, background-color 0.3s ease-in-out;
+        }
+
+        .header-sticky.visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .header-sticky.dark {
+            background-color: rgba(34, 34, 34, 0.85);
+        }
+
+        .header-sticky.dark .logo,
+        .header-sticky.dark .time {
+            color: rgba(255, 255, 255, 0.6);
+            opacity: 0.5;
+        }
+
+        .header-sticky.dark nav a {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .header-sticky.dark nav a.active {
+            color: #ffffff;
+            opacity: 1;
+        }
+
+        .header-sticky.dark nav a:hover {
+            color: #ffffff;
+        }
+
+        .header-sticky .header-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            width: 100%;
+        }
+
+        .logo {
+            font-weight: 400;
+            font-size: 16px;
+            color: #919191;
+            opacity: 0.5;
+            position: absolute;
+            left: 0;
+            text-decoration: none;
+        }
+
+        nav {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        nav a {
+            color: #919191;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 400;
+            transition: color 0.2s;
+        }
+
+        nav a.active {
+            color: #222222;
+        }
+
+        nav a:hover {
+            color: #222222;
+        }
+
+        .time {
+            font-size: 16px;
+            font-weight: 400;
+            color: #919191;
+            opacity: 0.5;
+            position: absolute;
+            right: 0;
+        }
+
+        /* Case Study Title Section */
+        .title-section {
+            margin-top: 100px;
+            margin-bottom: 60px;
+        }
+
+        .title-section h1 {
+            margin-bottom: 16px;
+        }
+
+        .section-content {
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-family: 'Inter', sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-size: 36px;
+            line-height: 1.3em;
+            color: #222222;
+            margin-bottom: 80px;
+        }
+
+        h1 + .body-text {
+            margin-top: -48px;
+        }
+
+        h2 {
+            font-family: 'Inter', sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-size: 32px;
+            line-height: 1.4em;
+            color: #222222;
+            margin-bottom: 8px;
+        }
+
+        h3 {
+            font-family: 'Inter', sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-size: 25px;
+            line-height: 1.5em;
+            color: #222222;
+            margin-bottom: 16px;
+            margin-top: 80px;
+        }
+
+        h3:first-child {
+            margin-top: 0;
+        }
+
+        h4 {
+            font-family: 'Inter', sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-size: 20px;
+            line-height: 1.5em;
+            color: #222222;
+            margin-bottom: 0;
+        }
+
+        .subtitle {
+            font-family: 'Inter', sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-size: 20px;
+            line-height: 1.5em;
+            color: #919191;
+        }
+
+        /* Large Image */
+        .hero-image {
+            width: 100%;
+            max-width: 860px;
+            margin: 0 auto 80px auto;
+            aspect-ratio: 16/10;
+            background-color: #FAFAFA;
+            border-radius: 16px;
+            border: 1px solid rgba(34, 34, 34, 0.1);
+        }
+
+        /* Section Styling with alternating backgrounds */
+        .case-study-section {
+            width: 100%;
+            border-top: 1px solid rgba(0, 0, 0, 0.08);
+            padding: 120px 0;
+            scroll-margin-top: 120px;
+        }
+
+        .case-study-section.bg-white {
+            background-color: #FFFFFF;
+        }
+
+        .case-study-section.bg-gray {
+            background-color: #FAFAFA;
+        }
+
+        /* Dark section styling */
+        .case-study-section.bg-dark {
+            background-color: #222222;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .case-study-section.bg-dark h1,
+        .case-study-section.bg-dark h2,
+        .case-study-section.bg-dark h3,
+        .case-study-section.bg-dark h4 {
+            color: #FFFFFF;
+        }
+
+        .case-study-section.bg-dark .subtitle,
+        .case-study-section.bg-dark .body-text {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .case-study-section.bg-dark .content-image {
+            background-color: #1A1A1A;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .case-study-section.bg-dark .fade-left-consistency {
+            background: linear-gradient(to right, #222222 0%, rgba(34, 34, 34, 0) 100%);
+        }
+
+        .case-study-section.bg-dark .fade-right-consistency {
+            background: linear-gradient(to left, #222222 0%, rgba(34, 34, 34, 0) 100%);
+        }
+
+        .case-study-section.bg-dark .scroll-arrow {
+            background: #1A1A1A;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #FFFFFF;
+        }
+
+        .case-study-section.bg-dark .scroll-arrow:hover {
+            background-color: #2A2A2A;
+        }
+
+        .case-study-section:first-of-type {
+            border-top: none;
+            padding-top: 80px;
+        }
+
+        /* Override default section margin */
+        .section {
+            margin-bottom: 0;
+        }
+
+        .body-text {
+            font-family: 'Inter', sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-size: 20px;
+            line-height: 1.5em;
+            color: #919191;
+            margin-bottom: 32px;
+        }
+
+        .body-text:last-child {
+            margin-bottom: 0;
+        }
+
+        .caption {
+            font-family: 'Inter', sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 1.6em;
+            color: #919191;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 40px;
+            margin-bottom: 32px;
+        }
+
+        .stat-item {
+            text-align: left;
+        }
+
+        .stat-label {
+            margin-bottom: 8px;
+        }
+
+        .stat-value {
+            font-family: 'Inter', sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 1.6em;
+            color: #919191;
+        }
+
+        /* Single Column Layout */
+        .info-section {
+            margin-bottom: 40px;
+        }
+
+        .info-section h3 {
+            margin-bottom: 16px;
+        }
+
+        .info-section .body-text {
+            font-size: 20px;
+        }
+
+        /* Standard Image */
+        .content-image {
+            width: 100%;
+            max-width: 860px;
+            margin: 80px auto;
+            aspect-ratio: 16/10;
+            background-color: #FAFAFA;
+            border-radius: 16px;
+            border: 1px solid rgba(34, 34, 34, 0.1);
+        }
+
+        /* Side by Side Images */
+        .image-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .image-grid .content-image {
+            margin-bottom: 0;
+        }
+
+        /* Consistency Gallery */
+        .consistency-gallery-container {
+            position: relative;
+            margin-top: 40px;
+            margin-bottom: 80px;
+            max-width: 860px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .consistency-gallery-scroll {
+            display: flex;
+            gap: 24px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding: 0;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            margin-bottom: 16px;
+        }
+
+        .consistency-gallery-scroll::-webkit-scrollbar {
+            display: none;
+        }
+
+        .consistency-gallery-scroll .content-image {
+            flex: 0 0 calc(100% - 120px);
+            margin: 0;
+        }
+
+        /* Fade overlays for consistency gallery */
+        .fade-left-consistency,
+        .fade-right-consistency {
+            position: absolute;
+            top: 0;
+            bottom: 56px;
+            width: 120px;
+            pointer-events: none;
+            z-index: 10;
+            transition: opacity 0.3s;
+        }
+
+        .fade-left-consistency {
+            left: 0;
+            background: linear-gradient(to right, #FAFAFA 0%, rgba(250, 250, 250, 0) 100%);
+            opacity: 0;
+        }
+
+        .fade-left-consistency.visible {
+            opacity: 1;
+        }
+
+        .fade-right-consistency {
+            right: 0;
+            background: linear-gradient(to left, #FAFAFA 0%, rgba(250, 250, 250, 0) 100%);
+        }
+
+        .fade-right-consistency.hidden {
+            opacity: 0;
+        }
+
+        /* Arrows container at bottom right */
+        .consistency-gallery-arrows {
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+            padding-right: 0;
+        }
+
+        /* Consistency gallery arrow styles */
+        .consistency-gallery-arrows .scroll-arrow {
+            position: static;
+            transform: none;
+            width: 40px;
+            height: 40px;
+            background: #ffffff;
+            border: 1px solid rgba(34, 34, 34, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: opacity 0.3s, background-color 0.2s;
+            color: #222222;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .consistency-gallery-arrows .scroll-arrow svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .consistency-gallery-arrows .scroll-arrow:hover {
+            background-color: #f5f5f5;
+        }
+
+        .consistency-gallery-arrows .scroll-arrow-left-guidelines {
+            opacity: 0.3;
+            pointer-events: none;
+            cursor: default;
+        }
+
+        .consistency-gallery-arrows .scroll-arrow-left-guidelines.visible {
+            opacity: 1;
+            pointer-events: auto;
+            cursor: pointer;
+        }
+
+        .consistency-gallery-arrows .scroll-arrow-right-guidelines {
+            opacity: 1;
+            pointer-events: auto;
+            cursor: pointer;
+        }
+
+        .consistency-gallery-arrows .scroll-arrow-right-guidelines.hidden {
+            opacity: 0.3;
+            pointer-events: none;
+            cursor: default;
+        }
+
+        /* Navigation Arrow */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #222222;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 400;
+            transition: color 0.2s;
+            margin-bottom: 40px;
+        }
+
+        .back-link:hover {
+            color: #222222;
+            opacity: 0.7;
+        }
+
+        .back-link svg {
+            width: 16px;
+            height: 16px;
+            transform: rotate(180deg);
+        }
+
+        /* Quote Box */
+        .quote-box {
+            background-color: #FAFAFA;
+            border-left: 4px solid #222222;
+            padding: 24px 32px;
+            margin: 40px 0;
+            border-radius: 8px;
+        }
+
+        .quote-box h4 {
+            margin-bottom: 16px;
+            font-size: 16px;
+            color: #919191;
+        }
+
+        .quote-box .body-text {
+            margin-bottom: 0;
+            color: #222222;
+            font-style: italic;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background-color: #F4FEC1;
+            padding: 80px 24px;
+            margin-top: 0;
+            animation: colorCycle 30s ease-in-out infinite;
+        }
+
+        @keyframes colorCycle {
+            0% { background-color: #F4FEC1; }
+            16.66% { background-color: #D4F4DD; }
+            33.33% { background-color: #D4E4F4; }
+            50% { background-color: #E8D4F4; }
+            66.66% { background-color: #F4D4D4; }
+            83.33% { background-color: #F4E8D4; }
+            100% { background-color: #F4FEC1; }
+        }
+
+        .contact-content {
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        .contact-content h3 {
+            margin-bottom: 24px;
+        }
+
+        .contact-content .body-text {
+            color: rgba(34, 34, 34, 0.5);
+        }
+
+        .contact-content .body-text a {
+            color: #222222;
+            text-decoration: none;
+        }
+
+        .contact-content .body-text a:hover {
+            opacity: 0.7;
+        }
+
+        /* Email Copy Button */
+        .email-copy {
+            color: #222222;
+            position: relative;
+            cursor: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                justify-content: center;
+            }
+
+            .logo {
+                display: none;
+            }
+
+            .time {
+                display: none;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 24px;
+            }
+
+            .header-sticky .logo {
+                display: none;
+            }
+
+            .header-sticky .time {
+                display: none;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            h2 {
+                font-size: 26px;
+            }
+
+            h3 {
+                font-size: 22px;
+            }
+
+            .body-text {
+                font-size: 18px;
+            }
+
+            .case-study-section {
+                padding: 60px 0;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .image-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 24px;
+            }
+
+            h2 {
+                font-size: 22px;
+            }
+
+            h3 {
+                font-size: 20px;
+            }
+
+            .body-text {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div id="custom-cursor">
+        <span class="cursor-text">Click to copy</span>
+    </div>
+
+    <!-- Sticky Header Clone -->
+    <div class="header-sticky" id="header-sticky">
+        <div class="header-container">
+            <a href="index.html" class="logo">Jimmy Leslie</a>
+            <nav>
+                <a href="#problem" data-section="problem" class="sticky-nav-link">Problem</a>
+                <a href="#approach" data-section="approach" class="sticky-nav-link">Approach</a>
+                <a href="#solution" data-section="solution" class="sticky-nav-link">Solution</a>
+                <a href="#outcome" data-section="outcome" class="sticky-nav-link">Outcome</a>
+                <span class="time">BCN &bull; <span id="time-sticky">--:-- --</span></span>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Static Header -->
+    <div class="header-container">
+        <header>
+            <a href="index.html" class="logo">Jimmy Leslie</a>
+            <nav>
+                <a href="#problem" data-section="problem">Problem</a>
+                <a href="#approach" data-section="approach">Approach</a>
+                <a href="#solution" data-section="solution">Solution</a>
+                <a href="#outcome" data-section="outcome">Outcome</a>
+                <span class="time" id="barcelona-time">BCN &bull; <span id="time">--:-- --</span></span>
+            </nav>
+        </header>
+    </div>
+
+    <div class="container">
+        <!-- Title Section -->
+        <section class="title-section">
+            <div class="section-content">
+                <!-- Back Link -->
+                <a href="index.html#work" class="back-link">
+                    <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Back to work
+                </a>
+
+                <h1>Turning customer's number one problem into a $500m revenue channel</h1>
+                <p class="subtitle">Bunnings Warehouse / AKQA</p>
+            </div>
+        </section>
+
+        <!-- Hero Image -->
+        <div class="hero-image"></div>
+    </div>
+
+    <!-- Overview Section -->
+    <section class="case-study-section bg-white">
+        <div class="container">
+            <div class="section-content">
+                <h1>Overview</h1>
+                <p class="body-text">Bunnings customers hated how hard it was to find what they were looking for in their huge warehouse-style stores. I led a team of designers, engineers and product owners to develop a solution to this problem, and unlocked two new revenue channels that went on to generate hundreds of millions of dollars.</p>
+
+                <!-- Stats Grid -->
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <h2 class="stat-label">1.5million+</h2>
+                        <div class="stat-value">Combined downloads</div>
+                    </div>
+                    <div class="stat-item">
+                        <h2 class="stat-label">$500million+</h2>
+                        <div class="stat-value">Annual revenue</div>
+                    </div>
+                    <div class="stat-item">
+                        <h2 class="stat-label">2</h2>
+                        <div class="stat-value">New apps</div>
+                    </div>
+                </div>
+
+                <!-- Keyline separator -->
+                <div style="height: 0.5px; background-color: rgba(0, 0, 0, 0.08); margin-top: 80px; margin-bottom: 80px;"></div>
+
+                <div class="info-section">
+                    <h3>Problem</h3>
+                    <p class="body-text">Bunnings customers' number one problem was finding products in their massive stores. At the same time, team members were spending most of their time guiding customers to product locations, limiting their time for more important work tasks.</p>
+                </div>
+
+                <div class="info-section">
+                    <h3>My role</h3>
+                    <p class="body-text">Product design lead and strategist Ã¢â‚¬â€œ I led a small team of product owners, engineers and researchers to develop and scale a solution. After the launch of an initial app, I then continued to lead design and played a key role in product strategy to launch several updates and a companion app for tradespeople.</p>
+                </div>
+
+                <div class="info-section">
+                    <h3>Approach</h3>
+                    <p class="body-text">I led the core team through a series of rapid design sprints and a live beta trial with 738 customers that included a feedback loop that helped build confidence in before launching. After a successful release, I turned attention to revenue-generating opportunities that dovetailed with genuine customer problems.</p>
+                </div>
+
+                <div class="info-section">
+                    <h3>Outcome</h3>
+                    <p class="body-text">After initially being shelved, the app was unexpectedly fast-tracked for release as a COVID-19 tool to minimise contact time between the public and Bunnings team members in their stores. Almost immediately after its release, the Product Finder app hit #1 on the Australian app store for shopping apps and received huge media praise. The app went on to lay the foundations for a mobile ecommerce channel for Bunnings, as well as a hugely successful partner app for professional tradies.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Problem Section -->
+    <section class="case-study-section bg-gray" id="problem">
+        <div class="container">
+            <div class="section-content">
+                <h1>The problem</h1>
+                
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <h2 class="stat-label">403</h2>
+                        <div class="stat-value">Customers surveyed</div>
+                    </div>
+                    <div class="stat-item">
+                        <h2 class="stat-label">45%</h2>
+                        <div class="stat-value">Shared the same #1 problem</div>
+                    </div>
+                    <div class="stat-item">
+                        <h2 class="stat-label">23 staff</h2>
+                        <div class="stat-value">Interviewed across 6 stores</div>
+                    </div>
+                </div>
+
+                <p class="body-text">Survey research revealed that customers' number one problem when shopping with Bunnings was finding products in their huge warehouse-style stores. A subsequent Kano study also revealed product finding as Bunnings' top opportunity for CSAT.</p>
+            </div>
+            
+            <!-- Images -->
+            <div class="content-image"></div>
+            
+            <div class="section-content">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <h2 class="stat-label">23 staff</h2>
+                        <div class="stat-value">Interviewed across 6 stores</div>
+                    </div>
+                    <div class="stat-item">
+                        <h2 class="stat-label">75%</h2>
+                        <div class="stat-value">Time wasted</div>
+                    </div>
+                </div>
+
+                <p class="body-text">A separate study with Bunnings team members revealed that 75% of their time was "wasted" directing customers to product locations in the store. This prevented them from being able to complete more-critical work tasks and from helping customers with their in-depth product knowledge.</p>
+            </div>
+
+            <div class="content-image"></div>
+        </div>
+    </section>
+
+    <!-- Some Important Context Section -->
+    <section class="case-study-section bg-white">
+        <div class="container">
+            <div class="section-content">
+                <h1>Some important context</h1>
+                
+                <h3>Chatbot POC</h3>
+                <p class="body-text">An early proof of concept was created using a Messenger bot, which we usability tested in-store. Customers did not find a chatbot solution accessible enough, as they relied heavily on product imagery and the layout of the store when trying to find products.</p>
+            </div>
+
+            <div class="content-image"></div>
+
+            <div class="section-content">
+                <h3>Trend analysis</h3>
+                <p class="body-text">A Google trends study suggested that customers already expected there to be a Bunnings app. In combination with findings of the the chatbot testing, this suggested that a native app might be a better format to help solve the problem.</p>
+            </div>
+
+            <div class="content-image"></div>
+        </div>
+    </section>
+
+    <!-- Kicking Things Off Section -->
+    <section class="case-study-section bg-gray" id="approach">
+        <div class="container">
+            <div class="section-content">
+                <h1>Kicking things off</h1>
+                
+                <p class="body-text">After gathering a diverse group of stakeholders who would evolve into the core product team, I led several designs sprints to align on the problem and gather ideas that would inform our early concepts to test.</p>
+            </div>
+
+            <div class="content-image"></div>
+
+            <div class="section-content">
+                <p class="body-text">Lightning demos and crazy 8s style exercises resulted in a few different approaches to trying to solve our goal. Some of our early ideas included image search to help identify niche products, shopping lists to streamline store visits, and an interactive store map, to help with wayfinding in the store.</p>
+            </div>
+
+            <div class="content-image"></div>
+        </div>
+    </section>
+
+    <!-- Testing in the Store Section -->
+    <section class="case-study-section bg-white">
+        <div class="container">
+            <div class="section-content">
+                <h1>Testing in the store</h1>
+                
+                <p class="body-text">After aligning on core features through a customer survey and effort vs impact mapping, we started to build our MVP. We chose to build a lean hard-coded prototype, rather than a lo-fi UX prototype, as it allowed us to test using real product and store data.</p>
+            </div>
+
+            <!-- Consistency Gallery 1 -->
+            <div class="consistency-gallery-container">
+                <div class="fade-left-consistency fade-left-1"></div>
+                <div class="fade-right-consistency fade-right-1"></div>
+                <div class="consistency-gallery-scroll gallery-1">
+                    <div class="content-image"></div>
+                    <div class="content-image"></div>
+                    <div class="content-image"></div>
+                </div>
+                <div class="consistency-gallery-arrows">
+                    <button class="scroll-arrow scroll-arrow-left-guidelines arrow-left-1">
+                        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 3L5 8L10 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <button class="scroll-arrow scroll-arrow-right-guidelines arrow-right-1">
+                        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="section-content">
+                <div class="quote-box">
+                    <h4>Participant quote</h4>
+                    <p class="body-text">"This solves the biggest problem I have at Bunnings. It can be very frustrating not just finding what you're looking for, but finding people to ask."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Learnings and Refinement Section -->
+    <section class="case-study-section bg-gray" id="solution">
+        <div class="container">
+            <div class="section-content">
+                <h1>Learnings and refinement</h1>
+                
+                <h3>Behavioural observations</h3>
+                <p class="body-text">Early into testing, we observed how users typically used imagery and price when cross-referencing products on the screen with those on the shelves. We decided to increase the prominence of these elements to make cross-referencing and navigation easier.</p>
+            </div>
+
+            <!-- Consistency Gallery 2 -->
+            <div class="consistency-gallery-container">
+                <div class="fade-left-consistency fade-left-2"></div>
+                <div class="fade-right-consistency fade-right-2"></div>
+                <div class="consistency-gallery-scroll gallery-2">
+                    <div class="content-image"></div>
+                    <div class="content-image"></div>
+                    <div class="content-image"></div>
+                </div>
+                <div class="consistency-gallery-arrows">
+                    <button class="scroll-arrow scroll-arrow-left-guidelines arrow-left-2">
+                        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 3L5 8L10 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <button class="scroll-arrow scroll-arrow-right-guidelines arrow-right-2">
+                        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="section-content">
+                <h3>Reducing overwhelm</h3>
+                <p class="body-text">After discovering that we could vectorise individual CAD drawings for each store, we created a tool to map each product to its location in the store. This allowed us to build a new wayfinding tool for customers to navigate the stores and find what they're looking for with ease.</p>
+            </div>
+
+            <div class="content-image"></div>
+
+            <div class="section-content">
+                <h3>De-prioritising cool stuff</h3>
+                <p class="body-text">Sentiment analysis with customers helped us to prioritise features for an initial release, which resulted in de-prioritisation of some interesting ideas. An example of this was an object-recognition feature that helped identify and locate difficult-to-name products.</p>
+            </div>
+
+            <div class="content-image"></div>
+
+            <div class="section-content">
+                <h3>A familiar sight</h3>
+                <p class="body-text">The visual design details of the app naturally leaned into Bunnings' existing digital identity, but also took cues from the in-store environment, to promote a sense of familiarity when navigating the store.</p>
+            </div>
+
+            <div class="content-image"></div>
+
+            <div class="section-content">
+                <h3>Testing at scale</h3>
+                
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <h2 class="stat-label">738</h2>
+                        <div class="stat-value">Trial participants</div>
+                    </div>
+                    <div class="stat-item">
+                        <h2 class="stat-label">77%</h2>
+                        <div class="stat-value">Used more than 5 times</div>
+                    </div>
+                    <div class="stat-item">
+                        <h2 class="stat-label">+41.2</h2>
+                        <div class="stat-value">Net promoter score</div>
+                    </div>
+                </div>
+
+                <p class="body-text">To gain more quantitative insight, we set up a beta trial with over 700 test participants. We recruited participants by directly emailing frequent Bunnings customers with an invitation to sign up to the trial. Participants could leave feedback whenever they wanted via an omnipresent feedback button in the app.</p>
+            </div>
+
+            <div class="content-image"></div>
+        </div>
+    </section>
+
+    <!-- An Unexpected Release Section -->
+    <section class="case-study-section bg-white" id="outcome">
+        <div class="container">
+            <div class="section-content">
+                <h1>An unexpected release</h1>
+                
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <h2 class="stat-label">#5</h2>
+                        <div class="stat-value">Shopping apps</div>
+                    </div>
+                    <div class="stat-item">
+                        <h2 class="stat-label">4.8/5</h2>
+                        <div class="stat-value">App store rating</div>
+                    </div>
+                    <div class="stat-item">
+                        <h2 class="stat-label">100,000+</h2>
+                        <div class="stat-value">Active users in 3 months</div>
+                    </div>
+                </div>
+
+                <p class="body-text">The beta trial was a huge success, and gave us a projected app rating, indication of retention rate and qualitative insights to use moving forward.</p>
+                <p class="body-text">Despite the success, the Product Finder app was disappointingly deprioritised, as the company decided to direct all funding towards a new ecommerce re-platformÃ¢â‚¬Â¦ But thankfully, all was not lost Ã¢â‚¬â€œ and news of the COVID-19 pandemic provided the app with new strategic importance.</p>
+                <p class="body-text">By repositioning the app as a way to minimise in-store contact time, it became a critical component of Bunnings' essential service strategy: helping secure government permission to keep stores open while competitors were forced to close.</p>
+                <p class="body-text">The project was rapidly reprioritised, accelerating our delivery timeline and transforming the app from a customer convenience to a business-critical service that helped Bunnings weather the pandemic while capturing great reviews and media praise.</p>
+            </div>
+
+            <div class="content-image"></div>
+        </div>
+    </section>
+
+    <!-- A New Revenue Channel Section -->
+    <section class="case-study-section bg-gray">
+        <div class="container">
+            <div class="section-content">
+                <h1>A new revenue channel</h1>
+                
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <h2 class="stat-label">$50million</h2>
+                        <div class="stat-value">Estimated annual revenue</div>
+                    </div>
+                    <div class="stat-item">
+                        <h2 class="stat-label">2million+</h2>
+                        <div class="stat-value">Downloads</div>
+                    </div>
+                    <div class="stat-item">
+                        <h2 class="stat-label">4.8/5</h2>
+                        <div class="stat-value">App store rating</div>
+                    </div>
+                </div>
+
+                <p class="body-text">Rather than integrate a traditional ecommerce funnel (which would risk leading to a duplicate experience of the Bunnings website), I successfully pitched the idea of a location-based app experience, which would recognise if the user was in a store or not and provide the most-relevant experience.</p>
+                <p class="body-text">The "in-store design" would preserve the core Product Finder app experience that made it so successful and focus more on helping users find products in the store. The "out of store" design would lean more-heavily towards an online retail experience, allowing users to easily purchase items online.</p>
+            </div>
+
+            <!-- Consistency Gallery 3 -->
+            <div class="consistency-gallery-container">
+                <div class="fade-left-consistency fade-left-3"></div>
+                <div class="fade-right-consistency fade-right-3"></div>
+                <div class="consistency-gallery-scroll gallery-3">
+                    <div class="content-image"></div>
+                    <div class="content-image"></div>
+                    <div class="content-image"></div>
+                </div>
+                <div class="consistency-gallery-arrows">
+                    <button class="scroll-arrow scroll-arrow-left-guidelines arrow-left-3">
+                        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 3L5 8L10 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <button class="scroll-arrow scroll-arrow-right-guidelines arrow-right-3">
+                        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="section-content">
+                <p class="body-text">Following the full launch of the ecommerce functionality, the app has gone on to become an essential part of Bunnings' revenue model while also retaining immensely high customer satisfaction ratings.</p>
+            </div>
+
+            <div class="content-image"></div>
+        </div>
+    </section>
+
+    <!-- Launching a Secondary App Section -->
+    <section class="case-study-section bg-white">
+        <div class="container">
+            <div class="section-content">
+                <h1>Launching a secondary app</h1>
+                
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <h2 class="stat-label">$480million</h2>
+                        <div class="stat-value">Annual revenue</div>
+                    </div>
+                    <div class="stat-item">
+                        <h2 class="stat-label">500,000+</h2>
+                        <div class="stat-value">Downloads</div>
+                    </div>
+                    <div class="stat-item">
+                        <h2 class="stat-label">Countless</h2>
+                        <div class="stat-value">Happy tradies</div>
+                    </div>
+                </div>
+
+                <p class="body-text">Comparisons were quickly drawn at Bunnings between the Product Finder app's reviews and success, and the relatively low performance of their existing PowerPass app: a specialised app for professional tradespeople (tradies).</p>
+                <p class="body-text">We decided to rebuild the PowerPass app using the design system and technology developed for Product Finder, but with additional functionality to solve tradies' biggest gripes.</p>
+            </div>
+
+            <div class="content-image"></div>
+
+            <div class="section-content">
+                <p class="body-text">Interviews with tradies suggested that their time spent in the store was a huge problem, typically taking several trips from work sites to Bunnings stores each day, but having to wait in long checkout queues each time.</p>
+                <p class="body-text">We created a new experience that allowed them to scan and purchase products from the store all within the app. After purchasing, the app generates a digital receipt to show the store staff upon exit, allowing tradies to completely bypass long checkout lines.</p>
+            </div>
+
+            <div class="content-image"></div>
+
+            <div class="section-content">
+                <p class="body-text">The redesigned PowerPass app was an enormous success, saving tradies countless hours in the store by letting them scan, purchase and get discount all within the app. The app has received over half a million downloads, and generates in excess of of $480million each year.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reflections and Learnings Section -->
+    <section class="case-study-section bg-gray">
+        <div class="container">
+            <div class="section-content">
+                <h1>Reflections and learnings</h1>
+                
+                <p class="body-text">This was an enormous initiative, and I learned a ridiculous amount in my time spend working on it. My learnings range from stakeholder management through branding application, design systems and feature prioritisation.</p>
+                <p class="body-text">Most importantly, I learned the value of maintaining a constant focus on the core problem. When we work in experimental environments with lots of freedom, it's easy to get carried away with cool ideas just because we can.</p>
+                <p class="body-text">Maintaining a regular feedback cycle with users Ã¢â‚¬â€œ not just for usability, but also for sentiment analysis on features and capabilities Ã¢â‚¬â€œ meant that the final product struck an amazing balance between solving a genuine customer need and creating a new successful & scalable revenue opportunity for the business.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="contact-content">
+            <h3>Contact</h3>
+            <p class="body-text">If you'd like to get in touch, feel free to connect with me on <a href="#">LinkedIn</a>, or send me an email at <span class="email-copy" data-email="jimmyleslie.design@gmail.com">jimmyleslie.design@gmail.com</span> Ã¢Å“Å’Ã¯Â¸Â</p>
+        </div>
+    </section>
+
+    <script>
+        function updateBarcelonaTime() {
+            const now = new Date();
+            const options = {
+                timeZone: 'Europe/Madrid',
+                hour: 'numeric',
+                minute: '2-digit',
+                hour12: true
+            };
+            const timeString = now.toLocaleTimeString('en-US', options);
+            document.getElementById('time').textContent = timeString;
+            document.getElementById('time-sticky').textContent = timeString;
+        }
+
+        // Update time immediately and then every minute
+        updateBarcelonaTime();
+        setInterval(updateBarcelonaTime, 60000);
+
+        // Sticky header on scroll
+        const stickyHeader = document.getElementById('header-sticky');
+        const darkSections = document.querySelectorAll('.bg-dark');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 200) {
+                stickyHeader.classList.add('visible');
+            } else {
+                stickyHeader.classList.remove('visible');
+            }
+            
+            // Check if sticky header overlaps with any dark section
+            let isDark = false;
+            darkSections.forEach(section => {
+                const headerRect = stickyHeader.getBoundingClientRect();
+                const sectionRect = section.getBoundingClientRect();
+                
+                if (headerRect.bottom > sectionRect.top && headerRect.top < sectionRect.bottom) {
+                    isDark = true;
+                }
+            });
+            
+            if (isDark) {
+                stickyHeader.classList.add('dark');
+            } else {
+                stickyHeader.classList.remove('dark');
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        // Custom Cursor - Update based on dark section
+        const cursor = document.getElementById('custom-cursor');
+        
+        // Update cursor position
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            
+            // Check if cursor is over dark section
+            let isDark = false;
+            darkSections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                if (e.clientY >= rect.top && e.clientY <= rect.bottom) {
+                    isDark = true;
+                }
+            });
+            
+            if (isDark) {
+                cursor.classList.add('dark-section');
+            } else {
+                cursor.classList.remove('dark-section');
+            }
+        });
+
+        // Add hover effect for interactive elements (excluding email-copy which has special behavior)
+        const interactiveElements = document.querySelectorAll('a, button');
+        
+        interactiveElements.forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                if (!cursor.classList.contains('copy-mode')) {
+                    cursor.classList.add('hover');
+                }
+            });
+            
+            element.addEventListener('mouseleave', () => {
+                cursor.classList.remove('hover');
+            });
+        });
+
+        // Hide cursor when leaving the window
+        document.addEventListener('mouseleave', () => {
+            cursor.style.opacity = '0';
+        });
+
+        document.addEventListener('mouseenter', () => {
+            cursor.style.opacity = '1';
+        });
+
+        // Email Copy Functionality
+        const emailCopy = document.querySelector('.email-copy');
+        const cursorText = cursor.querySelector('.cursor-text');
+        
+        if (emailCopy) {
+            // Handle hover on email to show copy mode cursor
+            emailCopy.addEventListener('mouseenter', () => {
+                cursor.classList.remove('hover');
+                cursor.classList.add('copy-mode');
+                cursorText.textContent = 'Click to copy';
+            });
+            
+            emailCopy.addEventListener('mouseleave', () => {
+                cursor.classList.remove('copy-mode');
+            });
+            
+            // Handle click to copy
+            emailCopy.addEventListener('click', () => {
+                const email = emailCopy.getAttribute('data-email');
+                let copySuccess = false;
+                
+                // Use fallback method (more reliable in iframes and various contexts)
+                try {
+                    const textArea = document.createElement('textarea');
+                    textArea.value = email;
+                    textArea.style.position = 'fixed';
+                    textArea.style.left = '-999999px';
+                    textArea.style.top = '-999999px';
+                    document.body.appendChild(textArea);
+                    textArea.focus();
+                    textArea.select();
+                    
+                    try {
+                        copySuccess = document.execCommand('copy');
+                    } catch (err) {
+                        // If execCommand fails, try clipboard API
+                        if (navigator.clipboard && navigator.clipboard.writeText) {
+                            navigator.clipboard.writeText(email).then(() => {
+                                copySuccess = true;
+                            }).catch(() => {
+                                copySuccess = false;
+                            });
+                        }
+                    }
+                    
+                    textArea.remove();
+                } catch (err) {
+                    // Fallback failed, assume success anyway
+                    copySuccess = true;
+                }
+                
+                // Show success message
+                cursorText.textContent = 'Email copied!';
+                
+                // Reset after 2 seconds
+                setTimeout(() => {
+                    cursorText.textContent = 'Click to copy';
+                }, 2000);
+            });
+        }
+
+        // Consistency gallery scroll functionality - Gallery 1
+        const gallery1 = document.querySelector('.gallery-1');
+        const arrowLeft1 = document.querySelector('.arrow-left-1');
+        const arrowRight1 = document.querySelector('.arrow-right-1');
+        const fadeLeft1 = document.querySelector('.fade-left-1');
+        const fadeRight1 = document.querySelector('.fade-right-1');
+
+        if (gallery1 && arrowLeft1 && arrowRight1) {
+            function updateGallery1State() {
+                const scrollLeft = gallery1.scrollLeft;
+                const maxScroll = gallery1.scrollWidth - gallery1.clientWidth;
+
+                if (scrollLeft > 10) {
+                    arrowLeft1.classList.add('visible');
+                    fadeLeft1.classList.add('visible');
+                } else {
+                    arrowLeft1.classList.remove('visible');
+                    fadeLeft1.classList.remove('visible');
+                }
+
+                if (scrollLeft >= maxScroll - 10) {
+                    arrowRight1.classList.add('hidden');
+                    fadeRight1.classList.add('hidden');
+                } else {
+                    arrowRight1.classList.remove('hidden');
+                    fadeRight1.classList.remove('hidden');
+                }
+            }
+
+            gallery1.addEventListener('scroll', updateGallery1State);
+
+            arrowLeft1.addEventListener('click', () => {
+                const scrollAmount = gallery1.clientWidth;
+                gallery1.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            });
+
+            arrowRight1.addEventListener('click', () => {
+                const scrollAmount = gallery1.clientWidth;
+                gallery1.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            });
+
+            updateGallery1State();
+        }
+
+        // Consistency gallery scroll functionality - Gallery 2
+        const gallery2 = document.querySelector('.gallery-2');
+        const arrowLeft2 = document.querySelector('.arrow-left-2');
+        const arrowRight2 = document.querySelector('.arrow-right-2');
+        const fadeLeft2 = document.querySelector('.fade-left-2');
+        const fadeRight2 = document.querySelector('.fade-right-2');
+
+        if (gallery2 && arrowLeft2 && arrowRight2) {
+            function updateGallery2State() {
+                const scrollLeft = gallery2.scrollLeft;
+                const maxScroll = gallery2.scrollWidth - gallery2.clientWidth;
+
+                if (scrollLeft > 10) {
+                    arrowLeft2.classList.add('visible');
+                    fadeLeft2.classList.add('visible');
+                } else {
+                    arrowLeft2.classList.remove('visible');
+                    fadeLeft2.classList.remove('visible');
+                }
+
+                if (scrollLeft >= maxScroll - 10) {
+                    arrowRight2.classList.add('hidden');
+                    fadeRight2.classList.add('hidden');
+                } else {
+                    arrowRight2.classList.remove('hidden');
+                    fadeRight2.classList.remove('hidden');
+                }
+            }
+
+            gallery2.addEventListener('scroll', updateGallery2State);
+
+            arrowLeft2.addEventListener('click', () => {
+                const scrollAmount = gallery2.clientWidth;
+                gallery2.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            });
+
+            arrowRight2.addEventListener('click', () => {
+                const scrollAmount = gallery2.clientWidth;
+                gallery2.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            });
+
+            updateGallery2State();
+        }
+
+        // Consistency gallery scroll functionality - Gallery 3
+        const gallery3 = document.querySelector('.gallery-3');
+        const arrowLeft3 = document.querySelector('.arrow-left-3');
+        const arrowRight3 = document.querySelector('.arrow-right-3');
+        const fadeLeft3 = document.querySelector('.fade-left-3');
+        const fadeRight3 = document.querySelector('.fade-right-3');
+
+        if (gallery3 && arrowLeft3 && arrowRight3) {
+            function updateGallery3State() {
+                const scrollLeft = gallery3.scrollLeft;
+                const maxScroll = gallery3.scrollWidth - gallery3.clientWidth;
+
+                if (scrollLeft > 10) {
+                    arrowLeft3.classList.add('visible');
+                    fadeLeft3.classList.add('visible');
+                } else {
+                    arrowLeft3.classList.remove('visible');
+                    fadeLeft3.classList.remove('visible');
+                }
+
+                if (scrollLeft >= maxScroll - 10) {
+                    arrowRight3.classList.add('hidden');
+                    fadeRight3.classList.add('hidden');
+                } else {
+                    arrowRight3.classList.remove('hidden');
+                    fadeRight3.classList.remove('hidden');
+                }
+            }
+
+            gallery3.addEventListener('scroll', updateGallery3State);
+
+            arrowLeft3.addEventListener('click', () => {
+                const scrollAmount = gallery3.clientWidth;
+                gallery3.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            });
+
+            arrowRight3.addEventListener('click', () => {
+                const scrollAmount = gallery3.clientWidth;
+                gallery3.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            });
+
+            updateGallery3State();
+        }
+
+        // Navigation active state tracking
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('nav a[data-section]');
+        const stickyNavLinks = document.querySelectorAll('.sticky-nav-link[data-section]');
+
+        function updateActiveNavState() {
+            const scrollPosition = window.scrollY;
+            const stickyHeaderHeight = 120;
+            
+            const problemSection = document.getElementById('problem');
+            const approachSection = document.getElementById('approach');
+            const solutionSection = document.getElementById('solution');
+            const outcomeSection = document.getElementById('outcome');
+            
+            if (!problemSection || !approachSection || !solutionSection || !outcomeSection) return;
+            
+            const problemTop = problemSection.offsetTop - stickyHeaderHeight;
+            const approachTop = approachSection.offsetTop - stickyHeaderHeight;
+            const solutionTop = solutionSection.offsetTop - stickyHeaderHeight;
+            const outcomeTop = outcomeSection.offsetTop - stickyHeaderHeight;
+            
+            navLinks.forEach(link => link.classList.remove('active'));
+            stickyNavLinks.forEach(link => link.classList.remove('active'));
+            
+            if (scrollPosition >= outcomeTop) {
+                document.querySelector('nav a[data-section="outcome"]')?.classList.add('active');
+                document.querySelector('.sticky-nav-link[data-section="outcome"]')?.classList.add('active');
+            } else if (scrollPosition >= solutionTop) {
+                document.querySelector('nav a[data-section="solution"]')?.classList.add('active');
+                document.querySelector('.sticky-nav-link[data-section="solution"]')?.classList.add('active');
+            } else if (scrollPosition >= approachTop) {
+                document.querySelector('nav a[data-section="approach"]')?.classList.add('active');
+                document.querySelector('.sticky-nav-link[data-section="approach"]')?.classList.add('active');
+            } else if (scrollPosition >= problemTop) {
+                document.querySelector('nav a[data-section="problem"]')?.classList.add('active');
+                document.querySelector('.sticky-nav-link[data-section="problem"]')?.classList.add('active');
+            }
+        }
+
+        window.addEventListener('scroll', updateActiveNavState);
+        window.addEventListener('resize', updateActiveNavState);
+        updateActiveNavState();
+    </script>
+</body>
+</html>

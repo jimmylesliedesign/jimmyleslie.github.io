@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jimmy Leslie</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #222222;
+            line-height: 1.5;
+            cursor: none;
+        }
+
+        /* Custom Cursor */
+        #custom-cursor {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #222222;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: opacity 0.2s;
+            opacity: 1;
+            background-color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: #222222;
+            font-family: 'Inter', sans-serif;
+            white-space: nowrap;
+            padding: 0;
+        }
+
+        #custom-cursor.hover {
+            transform: translate(-50%, -50%) scale(1.5);
+            transition: transform 0.2s, opacity 0.2s;
+        }
+
+        #custom-cursor.copy-mode {
+            width: auto;
+            height: auto;
+            border-radius: 20px;
+            padding: 8px 16px;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        #custom-cursor .cursor-text {
+            display: none;
+        }
+
+        #custom-cursor.copy-mode .cursor-text {
+            display: block;
+        }
+
+        a, button, .email-copy {
+            cursor: none;
+        }
+
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .header-container {
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        header {
+            padding: 32px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #ffffff;
+            z-index: 100;
+            position: relative;
+        }
+
+        /* Sticky Header Clone */
+        .header-sticky {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 32px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            z-index: 100;
+            transform: translateY(-100%);
+            opacity: 0;
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        }
+
+        .header-sticky.visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .header-sticky .header-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            width: 100%;
+        }
+
+        .logo {
+            font-weight: 400;
+            font-size: 16px;
+            color: #919191;
+            opacity: 0.5;
+            position: absolute;
+            left: 0;
+        }
+
+        nav {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        nav a {
+            color: #919191;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 400;
+            transition: color 0.2s;
+        }
+
+        nav a.active {
+            color: #222222;
+        }
+
+        nav a:hover {
+            color: #222222;
+        }
+
+        .time {
+            font-size: 16px;
+            font-weight: 400;
+            color: #919191;
+            opacity: 0.5;
+            position: absolute;
+            right: 0;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            display: flex;
+            justify-content: center;
+            margin-top: 60px;
+            margin-bottom: 80px;
+        }
+
+        .hero-box {
+            background-color: #F4FEC1;
+            max-width: 860px;
+            width: 100%;
+            min-height: 480px;
+            padding: 80px 60px;
+            border-radius: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: colorCycle 30s ease-in-out infinite;
+        }
+
+        @keyframes colorCycle {
+            0% { background-color: #F4FEC1; }
+            16.66% { background-color: #D4F4DD; }
+            33.33% { background-color: #D4E4F4; }
+            50% { background-color: #E8D4F4; }
+            66.66% { background-color: #F4D4D4; }
+            83.33% { background-color: #F4E8D4; }
+            100% { background-color: #F4FEC1; }
+        }
+
+        .hero-content {
+            max-width: 640px;
+        }
+
+        h1 {
+            font-family: 'Inter', sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-size: 36px;
+            line-height: 1.3em;
+            color: #222222;
+            text-align: center;
+        }
+
+        /* What I Do Section */
+        .section {
+            margin-bottom: 80px;
+            scroll-margin-top: 120px;
+        }
+
+        .section-content {
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        h3 {
+            font-family: 'Inter', sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-size: 25px;
+            line-height: 1.5em;
+            color: #222222;
+            margin-bottom: 40px;
+        }
+
+        .body-text {
+            font-family: 'Inter', sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-size: 20px;
+            line-height: 1.5em;
+            color: #919191;
+            margin-bottom: 32px;
+        }
+
+        .body-text:last-child {
+            margin-bottom: 0;
+        }
+
+        .body-text a {
+            color: #222222;
+            text-decoration: none;
+        }
+
+        .body-text a:hover {
+            opacity: 0.7;
+        }
+
+        /* My Work Section */
+        .work-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            max-width: 860px;
+            margin: 0 auto;
+        }
+
+        /* Keylines */
+        .keyline {
+            height: 0.5px;
+            background-color: rgba(0, 0, 0, 0.08);
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        .keyline-above-work {
+            margin-bottom: 40px;
+        }
+
+        .keyline-below-about {
+            margin-top: 80px;
+        }
+
+        /* Work Cards Gallery */
+        .work-cards-container {
+            position: relative;
+            margin-top: 0;
+            margin-bottom: 40px;
+            max-width: 640px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .work-cards-scroll {
+            display: flex;
+            gap: 16px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding: 0;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .work-cards-scroll::-webkit-scrollbar {
+            display: none;
+        }
+
+        .work-card {
+            flex: 0 0 280px;
+            background: #ffffff;
+            border: 1px solid #e5e5e5;
+            border-radius: 12px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .work-card-company {
+            font-family: 'Inter', sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-size: 18px;
+            color: #222222;
+        }
+
+        .work-card-role {
+            font-family: 'Inter', sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-size: 14px;
+            color: #919191;
+        }
+
+        .work-card-dates {
+            font-family: 'Inter', sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-size: 14px;
+            color: #919191;
+        }
+
+        /* Fade overlays */
+        .fade-left,
+        .fade-right {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 120px;
+            pointer-events: none;
+            z-index: 10;
+            transition: opacity 0.3s;
+        }
+
+        .fade-left {
+            left: 0;
+            background: linear-gradient(to right, #ffffff 0%, rgba(255, 255, 255, 0) 100%);
+            opacity: 0;
+        }
+
+        .fade-left.visible {
+            opacity: 1;
+        }
+
+        .fade-right {
+            right: 0;
+            background: linear-gradient(to left, #ffffff 0%, rgba(255, 255, 255, 0) 100%);
+        }
+
+        .fade-right.hidden {
+            opacity: 0;
+        }
+
+        /* Navigation arrows */
+        .scroll-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background: #ffffff;
+            border: 1px solid #e5e5e5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 20;
+            transition: opacity 0.3s, background-color 0.2s;
+            color: #222222;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .scroll-arrow svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .scroll-arrow:hover {
+            background-color: #f5f5f5;
+        }
+
+        .scroll-arrow-left {
+            left: 0;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .scroll-arrow-left.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .scroll-arrow-right {
+            right: 0;
+        }
+
+        .scroll-arrow-right.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .work-item {
+            text-decoration: none;
+            display: block;
+        }
+
+        .work-image {
+            width: 100%;
+            max-width: 700px;
+            margin: 0 auto;
+            aspect-ratio: 16/10;
+            background-color: #FAFAFA;
+            border-radius: 16px;
+            margin-bottom: 24px;
+            overflow: hidden;
+            border: 1px solid rgba(34, 34, 34, 0.1);
+            transition: border-color 0.2s;
+        }
+
+        .work-item:hover .work-image {
+            border-color: #222222;
+        }
+
+        .work-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .work-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 16px;
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        .work-title {
+            flex: 1;
+        }
+
+        h4 {
+            font-family: 'Inter', sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-size: 20px;
+            line-height: 1.5em;
+            color: #222222;
+            margin-bottom: 4px;
+            text-decoration: underline;
+            text-decoration-color: transparent;
+            transition: text-decoration-color 0.2s;
+        }
+
+        .work-item:hover h4 {
+            text-decoration-color: #222222;
+        }
+
+        .work-company {
+            font-size: 16px;
+            color: #222222;
+            opacity: 0.5;
+        }
+
+        .arrow {
+            width: 24px;
+            height: 24px;
+            color: #222222;
+            transition: transform 0.2s;
+            flex-shrink: 0;
+        }
+
+        .arrow svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .work-item:hover .arrow {
+            transform: translateX(4px);
+        }
+
+        /* Writing Section */
+        .writing-item {
+            text-decoration: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            padding: 40px;
+            border: 1px solid rgba(34, 34, 34, 0.1);
+            border-radius: 24px;
+            transition: border-color 0.2s;
+            background-color: #ffffff;
+        }
+
+        .writing-item:hover {
+            border-color: #222222;
+        }
+
+        .writing-info h4 {
+            margin-bottom: 4px;
+        }
+
+        .writing-source {
+            font-size: 16px;
+            color: #222222;
+            opacity: 0.5;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background-color: #F4FEC1;
+            padding: 80px 24px;
+            margin-top: 120px;
+            animation: colorCycle 30s ease-in-out infinite;
+        }
+
+        .contact-content {
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        .contact-content h3 {
+            margin-bottom: 24px;
+        }
+
+        .contact-content .body-text {
+            color: rgba(34, 34, 34, 0.5);
+        }
+
+        .contact-content .body-text a {
+            color: #222222;
+        }
+
+        /* Email Copy Button */
+        .email-copy {
+            color: #222222;
+            position: relative;
+            cursor: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                justify-content: center;
+            }
+
+            .logo {
+                display: none;
+            }
+
+            .time {
+                display: none;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 24px;
+            }
+
+            .header-sticky .logo {
+                display: none;
+            }
+
+            .header-sticky .time {
+                display: none;
+            }
+
+            .hero-box {
+                padding: 60px 32px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            h3 {
+                font-size: 22px;
+            }
+
+            .body-text, h4 {
+                font-size: 18px;
+            }
+
+            .section {
+                margin-bottom: 60px;
+            }
+
+            .hero-section {
+                margin-bottom: 60px;
+            }
+
+            .contact-section {
+                margin-top: 80px;
+                padding: 60px 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-box {
+                padding: 48px 24px;
+                border-radius: 16px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            h3 {
+                font-size: 20px;
+            }
+
+            .body-text, h4 {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div id="custom-cursor">
+        <span class="cursor-text">Click to copy</span>
+    </div>
+
+    <!-- Sticky Header Clone -->
+    <div class="header-sticky" id="header-sticky">
+        <div class="header-container">
+            <div class="logo">Jimmy Leslie</div>
+            <nav>
+                <a href="#about" data-section="about" class="sticky-nav-link">About</a>
+                <a href="#work" data-section="work" class="sticky-nav-link">Work</a>
+                <a href="#contact" data-section="contact" class="sticky-nav-link">Contact</a>
+                <span class="time">BCN &bull; <span id="time-sticky">--:-- --</span></span>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Static Header -->
+    <div class="header-container">
+        <header>
+            <div class="logo">Jimmy Leslie</div>
+            <nav>
+                <a href="#about" data-section="about">About</a>
+                <a href="#work" data-section="work">Work</a>
+                <a href="#contact" data-section="contact">Contact</a>
+                <span class="time" id="barcelona-time">BCN &bull; <span id="time">--:-- --</span></span>
+            </nav>
+        </header>
+    </div>
+
+    <div class="container">
+
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-box">
+                <div class="hero-content">
+                    <h1>I'm Jimmy, an outcome-focused Design Leader with over 10 years experience building products and teams that people genuinely love.</h1>
+                </div>
+            </div>
+        </section>
+
+        <!-- What I Do Section -->
+        <section class="section" id="about">
+            <div class="section-content">
+                <h3>What I do</h3>
+                <p class="body-text">Currently, I'm part of the Design Leadership Team at <a href="https://perk.com">Perk</a>, leading a brilliant team of designers who are reimagining the future of business travel. I also play a leading role in shaping strategic product initiatives.</p>
+                <p class="body-text">Previously, I led mobile design at <a href="https://airwallex.com">Airwallex</a>, taking their native app from 0-1. Before that, I led mobile and ecommerce design at <a href="https://AKQA.com">AKQA</a> in Melbourne, helping Australia's favourite retailer go from no online presence to $2million in daily sales in two years.</p>
+                <p class="body-text">Recently, I left my dead phone in a taxi in Thailand, and realised how f**ked that scenario is. So, I created <a href="https://foundit-tags.com">Foundit</a> to help others in the same situation.</p>
+                <p class="body-text"><a href="#contact">Get in touch <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: inline-block; vertical-align: middle; margin-left: 4px;"><path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
+            </div>
+        </section>
+
+        <!-- Keyline -->
+        <div class="keyline keyline-below-about"></div>
+
+        <!-- My Work Section -->
+        <section class="section" id="work">
+            <!-- Keyline -->
+            <div class="keyline keyline-above-work"></div>
+            
+            <div class="section-content">
+                <h3>My work</h3>
+            </div>
+            
+            <!-- Work Cards Gallery -->
+            <div class="work-cards-container">
+                <div class="fade-left" id="fade-left"></div>
+                <div class="fade-right" id="fade-right"></div>
+                <button class="scroll-arrow scroll-arrow-left" id="arrow-left"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 3L5 8L10 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                <button class="scroll-arrow scroll-arrow-right" id="arrow-right"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                <div class="work-cards-scroll" id="work-cards-scroll">
+                    <div class="work-card">
+                        <div class="work-card-company">Perk</div>
+                        <div class="work-card-role">Design Lead</div>
+                        <div class="work-card-dates">2022 &ndash; present</div>
+                    </div>
+                    <div class="work-card">
+                        <div class="work-card-company">Foundit</div>
+                        <div class="work-card-role">Founder</div>
+                        <div class="work-card-dates">2025 &ndash; present</div>
+                    </div>
+                    <div class="work-card">
+                        <div class="work-card-company">Airwallex</div>
+                        <div class="work-card-role">Design Lead</div>
+                        <div class="work-card-dates">2021 &ndash; 2022</div>
+                    </div>
+                    <div class="work-card">
+                        <div class="work-card-company">AKQA</div>
+                        <div class="work-card-role">Senior Designer</div>
+                        <div class="work-card-dates">2018 &ndash; 2021</div>
+                    </div>
+                    <div class="work-card">
+                        <div class="work-card-company">National Australia Bank</div>
+                        <div class="work-card-role">Senior Designer</div>
+                        <div class="work-card-dates">2018 (contract)</div>
+                    </div>
+                    <div class="work-card">
+                        <div class="work-card-company">Papercloud</div>
+                        <div class="work-card-role">Product Designer</div>
+                        <div class="work-card-dates">2017 &ndash; 2018</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="work-grid">
+                <a href="#" class="work-item">
+                    <div class="work-image">
+                    </div>
+                    <div class="work-info">
+                        <div class="work-title">
+                            <h4>Managing conflicting stakeholder visions</h4>
+                            <div class="work-company">TravelPerk / Delta Airlines</div>
+                        </div>
+                        <span class="arrow"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                    </div>
+                </a>
+
+                <a href="#" class="work-item">
+                    <div class="work-image">
+                    </div>
+                    <div class="work-info">
+                        <div class="work-title">
+                            <h4>Turning a customer problem into $50million annual revenue</h4>
+                            <div class="work-company">Bunnings Warehouse / ANCA</div>
+                        </div>
+                        <span class="arrow"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                    </div>
+                </a>
+
+                <a href="#" class="work-item">
+                    <div class="work-image">
+                    </div>
+                    <div class="work-info">
+                        <div class="work-title">
+                            <h4>Creating a 0-1 mobile app launch strategy</h4>
+                            <div class="work-company">Airwallex</div>
+                        </div>
+                        <span class="arrow"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Writing Section -->
+        <section class="section">
+            <!-- Keyline -->
+            <div class="keyline keyline-above-work"></div>
+            
+            <div class="section-content">
+                <h3>Writing</h3>
+                <a href="#" class="writing-item">
+                    <div class="writing-info">
+                        <h4>Human-led Design in the Age of AI</h4>
+                        <div class="writing-source">Substack / 2025</div>
+                    </div>
+                    <span class="arrow"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="contact-content">
+            <h3>Contact</h3>
+            <p class="body-text">If you'd like to get in touch, feel free to connect with me on <a href="#">LinkedIn</a>, or send me an email at <span class="email-copy" data-email="jimmyleslie.design@gmail.com">jimmyleslie.design@gmail.com</span> ✌️</p>
+        </div>
+    </section>
+
+    <script>
+        function updateBarcelonaTime() {
+            const now = new Date();
+            const options = {
+                timeZone: 'Europe/Madrid',
+                hour: 'numeric',
+                minute: '2-digit',
+                hour12: true
+            };
+            const timeString = now.toLocaleTimeString('en-US', options);
+            document.getElementById('time').textContent = timeString;
+            document.getElementById('time-sticky').textContent = timeString;
+        }
+
+        // Update time immediately and then every minute
+        updateBarcelonaTime();
+        setInterval(updateBarcelonaTime, 60000);
+
+        // Intersection Observer for active nav states
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('nav a[data-section]');
+        const stickyNavLinks = document.querySelectorAll('.sticky-nav-link[data-section]');
+
+        // Custom scroll handler for better control
+        function updateActiveNavState() {
+            const scrollPosition = window.scrollY;
+            const stickyHeaderHeight = 100; // Approximate sticky header height
+            
+            const aboutSection = document.getElementById('about');
+            const workSection = document.getElementById('work');
+            const contactSection = document.getElementById('contact');
+            
+            // Get positions
+            const aboutTop = aboutSection.offsetTop;
+            const workTop = workSection.offsetTop;
+            const contactTop = contactSection.offsetTop;
+            const contactBottom = contactTop + contactSection.offsetHeight;
+            const windowHeight = window.innerHeight;
+            const windowBottom = scrollPosition + windowHeight;
+            
+            // Remove all active classes
+            navLinks.forEach(link => link.classList.remove('active'));
+            stickyNavLinks.forEach(link => link.classList.remove('active'));
+            
+            // Determine which section should be active
+            if (windowBottom >= contactBottom) {
+                // Contact is fully in view
+                document.querySelector('nav a[data-section="contact"]')?.classList.add('active');
+                document.querySelector('.sticky-nav-link[data-section="contact"]')?.classList.add('active');
+            } else if (scrollPosition + stickyHeaderHeight >= workTop) {
+                // Work section has scrolled past sticky nav
+                document.querySelector('nav a[data-section="work"]')?.classList.add('active');
+                document.querySelector('.sticky-nav-link[data-section="work"]')?.classList.add('active');
+            } else if (scrollPosition + stickyHeaderHeight >= aboutTop) {
+                // About section is active
+                document.querySelector('nav a[data-section="about"]')?.classList.add('active');
+                document.querySelector('.sticky-nav-link[data-section="about"]')?.classList.add('active');
+            }
+        }
+
+        window.addEventListener('scroll', updateActiveNavState);
+        window.addEventListener('resize', updateActiveNavState);
+        updateActiveNavState(); // Initial call
+
+        // Sticky header visibility based on hero section
+        const heroSection = document.querySelector('.hero-section');
+        const stickyHeader = document.getElementById('header-sticky');
+
+        const heroObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Hero is visible, hide sticky header
+                    stickyHeader.classList.remove('visible');
+                } else {
+                    // Hero is out of view, show sticky header
+                    stickyHeader.classList.add('visible');
+                }
+            });
+        }, {
+            root: null,
+            threshold: 0
+        });
+
+        heroObserver.observe(heroSection);
+
+        // Work cards scroll functionality
+        const workCardsScroll = document.getElementById('work-cards-scroll');
+        const arrowLeft = document.getElementById('arrow-left');
+        const arrowRight = document.getElementById('arrow-right');
+        const fadeLeft = document.getElementById('fade-left');
+        const fadeRight = document.getElementById('fade-right');
+
+        function updateScrollState() {
+            const scrollLeft = workCardsScroll.scrollLeft;
+            const maxScroll = workCardsScroll.scrollWidth - workCardsScroll.clientWidth;
+
+            // Show/hide left arrow and fade
+            if (scrollLeft > 10) {
+                arrowLeft.classList.add('visible');
+                fadeLeft.classList.add('visible');
+            } else {
+                arrowLeft.classList.remove('visible');
+                fadeLeft.classList.remove('visible');
+            }
+
+            // Show/hide right arrow and fade
+            if (scrollLeft >= maxScroll - 10) {
+                arrowRight.classList.add('hidden');
+                fadeRight.classList.add('hidden');
+            } else {
+                arrowRight.classList.remove('hidden');
+                fadeRight.classList.remove('hidden');
+            }
+        }
+
+        workCardsScroll.addEventListener('scroll', updateScrollState);
+
+        arrowLeft.addEventListener('click', () => {
+            const cardWidth = 280 + 16; // card width + gap
+            workCardsScroll.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+        });
+
+        arrowRight.addEventListener('click', () => {
+            const cardWidth = 280 + 16; // card width + gap
+            workCardsScroll.scrollBy({ left: cardWidth, behavior: 'smooth' });
+        });
+
+        // Initial state
+        updateScrollState();
+
+        // Custom Cursor
+        const cursor = document.getElementById('custom-cursor');
+        
+        // Update cursor position
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        // Add hover effect for interactive elements (excluding email-copy which has special behavior)
+        const interactiveElements = document.querySelectorAll('a, button');
+        
+        interactiveElements.forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                if (!cursor.classList.contains('copy-mode')) {
+                    cursor.classList.add('hover');
+                }
+            });
+            
+            element.addEventListener('mouseleave', () => {
+                cursor.classList.remove('hover');
+            });
+        });
+
+        // Hide cursor when leaving the window
+        document.addEventListener('mouseleave', () => {
+            cursor.style.opacity = '0';
+        });
+
+        document.addEventListener('mouseenter', () => {
+            cursor.style.opacity = '1';
+        });
+
+        // Email Copy Functionality
+        const emailCopy = document.querySelector('.email-copy');
+        const cursorText = cursor.querySelector('.cursor-text');
+        
+        if (emailCopy) {
+            // Handle hover on email to show copy mode cursor
+            emailCopy.addEventListener('mouseenter', () => {
+                cursor.classList.remove('hover');
+                cursor.classList.add('copy-mode');
+                cursorText.textContent = 'Click to copy';
+            });
+            
+            emailCopy.addEventListener('mouseleave', () => {
+                cursor.classList.remove('copy-mode');
+            });
+            
+            // Handle click to copy
+            emailCopy.addEventListener('click', () => {
+                const email = emailCopy.getAttribute('data-email');
+                let copySuccess = false;
+                
+                // Use fallback method (more reliable in iframes and various contexts)
+                try {
+                    const textArea = document.createElement('textarea');
+                    textArea.value = email;
+                    textArea.style.position = 'fixed';
+                    textArea.style.left = '-999999px';
+                    textArea.style.top = '-999999px';
+                    document.body.appendChild(textArea);
+                    textArea.focus();
+                    textArea.select();
+                    
+                    try {
+                        copySuccess = document.execCommand('copy');
+                    } catch (err) {
+                        // If execCommand fails, try clipboard API
+                        if (navigator.clipboard && navigator.clipboard.writeText) {
+                            navigator.clipboard.writeText(email).then(() => {
+                                copySuccess = true;
+                            }).catch(() => {
+                                copySuccess = false;
+                            });
+                        }
+                    }
+                    
+                    textArea.remove();
+                } catch (err) {
+                    // Fallback failed, assume success anyway
+                    copySuccess = true;
+                }
+                
+                // Show success message
+                cursorText.textContent = 'Email copied!';
+                
+                // Reset after 2 seconds
+                setTimeout(() => {
+                    cursorText.textContent = 'Click to copy';
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
