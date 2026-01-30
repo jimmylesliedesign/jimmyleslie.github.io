@@ -1525,7 +1525,7 @@
 
             <video 
               class="case-study-video" 
-              id="travelperk-video" 
+              id="travelperk-video-2" 
               muted 
               loop 
               playsinline 
@@ -2042,29 +2042,29 @@
             updateSlider(slider.getBoundingClientRect().left + (slider.getBoundingClientRect().width / 2));
         }
 
-        // Video autoplay on scroll into view
-            const caseStudyVideo = document.getElementById('travelperk-video');
+        // Video autoplay on scroll into view - handles all case study videos
+        const caseStudyVideos = document.querySelectorAll('.case-study-video');
+        
+        caseStudyVideos.forEach(video => {
+            // Force load the video
+            video.load();
             
-            if (caseStudyVideo) {
-                // Force load the video
-                caseStudyVideo.load();
-                
-                const videoObserver = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            caseStudyVideo.play().catch(err => {
-                                console.log('Video autoplay failed:', err);
-                            });
-                        } else {
-                            caseStudyVideo.pause();
-                        }
-                    });
-                }, { 
-                    threshold: 0.3  // Play when 30% visible
+            const videoObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.play().catch(err => {
+                            console.log('Video autoplay failed:', err);
+                        });
+                    } else {
+                        entry.target.pause();
+                    }
                 });
-            
-                videoObserver.observe(caseStudyVideo);
-            }
+            }, { 
+                threshold: 0.3  // Play when 30% visible
+            });
+        
+            videoObserver.observe(video);
+        });
         
     </script>
 </body>
