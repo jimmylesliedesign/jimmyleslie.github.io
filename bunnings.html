@@ -88,12 +88,12 @@
         .header-container {
             max-width: 640px;
             margin: 0 auto;
-            padding: 0;
+            padding: 0 24px;
         }
 
         /* Header */
         header {
-            padding: 32px 24px;
+            padding: 32px 0;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -183,7 +183,7 @@
             top: 0;
             left: 0;
             right: 0;
-            padding: 32px 24px;
+            padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -194,6 +194,10 @@
             transform: translateY(-100%);
             opacity: 0;
             transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, background-color 0.3s ease-in-out;
+        }
+
+        .header-sticky .header-container {
+            padding: 32px 24px;
         }
 
         .header-sticky.visible {
@@ -1274,7 +1278,7 @@
     <section class="contact-section" id="contact">
         <div class="contact-content">
             <h3>Contact</h3>
-            <p class="body-text">If you'd like to get in touch, feel free to connect with me on <a href="#">LinkedIn</a>, or send me an email at <span class="email-copy" data-email="jimmyleslie.design@gmail.com">jimmyleslie.design@gmail.com</span> ÃƒÂ¢Ã…â€œÃ…â€™ÃƒÂ¯Ã‚Â¸Ã‚Â</p>
+            <p class="body-text">If you'd like to get in touch, feel free to connect with me on <a href="#">LinkedIn</a>, or send me an email at <span class="email-copy" data-email="jimmyleslie.design@gmail.com"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d1bbb8bcbca8bdb4a2bdb8b4ffb5b4a2b8b6bf91b6bcb0b8bdffb2bebc">[email&#160;protected]</a></span> ÃƒÂ¢Ã…â€œÃ…â€™ÃƒÂ¯Ã‚Â¸Ã‚Â</p>
         </div>
     </section>
 
@@ -1645,3 +1649,4 @@
     </script>
 </body>
 </html>
+                document.querySelector('.sticky-nav-link[data-section="problem"]')?.cla
