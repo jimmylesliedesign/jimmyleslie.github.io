@@ -353,6 +353,14 @@
             background-color: #FAFAFA;
             border-radius: 16px;
             border: 1px solid rgba(34, 34, 34, 0.1);
+            overflow: hidden;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
 
         /* Section Styling with alternating backgrounds */
@@ -1224,7 +1232,9 @@
         </section>
 
         <!-- Hero Image -->
-        <div class="hero-image"></div>
+        <div class="hero-image">
+            <img src="/assets/travelperk-hero.jpeg" alt="TravelPerk and Delta Airlines case study preview" loading="eager" decoding="async">
+        </div>
     </div>
 
     <!-- Overview Section -->
