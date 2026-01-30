@@ -88,12 +88,12 @@
         .header-container {
             max-width: 640px;
             margin: 0 auto;
-            padding: 0;
+            padding: 0 24px;
         }
 
         /* Header */
         header {
-            padding: 32px 24px;
+            padding: 32px 0;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -183,7 +183,7 @@
             top: 0;
             left: 0;
             right: 0;
-            padding: 32px 24px;
+            padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -194,6 +194,10 @@
             transform: translateY(-100%);
             opacity: 0;
             transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, background-color 0.3s ease-in-out;
+        }
+
+        .header-sticky .header-container {
+            padding: 32px 24px;
         }
 
         .header-sticky.visible {
@@ -1558,7 +1562,7 @@
         </div>
     </section>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
         function updateBarcelonaTime() {
             const now = new Date();
             const options = {
@@ -1946,4 +1950,12 @@
             // Click to move slider
             slider.addEventListener('click', (e) => {
                 if (e.target.closest('.slider-button')) return;
-         
+                updateSlider(e.clientX);
+            });
+
+            // Initialize slider position
+            updateSlider(slider.getBoundingClientRect().left + (slider.getBoundingClientRect().width / 2));
+        }
+    </script>
+</body>
+</html>
