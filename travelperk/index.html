@@ -698,83 +698,78 @@
             pointer-events: none;
         }
 
-        /* Consistency Gallery */
-        .consistency-gallery-container {
+        /* Gallery Slider Container */
+        .gallery-slider-container {
             position: relative;
-            margin-top: 40px;
-            margin-bottom: 80px;
-            max-width: 860px;
+            margin-top: 0;
+            margin-bottom: 40px;
+            max-width: 640px;
             margin-left: auto;
             margin-right: auto;
         }
-
-        .consistency-gallery-scroll {
+        
+        .gallery-slider-scroll {
             display: flex;
-            gap: 24px;
+            gap: 16px;
             overflow-x: auto;
             scroll-behavior: smooth;
             padding: 0;
             scrollbar-width: none;
             -ms-overflow-style: none;
-            margin-bottom: 16px;
         }
-
-        .consistency-gallery-scroll::-webkit-scrollbar {
+        
+        .gallery-slider-scroll::-webkit-scrollbar {
             display: none;
         }
-
-        .consistency-gallery-scroll .content-image {
-            flex: 0 0 calc(100% - 120px);
-            margin: 0;
-        }
-
-        /* Fade overlays for consistency gallery */
-        .fade-left-consistency,
-        .fade-right-consistency {
+        
+        /* Fade overlays */
+        .gallery-slider-fade-left,
+        .gallery-slider-fade-right {
             position: absolute;
             top: 0;
-            bottom: 56px;
+            bottom: 0;
             width: 120px;
             pointer-events: none;
             z-index: 10;
             transition: opacity 0.3s;
         }
-
-        .fade-left-consistency {
+        
+        .gallery-slider-fade-left {
             left: 0;
-            background: linear-gradient(to right, #FAFAFA 0%, rgba(250, 250, 250, 0) 100%);
+            background: linear-gradient(to right, #ffffff 0%, rgba(255, 255, 255, 0) 100%);
             opacity: 0;
         }
-
-        .fade-left-consistency.visible {
+        
+        .gallery-slider-fade-left.visible {
             opacity: 1;
         }
-
-        .fade-right-consistency {
+        
+        .gallery-slider-fade-right {
             right: 0;
-            background: linear-gradient(to left, #FAFAFA 0%, rgba(250, 250, 250, 0) 100%);
+            background: linear-gradient(to left, #ffffff 0%, rgba(255, 255, 255, 0) 100%);
         }
-
-        .fade-right-consistency.hidden {
+        
+        .gallery-slider-fade-right.hidden {
             opacity: 0;
         }
-
-        /* Arrows container at bottom right */
-        .consistency-gallery-arrows {
-            display: flex;
-            gap: 12px;
-            justify-content: flex-end;
-            padding-right: 0;
+        
+        /* Navigation arrows */
+        .gallery-slider-arrows {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            transform: translateY(-50%);
+            pointer-events: none;
+            z-index: 20;
         }
-
-        /* Consistency gallery arrow styles */
-        .consistency-gallery-arrows .scroll-arrow {
-            position: static;
-            transform: none;
+        
+        .gallery-slider-arrow {
+            position: absolute;
             width: 40px;
             height: 40px;
             background: #ffffff;
-            border: 1px solid rgba(34, 34, 34, 0.1);
+            border: 1px solid #e5e5e5;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -783,39 +778,36 @@
             transition: opacity 0.3s, background-color 0.2s;
             color: #222222;
             font-family: 'Inter', sans-serif;
+            pointer-events: auto;
         }
-
-        .consistency-gallery-arrows .scroll-arrow svg {
+        
+        .gallery-slider-arrow svg {
             width: 16px;
             height: 16px;
         }
-
-        .consistency-gallery-arrows .scroll-arrow:hover {
+        
+        .gallery-slider-arrow:hover {
             background-color: #f5f5f5;
         }
-
-        .consistency-gallery-arrows .scroll-arrow-left-guidelines {
-            opacity: 0.3;
+        
+        .gallery-slider-arrow-left {
+            left: 0;
+            opacity: 0;
             pointer-events: none;
-            cursor: default;
         }
-
-        .consistency-gallery-arrows .scroll-arrow-left-guidelines.visible {
+        
+        .gallery-slider-arrow-left.visible {
             opacity: 1;
             pointer-events: auto;
-            cursor: pointer;
         }
-
-        .consistency-gallery-arrows .scroll-arrow-right-guidelines {
-            opacity: 1;
-            pointer-events: auto;
-            cursor: pointer;
+        
+        .gallery-slider-arrow-right {
+            right: 0;
         }
-
-        .consistency-gallery-arrows .scroll-arrow-right-guidelines.hidden {
-            opacity: 0.3;
+        
+        .gallery-slider-arrow-right.hidden {
+            opacity: 0;
             pointer-events: none;
-            cursor: default;
         }
 
 
@@ -1899,52 +1891,70 @@
             updateGuidelinesScrollState();
         }
 
-        // Consistency gallery scroll functionality
-        const consistencyGalleryScroll = document.getElementById('consistency-gallery-scroll');
-        const arrowLeftConsistency = document.getElementById('arrow-left-consistency');
-        const arrowRightConsistency = document.getElementById('arrow-right-consistency');
-        const fadeLeftConsistency = document.getElementById('fade-left-consistency');
-        const fadeRightConsistency = document.getElementById('fade-right-consistency');
-
-        if (consistencyGalleryScroll && arrowLeftConsistency && arrowRightConsistency) {
-            function updateConsistencyScrollState() {
-                const scrollLeft = consistencyGalleryScroll.scrollLeft;
-                const maxScroll = consistencyGalleryScroll.scrollWidth - consistencyGalleryScroll.clientWidth;
-
-                // Show/hide left arrow and fade
-                if (scrollLeft > 10) {
-                    arrowLeftConsistency.classList.add('visible');
-                    fadeLeftConsistency.classList.add('visible');
-                } else {
-                    arrowLeftConsistency.classList.remove('visible');
-                    fadeLeftConsistency.classList.remove('visible');
-                }
-
-                // Show/hide right arrow and fade
-                if (scrollLeft >= maxScroll - 10) {
-                    arrowRightConsistency.classList.add('hidden');
-                    fadeRightConsistency.classList.add('hidden');
-                } else {
-                    arrowRightConsistency.classList.remove('hidden');
-                    fadeRightConsistency.classList.remove('hidden');
-                }
+        // Gallery slider scroll functionality - works with multiple galleries
+function initializeGallerySliders() {
+    const galleryContainers = document.querySelectorAll('.gallery-slider-container');
+    
+    galleryContainers.forEach((container) => {
+        const galleryScroll = container.querySelector('.gallery-slider-scroll');
+        const arrowLeft = container.querySelector('.gallery-slider-arrow-left');
+        const arrowRight = container.querySelector('.gallery-slider-arrow-right');
+        const fadeLeft = container.querySelector('.gallery-slider-fade-left');
+        const fadeRight = container.querySelector('.gallery-slider-fade-right');
+        
+        if (!galleryScroll || !arrowLeft || !arrowRight || !fadeLeft || !fadeRight) return;
+        
+        function updateScrollState() {
+            const scrollLeft = galleryScroll.scrollLeft;
+            const maxScroll = galleryScroll.scrollWidth - galleryScroll.clientWidth;
+            
+            // Show/hide left arrow and fade
+            if (scrollLeft > 10) {
+                arrowLeft.classList.add('visible');
+                fadeLeft.classList.add('visible');
+            } else {
+                arrowLeft.classList.remove('visible');
+                fadeLeft.classList.remove('visible');
             }
-
-            consistencyGalleryScroll.addEventListener('scroll', updateConsistencyScrollState);
-
-            arrowLeftConsistency.addEventListener('click', () => {
-                const scrollAmount = consistencyGalleryScroll.clientWidth;
-                consistencyGalleryScroll.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-            });
-
-            arrowRightConsistency.addEventListener('click', () => {
-                const scrollAmount = consistencyGalleryScroll.clientWidth;
-                consistencyGalleryScroll.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-            });
-
-            // Initial state
-            updateConsistencyScrollState();
+            
+            // Show/hide right arrow and fade
+            if (scrollLeft >= maxScroll - 10) {
+                arrowRight.classList.add('hidden');
+                fadeRight.classList.add('hidden');
+            } else {
+                arrowRight.classList.remove('hidden');
+                fadeRight.classList.remove('hidden');
+            }
         }
+        
+        // Add scroll listener
+        galleryScroll.addEventListener('scroll', updateScrollState);
+        
+        // Add click listeners for arrows
+        arrowLeft.addEventListener('click', () => {
+            const scrollAmount = galleryScroll.clientWidth;
+            galleryScroll.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        });
+        
+        arrowRight.addEventListener('click', () => {
+            const scrollAmount = galleryScroll.clientWidth;
+            galleryScroll.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        });
+        
+        // Initialize scroll state
+        updateScrollState();
+        
+        // Update on window resize
+        window.addEventListener('resize', updateScrollState);
+    });
+}
+
+// Initialize all gallery sliders when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeGallerySliders);
+} else {
+    initializeGallerySliders();
+}
 
         // Navigation active state tracking
         const sections = document.querySelectorAll('section[id]');
