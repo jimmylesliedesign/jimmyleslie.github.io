@@ -498,10 +498,19 @@
             width: 100%;
             max-width: 860px;
             margin: 80px auto;
-            aspect-ratio: 16/10;
+            aspect-ratio: auto;  /* Changed from 16/10 or 16/9 */
             background-color: #FAFAFA;
             border-radius: 16px;
             border: 1px solid rgba(34, 34, 34, 0.1);
+            overflow: hidden;
+        }
+        
+        .content-image img {
+            width: 100%;
+            height: auto;  /* Changed from 100% */
+            object-fit: contain;
+            object-position: center;
+            display: block;
         }
 
         /* Side by Side Images */
