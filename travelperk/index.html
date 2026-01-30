@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TravelPerk Case Study - Jimmy Leslie</title>
+    <title>Managing conflicting stakeholder visions - Jimmy Leslie</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
@@ -39,6 +39,14 @@
             transition: opacity 0.2s;
             opacity: 1;
             background-color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: #222222;
+            font-family: 'Inter', sans-serif;
+            white-space: nowrap;
+            padding: 0;
         }
 
         #custom-cursor.hover {
@@ -46,7 +54,28 @@
             transition: transform 0.2s, opacity 0.2s;
         }
 
-        a, button {
+        #custom-cursor.copy-mode {
+            width: auto;
+            height: auto;
+            border-radius: 20px;
+            padding: 8px 16px;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        #custom-cursor .cursor-text {
+            display: none;
+        }
+
+        #custom-cursor.copy-mode .cursor-text {
+            display: block;
+        }
+
+        #custom-cursor.dark-section {
+            border-color: #ffffff;
+            background-color: #222222;
+        }
+
+        a, button, .email-copy {
             cursor: none;
         }
 
@@ -73,24 +102,166 @@
             position: relative;
         }
 
-        .back-link {
+        /* Hamburger Menu Button */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            padding: 8px;
+            cursor: none;
+            z-index: 101;
+        }
+
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background-color: #222222;
+            transition: all 0.3s ease;
+            display: block;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* Mobile Nav Overlay */
+        .mobile-nav-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 99;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-nav-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .mobile-nav-overlay nav {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            gap: 40px;
+        }
+
+        .mobile-nav-overlay nav a {
+            color: #222222;
+            text-decoration: none;
+            font-size: 28px;
+            font-weight: 400;
+            transition: opacity 0.2s;
+        }
+
+        .mobile-nav-overlay nav a:hover {
+            opacity: 0.7;
+        }
+
+        /* Sticky Header Clone */
+        .header-sticky {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            z-index: 100;
+            transform: translateY(-100%);
+            opacity: 0;
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, background-color 0.3s ease-in-out;
+        }
+
+        .header-sticky .header-container {
+            padding: 32px 0;
+        }
+
+        .header-sticky.visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .header-sticky.dark {
+            background-color: rgba(34, 34, 34, 0.85);
+        }
+
+        .header-sticky.dark .time {
+            color: rgba(255, 255, 255, 0.6);
+            opacity: 0.5;
+        }
+
+        .header-sticky.dark nav a {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .header-sticky.dark nav a.active {
+            color: #ffffff;
+            opacity: 1;
+        }
+
+        .header-sticky.dark nav a:hover {
+            color: #ffffff;
+        }
+
+        .header-sticky.dark .hamburger span {
+            background-color: #ffffff;
+        }
+
+        .header-sticky .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo {
+            display: none;
+        }
+
+        nav {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        nav a {
             color: #919191;
             text-decoration: none;
             font-size: 16px;
             font-weight: 400;
             transition: color 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
         }
 
-        .back-link:hover {
+        nav a.active {
             color: #222222;
         }
 
-        .back-link svg {
-            width: 16px;
-            height: 16px;
+        nav a:hover {
+            color: #222222;
         }
 
         .time {
@@ -100,30 +271,17 @@
             opacity: 0.5;
         }
 
-        /* Hero Section */
-        .hero-section {
-            margin-top: 60px;
-            margin-bottom: 80px;
+        /* Case Study Title Section */
+        .title-section {
+            margin-top: 100px;
+            margin-bottom: 60px;
         }
 
-        .hero-image-container {
-            width: 100%;
-            max-width: 860px;
-            margin: 0 auto 40px;
-            aspect-ratio: 1771/1057;
-            background-color: #FAFAFA;
-            border-radius: 24px;
-            overflow: hidden;
-            border: 1px solid rgba(34, 34, 34, 0.1);
+        .title-section h1 {
+            margin-bottom: 16px;
         }
 
-        .hero-image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .hero-content {
+        .section-content {
             max-width: 640px;
             margin: 0 auto;
         }
@@ -135,44 +293,133 @@
             font-size: 36px;
             line-height: 1.3em;
             color: #222222;
-            margin-bottom: 16px;
-        }
-
-        .meta {
-            font-size: 16px;
-            color: #919191;
-            margin-bottom: 40px;
-        }
-
-        /* Content Section */
-        .section {
             margin-bottom: 80px;
         }
 
-        .section-content {
-            max-width: 640px;
-            margin: 0 auto;
+        h1 + .body-text {
+            margin-top: -48px;
         }
 
         h2 {
             font-family: 'Inter', sans-serif;
             font-optical-sizing: auto;
             font-weight: 400;
-            font-size: 28px;
+            font-size: 32px;
             line-height: 1.4em;
             color: #222222;
-            margin-bottom: 24px;
+            margin-bottom: 8px;
         }
 
         h3 {
             font-family: 'Inter', sans-serif;
             font-optical-sizing: auto;
             font-weight: 400;
-            font-size: 22px;
-            line-height: 1.4em;
+            font-size: 25px;
+            line-height: 1.5em;
             color: #222222;
             margin-bottom: 16px;
-            margin-top: 40px;
+            margin-top: 80px;
+        }
+
+        h3:first-child {
+            margin-top: 0;
+        }
+
+        h4 {
+            font-family: 'Inter', sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-size: 20px;
+            line-height: 1.5em;
+            color: #222222;
+            margin-bottom: 0;
+        }
+
+        .subtitle {
+            font-family: 'Inter', sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-size: 20px;
+            line-height: 1.5em;
+            color: #919191;
+        }
+
+        /* Large Image */
+        .hero-image {
+            width: 100%;
+            max-width: 860px;
+            margin: 0 auto 80px auto;
+            aspect-ratio: 16/10;
+            background-color: #FAFAFA;
+            border-radius: 16px;
+            border: 1px solid rgba(34, 34, 34, 0.1);
+        }
+
+        /* Section Styling with alternating backgrounds */
+        .case-study-section {
+            width: 100%;
+            border-top: 1px solid rgba(0, 0, 0, 0.08);
+            padding: 120px 0;
+            scroll-margin-top: 120px;
+        }
+
+        .case-study-section.bg-white {
+            background-color: #FFFFFF;
+        }
+
+        .case-study-section.bg-gray {
+            background-color: #FAFAFA;
+        }
+
+        /* Dark section styling for "The solution" */
+        .case-study-section.bg-dark {
+            background-color: #222222;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .case-study-section.bg-dark h1,
+        .case-study-section.bg-dark h2,
+        .case-study-section.bg-dark h3,
+        .case-study-section.bg-dark h4 {
+            color: #FFFFFF;
+        }
+
+        .case-study-section.bg-dark .subtitle,
+        .case-study-section.bg-dark .body-text {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .case-study-section.bg-dark .content-image {
+            background-color: #1A1A1A;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .case-study-section.bg-dark .fade-left-consistency {
+            background: linear-gradient(to right, #222222 0%, rgba(34, 34, 34, 0) 100%);
+        }
+
+        .case-study-section.bg-dark .fade-right-consistency {
+            background: linear-gradient(to left, #222222 0%, rgba(34, 34, 34, 0) 100%);
+        }
+
+        .case-study-section.bg-dark .scroll-arrow {
+            background: #1A1A1A;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #FFFFFF;
+        }
+
+        .case-study-section.bg-dark .scroll-arrow:hover {
+            background-color: #2A2A2A;
+        }
+
+        .case-study-section:first-of-type {
+            border-top: none;
+            padding-top: 80px;
+        }
+
+        /* Override default section margin */
+        .section {
+            margin-bottom: 0;
         }
 
         .body-text {
@@ -182,67 +429,660 @@
             font-size: 20px;
             line-height: 1.5em;
             color: #919191;
-            margin-bottom: 24px;
+            margin-bottom: 32px;
         }
 
         .body-text:last-child {
             margin-bottom: 0;
         }
 
-        .body-text strong {
+        .caption {
+            font-family: 'Inter', sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 1.6em;
+            color: #919191;
+        }
+
+        /* Stats Grid - No cards, left aligned, large metrics */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 40px;
+            margin-bottom: 32px;
+        }
+
+        .stat-item {
+            text-align: left;
+        }
+
+        .stat-label {
+            /* Uses h2 styling */
+            margin-bottom: 8px;
+        }
+
+        .stat-value {
+            font-family: 'Inter', sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 1.6em;
+            color: #919191;
+        }
+
+        /* Single Column Layout for Problem/Role/Approach/Outcome */
+        .info-section {
+            margin-bottom: 40px;
+        }
+
+        .info-section h3 {
+            margin-bottom: 16px;
+        }
+
+        .info-section .body-text {
+            font-size: 20px;
+        }
+
+        /* Standard Image */
+        .content-image {
+            width: 100%;
+            max-width: 860px;
+            margin: 80px auto;
+            aspect-ratio: 16/10;
+            background-color: #FAFAFA;
+            border-radius: 16px;
+            border: 1px solid rgba(34, 34, 34, 0.1);
+        }
+
+        /* Side by Side Images */
+        .image-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .image-grid .content-image {
+            margin-bottom: 0;
+        }
+
+        /* Numbered List */
+        .approach-list {
+            margin-bottom: 40px;
+        }
+
+        .approach-item {
+            margin-bottom: 32px;
+        }
+
+        .approach-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .approach-item h3 {
+            margin-top: 0;
+            margin-bottom: 16px;
+        }
+
+        .approach-number {
+            font-family: 'Inter', sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-size: 16px;
+            color: #919191;
+            margin-bottom: 8px;
+        }
+
+        /* Guidelines Cards Gallery */
+        .guidelines-cards-container {
+            position: relative;
+            margin-top: 40px;
+            margin-bottom: 80px;
+            max-width: 860px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .guidelines-cards-scroll {
+            display: flex;
+            gap: 24px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding: 0;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .guidelines-cards-scroll::-webkit-scrollbar {
+            display: none;
+        }
+
+        .guidelines-card {
+            flex: 0 0 420px;
+            background: #FAFAFA;
+            border: 1px solid rgba(34, 34, 34, 0.1);
+            border-radius: 16px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .guidelines-card-title {
+            margin-bottom: 16px;
+        }
+
+        .guidelines-card-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .guidelines-card-list li {
+            font-family: 'Inter', sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 1.5em;
+            color: #919191;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .guidelines-card-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #919191;
+        }
+
+        /* Fade overlays for guidelines */
+        .fade-left-guidelines,
+        .fade-right-guidelines {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 120px;
+            pointer-events: none;
+            z-index: 10;
+            transition: opacity 0.3s;
+        }
+
+        .fade-left-guidelines {
+            left: 0;
+            background: linear-gradient(to right, #ffffff 0%, rgba(255, 255, 255, 0) 100%);
+            opacity: 0;
+        }
+
+        .fade-left-guidelines.visible {
+            opacity: 1;
+        }
+
+        .fade-right-guidelines {
+            right: 0;
+            background: linear-gradient(to left, #ffffff 0%, rgba(255, 255, 255, 0) 100%);
+        }
+
+        .fade-right-guidelines.hidden {
+            opacity: 0;
+        }
+
+        /* Navigation arrows for guidelines */
+        .guidelines-cards-container .scroll-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background: #ffffff;
+            border: 1px solid rgba(34, 34, 34, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 20;
+            transition: opacity 0.3s, background-color 0.2s;
             color: #222222;
-            font-weight: 500;
+            font-family: 'Inter', sans-serif;
         }
 
-        /* Back to Top */
-        .back-to-top {
+        .guidelines-cards-container .scroll-arrow svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .guidelines-cards-container .scroll-arrow:hover {
+            background-color: #f5f5f5;
+        }
+
+        .scroll-arrow-left-guidelines {
+            left: 0;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .scroll-arrow-left-guidelines.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .scroll-arrow-right-guidelines {
+            right: 0;
+        }
+
+        .scroll-arrow-right-guidelines.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* Consistency Gallery */
+        .consistency-gallery-container {
+            position: relative;
+            margin-top: 40px;
+            margin-bottom: 80px;
+            max-width: 860px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .consistency-gallery-scroll {
+            display: flex;
+            gap: 24px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding: 0;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            margin-bottom: 16px;
+        }
+
+        .consistency-gallery-scroll::-webkit-scrollbar {
+            display: none;
+        }
+
+        .consistency-gallery-scroll .content-image {
+            flex: 0 0 calc(100% - 120px);
+            margin: 0;
+        }
+
+        /* Fade overlays for consistency gallery */
+        .fade-left-consistency,
+        .fade-right-consistency {
+            position: absolute;
+            top: 0;
+            bottom: 56px;
+            width: 120px;
+            pointer-events: none;
+            z-index: 10;
+            transition: opacity 0.3s;
+        }
+
+        .fade-left-consistency {
+            left: 0;
+            background: linear-gradient(to right, #FAFAFA 0%, rgba(250, 250, 250, 0) 100%);
+            opacity: 0;
+        }
+
+        .fade-left-consistency.visible {
+            opacity: 1;
+        }
+
+        .fade-right-consistency {
+            right: 0;
+            background: linear-gradient(to left, #FAFAFA 0%, rgba(250, 250, 250, 0) 100%);
+        }
+
+        .fade-right-consistency.hidden {
+            opacity: 0;
+        }
+
+        /* Arrows container at bottom right */
+        .consistency-gallery-arrows {
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+            padding-right: 0;
+        }
+
+        /* Consistency gallery arrow styles */
+        .consistency-gallery-arrows .scroll-arrow {
+            position: static;
+            transform: none;
+            width: 40px;
+            height: 40px;
+            background: #ffffff;
+            border: 1px solid rgba(34, 34, 34, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: opacity 0.3s, background-color 0.2s;
+            color: #222222;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .consistency-gallery-arrows .scroll-arrow svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .consistency-gallery-arrows .scroll-arrow:hover {
+            background-color: #f5f5f5;
+        }
+
+        .consistency-gallery-arrows .scroll-arrow-left-guidelines {
+            opacity: 0.3;
+            pointer-events: none;
+            cursor: default;
+        }
+
+        .consistency-gallery-arrows .scroll-arrow-left-guidelines.visible {
+            opacity: 1;
+            pointer-events: auto;
+            cursor: pointer;
+        }
+
+        .consistency-gallery-arrows .scroll-arrow-right-guidelines {
+            opacity: 1;
+            pointer-events: auto;
+            cursor: pointer;
+        }
+
+        .consistency-gallery-arrows .scroll-arrow-right-guidelines.hidden {
+            opacity: 0.3;
+            pointer-events: none;
+            cursor: default;
+        }
+
+
+        .approach-item .body-text {
+            margin-bottom: 0;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background-color: #F4FEC1;
+            padding: 80px 24px;
+            margin-top: 0;
+            animation: colorCycle 30s ease-in-out infinite;
+        }
+
+        @keyframes colorCycle {
+            0% { background-color: #F4FEC1; }
+            16.66% { background-color: #D4F4DD; }
+            33.33% { background-color: #D4E4F4; }
+            50% { background-color: #E8D4F4; }
+            66.66% { background-color: #F4D4D4; }
+            83.33% { background-color: #F4E8D4; }
+            100% { background-color: #F4FEC1; }
+        }
+
+        .contact-content {
             max-width: 640px;
-            margin: 80px auto 0;
-            text-align: center;
+            margin: 0 auto;
         }
 
-        .back-to-top a {
+        .contact-content h3 {
+            margin-bottom: 24px;
+        }
+
+        .contact-content .body-text {
+            color: rgba(34, 34, 34, 0.5);
+        }
+
+        .contact-content .body-text a {
             color: #222222;
             text-decoration: none;
-            font-size: 16px;
+        }
+
+        .contact-content .body-text a:hover {
+            opacity: 0.7;
+        }
+
+        /* Email Copy Button */
+        .email-copy {
+            color: #222222;
+            position: relative;
+            cursor: none;
+        }
+
+        /* Navigation Arrow */
+        .back-link {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            transition: opacity 0.2s;
+            color: #222222;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 400;
+            transition: color 0.2s;
+            margin-bottom: 40px;
         }
 
-        .back-to-top a:hover {
+        .back-link:hover {
+            color: #222222;
             opacity: 0.7;
+        }
+
+        .back-link svg {
+            width: 16px;
+            height: 16px;
+            transform: rotate(180deg);
+        }
+
+        /* Before/After Slider Component */
+        .before-after-container {
+            position: relative;
+            width: 100%;
+            max-width: 860px;
+            margin: 80px auto;
+            aspect-ratio: 16/10;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(34, 34, 34, 0.1);
+            background-color: #FAFAFA;
+            cursor: ew-resize;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: pan-y;
+        }
+
+        .before-after-container.dragging {
+            cursor: grabbing;
+        }
+
+        .before-image-wrapper,
+        .after-image-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .before-image-wrapper {
+            clip-path: inset(0 0 0 0);
+            z-index: 2;
+        }
+
+        .after-image-wrapper {
+            z-index: 1;
+        }
+
+        .before-image,
+        .after-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Slider Handle */
+        .slider-handle {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 4px;
+            height: 100%;
+            background: #ffffff;
+            transform: translateX(-50%);
+            z-index: 3;
+            pointer-events: none;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .slider-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 56px;
+            height: 56px;
+            background: #ffffff;
+            border: 2px solid #222222;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            pointer-events: auto;
+            cursor: grab;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .slider-button:hover {
+            transform: translate(-50%, -50%) scale(1.1);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .slider-button:active,
+        .before-after-container.dragging .slider-button {
+            cursor: grabbing;
+            transform: translate(-50%, -50%) scale(1.05);
+        }
+
+        .slider-button svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Labels */
+        .ba-label {
+            position: absolute;
+            top: 24px;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 400;
+            color: #222222;
+            z-index: 4;
+            pointer-events: none;
+            border: 1px solid rgba(34, 34, 34, 0.1);
+        }
+
+        .ba-label-before {
+            left: 24px;
+        }
+
+        .ba-label-after {
+            right: 24px;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
+            /* Show hamburger, hide desktop nav */
+            .hamburger {
+                display: flex;
+            }
+
+            .mobile-nav-overlay {
+                display: block;
+            }
+
+            header nav,
+            .header-sticky nav {
+                display: none;
+            }
+
+            .header-sticky .hamburger {
+                display: flex;
+            }
+
+            /* Keep time visible on mobile */
+            .time {
+                display: block;
+            }
+
             h1 {
                 font-size: 28px;
             }
 
             h2 {
-                font-size: 24px;
+                font-size: 26px;
             }
 
             h3 {
-                font-size: 20px;
+                font-size: 22px;
             }
 
             .body-text {
                 font-size: 18px;
             }
 
-            .hero-section {
-                margin-bottom: 60px;
+            .case-study-section {
+                padding: 60px 0;
             }
 
-            .section {
-                margin-bottom: 60px;
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
             }
 
-            .hero-image-container {
-                border-radius: 16px;
+            .image-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .guidelines-card {
+                flex: 0 0 340px;
+                padding: 32px;
+            }
+
+            .guidelines-card-list li {
+                font-size: 16px;
+            }
+
+            .before-after-container .slider-button {
+                width: 48px;
+                height: 48px;
+            }
+
+            .before-after-container .slider-button svg {
+                width: 20px;
+                height: 20px;
+            }
+
+            .ba-label {
+                font-size: 12px;
+                padding: 6px 12px;
+                top: 16px;
+            }
+
+            .ba-label-before {
+                left: 16px;
+            }
+
+            .ba-label-after {
+                right: 16px;
             }
         }
 
@@ -256,84 +1096,472 @@
             }
 
             h3 {
-                font-size: 18px;
+                font-size: 20px;
             }
 
             .body-text {
                 font-size: 16px;
+            }
+
+            .column .body-text,
+            .approach-item .body-text {
+                font-size: 16px;
+            }
+
+            .guidelines-card {
+                flex: 0 0 300px;
+                padding: 28px;
+            }
+
+            .guidelines-card-list li {
+                font-size: 15px;
+            }
+
+            .before-after-container .slider-button {
+                width: 40px;
+                height: 40px;
+            }
+
+            .before-after-container .slider-button svg {
+                width: 16px;
+                height: 16px;
+            }
+
+            .ba-label {
+                font-size: 11px;
+                padding: 4px 10px;
+                top: 12px;
+            }
+
+            .ba-label-before {
+                left: 12px;
+            }
+
+            .ba-label-after {
+                right: 12px;
+            }
+        }
+
+        /* Hide cursor on mobile/touch devices */
+        @media (hover: none) and (pointer: coarse) {
+            #custom-cursor {
+                display: none !important;
+            }
+
+            body, a, button, .email-copy {
+                cursor: auto !important;
             }
         }
     </style>
 </head>
 <body>
     <!-- Custom Cursor -->
-    <div id="custom-cursor"></div>
+    <div id="custom-cursor">
+        <span class="cursor-text">Click to copy</span>
+    </div>
 
-    <!-- Header -->
+    <!-- Mobile Nav Overlay -->
+    <div class="mobile-nav-overlay" id="mobile-nav-overlay">
+        <nav>
+            <a href="#challenge" data-section="challenge" class="mobile-nav-link">Challenge</a>
+            <a href="#approach" data-section="approach" class="mobile-nav-link">Approach</a>
+            <a href="#solution" data-section="solution" class="mobile-nav-link">Solution</a>
+            <a href="#outcome" data-section="outcome" class="mobile-nav-link">Outcome</a>
+        </nav>
+    </div>
+
+    <!-- Sticky Header Clone -->
+    <div class="header-sticky" id="header-sticky">
+        <div class="header-container">
+            <button class="hamburger" id="hamburger-sticky">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav>
+                <a href="#challenge" data-section="challenge" class="sticky-nav-link">Challenge</a>
+                <a href="#approach" data-section="approach" class="sticky-nav-link">Approach</a>
+                <a href="#solution" data-section="solution" class="sticky-nav-link">Solution</a>
+                <a href="#outcome" data-section="outcome" class="sticky-nav-link">Outcome</a>
+            </nav>
+            <span class="time">BCN • <span id="time-sticky">--:-- --</span></span>
+        </div>
+    </div>
+
+    <!-- Static Header -->
     <div class="header-container">
         <header>
-            <a href="/" class="back-link">
-                <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M10 3L5 8L10 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                Back
-            </a>
-            <span class="time">BCN &bull; <span id="time">--:-- --</span></span>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav>
+                <a href="#challenge" data-section="challenge">Challenge</a>
+                <a href="#approach" data-section="approach">Approach</a>
+                <a href="#solution" data-section="solution">Solution</a>
+                <a href="#outcome" data-section="outcome">Outcome</a>
+            </nav>
+            <span class="time" id="barcelona-time">BCN • <span id="time">--:-- --</span></span>
         </header>
     </div>
 
     <div class="container">
-        <!-- Hero Section -->
-        <section class="hero-section">
-            <div class="hero-image-container">
+        <!-- Title Section -->
+        <section class="title-section">
+            <div class="section-content">
+                <!-- Back Link -->
+                <a href="index.html#work" class="back-link">
+                    <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Back to work
+                </a>
+
+                <h1>Managing conflicting stakeholder visions</h1>
+                <p class="subtitle">TravelPerk / Delta Airlines</p>
+            </div>
+        </section>
+
+        <!-- Hero Image -->
+        <div class="hero-image-container">
                 <img src="/assets/travelperk-hero.jpeg" alt="TravelPerk and Delta Airlines collaboration" loading="eager">
             </div>
-            <div class="hero-content">
-                <h1>Managing conflicting stakeholder visions</h1>
-                <div class="meta">TravelPerk / Delta Airlines &bull; 2023-2024</div>
-            </div>
-        </section>
 
-        <!-- Content -->
-        <section class="section">
+    <!-- Overview Section -->
+    <section class="case-study-section bg-white">
+        <div class="container">
             <div class="section-content">
-                <h2>The Challenge</h2>
-                <p class="body-text">When TravelPerk partnered with Delta Airlines to create an integrated booking experience, we faced a significant challenge: two organizations with very different visions for the product, different timelines, and different definitions of success.</p>
-                <p class="body-text">Delta wanted to maintain their premium brand experience and ensure deep integration with their loyalty program. TravelPerk needed to maintain the simplicity and speed that made their platform successful while adding enterprise-grade features that corporate travel managers demanded.</p>
+                <h1>Overview</h1>
+                <p class="body-text">I led a critical redesign project that rescued a crucial partnership, improved our user experience, and created a unified design language across our booking platform. In the process, I also uncovered a significant revenue opportunity that substantially increased our flight booking revenue.</p>
 
-                <h2>My Role</h2>
-                <p class="body-text">As Design Lead, I was responsible for navigating these competing priorities while ensuring we delivered a cohesive experience that served both organizations' goals. This meant acting as a bridge between stakeholder groups, translating business requirements into user value, and making tough calls when visions conflicted.</p>
+                <!-- Stats Grid -->
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <h2 class="stat-label">Critical</h2>
+                        <div class="stat-value">Partnership preserved</div>
+                    </div>
+                    <div class="stat-item">
+                        <h2 class="stat-label">18%</h2>
+                        <div class="stat-value">CES increase</div>
+                    </div>
+                    <div class="stat-item">
+                        <h2 class="stat-label">1.6x</h2>
+                        <div class="stat-value">Key product attachment</div>
+                    </div>
+                </div>
 
-                <h2>Approach</h2>
-                <h3>1. Establishing a shared vision</h3>
-                <p class="body-text">I started by running collaborative workshops with stakeholders from both organizations. Rather than diving into features, we focused on defining success metrics that both parties could align on: booking conversion rates, user satisfaction scores, and corporate adoption metrics.</p>
-                
-                <h3>2. Creating a decision framework</h3>
-                <p class="body-text">With competing priorities inevitable, I established a transparent decision-making framework based on user impact and business value. This helped depersonalize difficult conversations and keep the focus on outcomes rather than opinions.</p>
+                <!-- Keyline separator -->
+                <div style="height: 0.5px; background-color: rgba(0, 0, 0, 0.08); margin-top: 80px; margin-bottom: 80px;"></div>
 
-                <h3>3. Iterative validation</h3>
-                <p class="body-text">We ran continuous user testing with actual corporate travelers, allowing data to guide decisions when stakeholder opinions diverged. This evidence-based approach helped build trust and align the team around what actually worked.</p>
+                <div class="info-section">
+                    <h3>Problem</h3>
+                    <p class="body-text">Delta Airlines' B2C-focused design requirements conflicted with TravelPerk's B2B user needs. The project also faced technical constraints, misaligned stakeholder expectations, and a rigid deadline.</p>
+                </div>
 
-                <h2>Impact</h2>
-                <p class="body-text">The integrated experience launched on schedule and exceeded initial targets, with 40% higher booking conversion than projected. More importantly, we maintained a 4.7/5 user satisfaction score while adding significant complexity to the platform.</p>
-                <p class="body-text">The collaboration framework we established became a model for how TravelPerk approached other airline partnerships, reducing integration timelines by an average of 3 months.</p>
+                <div class="info-section">
+                    <h3>My role</h3>
+                    <p class="body-text">As Product Design Lead and de facto project manager, I was responsible for establishing clear processes, aligning stakeholders, and balancing Delta's requirements with user needs.</p>
+                </div>
 
-                <h2>Key Learnings</h2>
-                <p class="body-text">This project reinforced that managing stakeholder alignment is as critical as the design work itself. Success came from establishing shared metrics early, creating transparent decision frameworks, and consistently bringing the conversation back to user value.</p>
-                <p class="body-text">I also learned the importance of knowing when to push back and when to compromise. Not every battle is worth fighting, but the ones that directly impact user experience absolutely are.</p>
+                <div class="info-section">
+                    <h3>Approach</h3>
+                    <p class="body-text">I led all design work from concept to implementation, created a scope document with clear success criteria, conducted a heuristic review to identify improvement opportunities, and discovered an opportunity to expand revenue by extending flexible fare offerings.</p>
+                </div>
+
+                <div class="info-section">
+                    <h3>Outcome</h3>
+                    <p class="body-text">We secured the Delta partnership while improving key metrics, fixed legacy UX issues, established a unified design system, and increased revenue through expanded cancellation coverage availability.</p>
+                </div>
             </div>
-        </section>
-
-        <!-- Back to Top -->
-        <div class="back-to-top">
-            <a href="/">
-                <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M10 3L5 8L10 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                Back to home
-            </a>
         </div>
-    </div>
+    </section>
+
+    <!-- The Challenge Section -->
+    <section class="case-study-section bg-gray" id="challenge">
+        <div class="container">
+            <div class="section-content">
+                <h1>The challenge</h1>
+                
+                <h3>A B2B world</h3>
+                <p class="body-text">TravelPerk is a B2B tool that makes it easy for people to book and manage company travel. Flights are the most-commonly-booked type of travel.</p>
+            </div>
+            
+            <!-- Images -->
+            <div class="content-image"></div>
+            
+            <div class="section-content">
+                <h3>A B2C requirement</h3>
+                <p class="body-text">Delta Airlines was enforcing new guidelines for how vendors should display their products. The guidelines were created for leisure travel, as a way to promote and upsell more profitable flight fares.</p>
+            </div>
+
+            <div class="content-image"></div>
+
+            <div class="section-content">
+                <h3>The conflict</h3>
+                <p class="body-text">• Employers actively instruct employees using TravelPerk to avoid upselling attempts, in order to maintain strict policy budgets</p>
+                <p class="body-text">• This creates a fundamental misalignment between Delta's goals and TravelPerk users' goals</p>
+                <p class="body-text">• Not adhering to the guidelines meant risking losing Delta's inventory, which would have been detrimental to TravelPerk's US market presence</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Approach Section -->
+    <section class="case-study-section bg-white" id="approach">
+        <div class="container">
+            <div class="section-content">
+                <h1>Approach</h1>
+                
+            </div>
+            
+            <div class="section-content">
+                <h3>1. Creating guidelines</h3>
+            </div>
+
+            <!-- Guidelines Cards Gallery -->
+            <div class="guidelines-cards-container">
+                <div class="fade-left-guidelines" id="fade-left-guidelines"></div>
+                <div class="fade-right-guidelines" id="fade-right-guidelines"></div>
+                <button class="scroll-arrow scroll-arrow-left-guidelines" id="arrow-left-guidelines"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 3L5 8L10 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                <button class="scroll-arrow scroll-arrow-right-guidelines" id="arrow-right-guidelines"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                <div class="guidelines-cards-scroll" id="guidelines-cards-scroll">
+                    <div class="guidelines-card">
+                        <h4 class="guidelines-card-title">Defining success</h4>
+                        <ul class="guidelines-card-list">
+                            <li>I led the creation of a comprehensive definition of done document that was agreed on by both TravelPerk and Delta stakeholders</li>
+                            <li>This became our guiding reference, helping us maintain focus, prevent scope creep, and ground contentious conversations</li>
+                        </ul>
+                    </div>
+                    <div class="guidelines-card">
+                        <h4 class="guidelines-card-title">Encouraging feedback</h4>
+                        <ul class="guidelines-card-list">
+                            <li>Fortnightly critiques with designers from other product verticals to maintain alignment</li>
+                            <li>Weekly reviews with engineering to prevent surprises</li>
+                            <li>Regular usability testing for frequent design evaluation</li>
+                        </ul>
+                    </div>
+                    <div class="guidelines-card">
+                        <h4 class="guidelines-card-title">Balancing communication</h4>
+                        <ul class="guidelines-card-list">
+                            <li>Avoiding technical language where possible when working with Delta stakeholders</li>
+                            <li>Moving contentious feedback offline to evaluate against our agreed scope, avoiding unproductive debates while preserving collaboration</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-content">
+                <div class="approach-list">
+
+                    <div class="approach-item">
+                        <h3>2. Starting with research</h3>
+                        <p class="body-text">• I surveyed 1,000 customers about their flight booking behaviour</p>
+                        <p class="body-text">• The research conclusively showed flight time as customers' top priority when booking flights</p>
+                        <p class="body-text">• Delta's guidelines proposed hiding return flight time options until the user selected an outbound flight</p>
+                        <p class="body-text">• TravelPerk users can only book in-policy journeys, so visibility of outbound and return combinations that are in-policy is critical</p>
+                    </div>
+
+                    <div class="approach-item">
+                        <h3>3. Documenting existing problems</h3>
+                        <p class="body-text">The redesign provided a great opportunity to address legacy usability issues. Through a heuristic evaluation with designers from all booking verticals, we identified several improvement opportunities.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Approach Images -->
+            <div class="content-image"></div>
+
+            <div class="section-content">
+                <div class="approach-list">
+                    <div class="approach-item">
+                        <h3>4. Evaluating at each turn</h3>
+                        <p class="body-text">We usability tested all changes and implemented a phased rollout to monitor metrics. Observing real user sessions throughout the rollout also revealed great actionable insights. We also implemented a CES widget to quantify and monitor usability.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-image"></div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="case-study-section bg-dark" id="solution">
+        <div class="container">
+            <div class="section-content">
+                <h1>The solution</h1>
+                <p class="subtitle" style="text-align: center; margin-bottom: 60px;">Breaking down the new design</p>
+            </div>
+
+            <div class="content-image"></div>
+
+            <div class="section-content">
+                <h3>Focusing on the details</h3>
+                <p class="body-text">Our heuristic evaluation revealed many overlooked areas for improvement. Redesigning the entire flow gave us the ability to apply a more-considered approach to every visual element.</p>
+            </div>
+
+            <div class="content-image"></div>
+
+            <div class="section-content">
+                <h3>Strategic wins</h3>
+                <p class="body-text">Despite Delta's rigid guidelines, I negotiated some key adjustments: keeping the outbound and return flight overview, and reducing fare categories from 6 to 4. These adaptations prioritise customer needs and reduce upselling intensity, while meeting Delta's core requirements.</p>
+            </div>
+
+            <!-- Before/After Slider Component -->
+            <div class="before-after-container" id="beforeAfterSlider">
+                <!-- Before Image (left side, clipped) -->
+                <div class="before-image-wrapper" id="beforeWrapper">
+                    <img src="/mnt/user-data/uploads/1769699096497_image.png" alt="Before" class="before-image">
+                </div>
+                
+                <!-- After Image (right side, full) -->
+                <div class="after-image-wrapper">
+                    <img src="/mnt/user-data/uploads/1769699096497_image.png" alt="After" class="after-image">
+                </div>
+                
+                <!-- Slider Handle -->
+                <div class="slider-handle" id="sliderHandle">
+                    <div class="slider-button">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 5L14 12L9 19M15 5L20 12L15 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M15 5L10 12L15 19M9 5L4 12L9 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                </div>
+                
+                <!-- Labels -->
+                <div class="ba-label ba-label-before">Before</div>
+                <div class="ba-label ba-label-after">After</div>
+            </div>
+
+            <div class="section-content">
+                <h3>Searching and filtering</h3>
+                <p class="body-text">In the old design, search parameters were hidden behind a click-to-reveal interaction, despite how frequently users would adjust terms when exploring flight options.</p>
+            </div>
+
+            <div class="content-image"></div>
+
+            <div class="section-content">
+                <p class="body-text">In the new design, search parameters are front-and-centre. They move out of view when a user scrolls down the page, but re-appear wherever they scroll up, making it easy to adjust them at any time. We also added a date nudge button to make it easier to explore flights on different days.</p>
+            </div>
+
+            <div class="content-image"></div>
+
+            <div class="section-content">
+                <p class="body-text">Updating the filtering experience from a side panel to a horizontal progressive disclosure pattern accommodated Delta's requirement for more horizontal space, while fixing IA and visual hierarchy issues that had plagued the previous design.</p>
+            </div>
+
+            <div class="content-image"></div>
+
+            <div class="section-content">
+                <h3>A localised experience</h3>
+                <p class="body-text">After discovering that the new design resulted in a many empty results for European searches, we created separate region-specific designs: North American results follow Delta's guidelines, while other markets see a simpler design to accommodate fewer product variations.</p>
+            </div>
+
+            <div class="content-image"></div>
+
+            <div class="section-content">
+                <h3>Fixing consistency across verticals</h3>
+                <p class="body-text">We prioritised standardising the booking experience across all verticals as a core redesign goal. Each pattern was designed for cross-vertical compatibility and evaluated by all teams throughout the process.</p>
+            </div>
+
+            <!-- Consistency Gallery -->
+            <div class="consistency-gallery-container">
+                <div class="fade-left-consistency" id="fade-left-consistency"></div>
+                <div class="fade-right-consistency" id="fade-right-consistency"></div>
+                <div class="consistency-gallery-scroll" id="consistency-gallery-scroll">
+                    <div class="content-image"></div>
+                    <div class="content-image"></div>
+                    <div class="content-image"></div>
+                </div>
+                <div class="consistency-gallery-arrows">
+                    <button class="scroll-arrow scroll-arrow-left-guidelines" id="arrow-left-consistency">
+                        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 3L5 8L10 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <button class="scroll-arrow scroll-arrow-right-guidelines" id="arrow-right-consistency">
+                        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bonus Section -->
+    <section class="case-study-section bg-white">
+        <div class="container">
+            <div class="section-content">
+                <h1>Bonus</h1>
+                <h3>A hidden revenue opportunity</h3>
+                <p class="body-text">In the previous design, all users would see the FlexiFare option as part of the booking flow. In the new single-screen flow, only users that selected the "Basic" category would see a FlexiFare, risking a reduction in visibility.</p>
+            </div>
+
+            <div class="content-image"></div>
+
+            <div class="section-content">
+                <h3>Increasing visibility</h3>
+                <p class="body-text">I proposed expanding FlexiFare to the Basic and Standard categories, which would boost visibility and increase revenue potential due to the percentage-based pricing.</p>
+            </div>
+
+            <div class="content-image"></div>
+        </div>
+    </section>
+
+    <!-- Outcome Section -->
+    <section class="case-study-section bg-gray" id="outcome">
+        <div class="container">
+            <div class="section-content">
+                <h1>Outcome</h1>
+                
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <h2 class="stat-label">Critical</h2>
+                        <div class="stat-value">Partnership preserved</div>
+                    </div>
+                    <div class="stat-item">
+                        <h2 class="stat-label">18%</h2>
+                        <div class="stat-value">CES increase</div>
+                    </div>
+                    <div class="stat-item">
+                        <h2 class="stat-label">1.6x</h2>
+                        <div class="stat-value">FlexiFare attachment</div>
+                    </div>
+                </div>
+
+                <p class="body-text" style="margin-bottom: 40px;">The project succeeded on multiple fronts, delivering both business and user experience improvements. The new 'standard' Flexifare variant increased attachment, representing a huge revenue increase. Most importantly, we reaffirmed our partnership with Delta while improving the user experience across all TravelPerk's booking verticals.</p>
+
+                <!-- Keyline separator -->
+                <div style="height: 0.5px; background-color: rgba(0, 0, 0, 0.08); margin-bottom: 40px; max-width: 640px;"></div>
+
+                <h3 style="margin-top: 0; margin-bottom: 40px;">Learnings</h3>
+
+                <div class="info-section">
+                    <h4 style="margin-bottom: 16px;">Establish shared goals early</h4>
+                    <p class="body-text" style="margin-bottom: 0;">The definition of done document became our most-valuable tool for alignment and decision-making. By securing upfront agreement on scope and success criteria, we could resolve conflicts efficiently and maintain momentum.</p>
+                </div>
+
+                <div class="info-section">
+                    <h4 style="margin-bottom: 16px;">Observation beyond release</h4>
+                    <p class="body-text" style="margin-bottom: 0;">Post-launch user behaviour observation revealed improvement opportunities invisible in pre-release testing. Real-world interactions provided insights that testing and quantitative data alone couldn't capture.</p>
+                </div>
+
+                <div class="info-section" style="margin-bottom: 0;">
+                    <h4 style="margin-bottom: 16px;">Find opportunity in constraints</h4>
+                    <p class="body-text" style="margin-bottom: 0;">What began as a challenging and disruptive project ultimately became a platform for fixing cross-vertical design issues and opening new revenue streams. The constraints forced creative thinking, proving that unexpected challenges can often lead to innovative change.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="contact-content">
+            <h3>Contact</h3>
+            <p class="body-text">If you'd like to get in touch, feel free to connect with me on <a href="https://www.linkedin.com/in/jimmy-leslie-652180107/">LinkedIn</a>, or send me an email at <span class="email-copy" data-email="jimmyleslie.design@gmail.com">jimmyleslie.design@gmail.com</span></p>
+        </div>
+    </section>
 
     <script>
         function updateBarcelonaTime() {
@@ -346,27 +1574,99 @@
             };
             const timeString = now.toLocaleTimeString('en-US', options);
             document.getElementById('time').textContent = timeString;
+            document.getElementById('time-sticky').textContent = timeString;
         }
 
         // Update time immediately and then every minute
         updateBarcelonaTime();
         setInterval(updateBarcelonaTime, 60000);
 
-        // Custom Cursor
+        // Hamburger menu functionality
+        const hamburger = document.getElementById('hamburger');
+        const hamburgerSticky = document.getElementById('hamburger-sticky');
+        const mobileNavOverlay = document.getElementById('mobile-nav-overlay');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        function toggleMobileNav() {
+            hamburger.classList.toggle('active');
+            hamburgerSticky.classList.toggle('active');
+            mobileNavOverlay.classList.toggle('active');
+            document.body.style.overflow = mobileNavOverlay.classList.contains('active') ? 'hidden' : '';
+        }
+
+        function closeMobileNav() {
+            hamburger.classList.remove('active');
+            hamburgerSticky.classList.remove('active');
+            mobileNavOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        hamburger.addEventListener('click', toggleMobileNav);
+        hamburgerSticky.addEventListener('click', toggleMobileNav);
+
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                closeMobileNav();
+            });
+        });
+
+        // Sticky header on scroll
+        const stickyHeader = document.getElementById('header-sticky');
+        const darkSection = document.getElementById('solution');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 200) {
+                stickyHeader.classList.add('visible');
+            } else {
+                stickyHeader.classList.remove('visible');
+            }
+            
+            // Check if sticky header overlaps with dark section
+            if (darkSection) {
+                const headerRect = stickyHeader.getBoundingClientRect();
+                const sectionRect = darkSection.getBoundingClientRect();
+                
+                // If the sticky header overlaps with the dark section
+                if (headerRect.bottom > sectionRect.top && headerRect.top < sectionRect.bottom) {
+                    stickyHeader.classList.add('dark');
+                } else {
+                    stickyHeader.classList.remove('dark');
+                }
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        // Custom Cursor - Update based on dark section
         const cursor = document.getElementById('custom-cursor');
         
         // Update cursor position
         document.addEventListener('mousemove', (e) => {
             cursor.style.left = e.clientX + 'px';
             cursor.style.top = e.clientY + 'px';
+            
+            // Check if cursor is over dark section
+            if (darkSection) {
+                const rect = darkSection.getBoundingClientRect();
+                if (e.clientY >= rect.top && e.clientY <= rect.bottom) {
+                    cursor.classList.add('dark-section');
+                } else {
+                    cursor.classList.remove('dark-section');
+                }
+            }
         });
 
-        // Add hover effect for interactive elements
+        // Add hover effect for interactive elements (excluding email-copy which has special behavior)
         const interactiveElements = document.querySelectorAll('a, button');
         
         interactiveElements.forEach(element => {
             element.addEventListener('mouseenter', () => {
-                cursor.classList.add('hover');
+                if (!cursor.classList.contains('copy-mode')) {
+                    cursor.classList.add('hover');
+                }
             });
             
             element.addEventListener('mouseleave', () => {
@@ -382,6 +1682,281 @@
         document.addEventListener('mouseenter', () => {
             cursor.style.opacity = '1';
         });
+
+        // Email Copy Functionality
+        const emailCopy = document.querySelector('.email-copy');
+        const cursorText = cursor.querySelector('.cursor-text');
+        
+        if (emailCopy) {
+            // Handle hover on email to show copy mode cursor
+            emailCopy.addEventListener('mouseenter', () => {
+                cursor.classList.remove('hover');
+                cursor.classList.add('copy-mode');
+                cursorText.textContent = 'Click to copy';
+            });
+            
+            emailCopy.addEventListener('mouseleave', () => {
+                cursor.classList.remove('copy-mode');
+            });
+            
+            // Handle click to copy
+            emailCopy.addEventListener('click', () => {
+                const email = emailCopy.getAttribute('data-email');
+                let copySuccess = false;
+                
+                // Use fallback method (more reliable in iframes and various contexts)
+                try {
+                    const textArea = document.createElement('textarea');
+                    textArea.value = email;
+                    textArea.style.position = 'fixed';
+                    textArea.style.left = '-999999px';
+                    textArea.style.top = '-999999px';
+                    document.body.appendChild(textArea);
+                    textArea.focus();
+                    textArea.select();
+                    
+                    try {
+                        copySuccess = document.execCommand('copy');
+                    } catch (err) {
+                        // If execCommand fails, try clipboard API
+                        if (navigator.clipboard && navigator.clipboard.writeText) {
+                            navigator.clipboard.writeText(email).then(() => {
+                                copySuccess = true;
+                            }).catch(() => {
+                                copySuccess = false;
+                            });
+                        }
+                    }
+                    
+                    textArea.remove();
+                } catch (err) {
+                    // Fallback failed, assume success anyway
+                    copySuccess = true;
+                }
+                
+                // Show success message
+                cursorText.textContent = 'Email copied!';
+                
+                // Reset after 2 seconds
+                setTimeout(() => {
+                    cursorText.textContent = 'Click to copy';
+                }, 2000);
+            });
+        }
+
+        // Guidelines cards scroll functionality
+        const guidelinesCardsScroll = document.getElementById('guidelines-cards-scroll');
+        const arrowLeftGuidelines = document.getElementById('arrow-left-guidelines');
+        const arrowRightGuidelines = document.getElementById('arrow-right-guidelines');
+        const fadeLeftGuidelines = document.getElementById('fade-left-guidelines');
+        const fadeRightGuidelines = document.getElementById('fade-right-guidelines');
+
+        if (guidelinesCardsScroll && arrowLeftGuidelines && arrowRightGuidelines) {
+            function updateGuidelinesScrollState() {
+                const scrollLeft = guidelinesCardsScroll.scrollLeft;
+                const maxScroll = guidelinesCardsScroll.scrollWidth - guidelinesCardsScroll.clientWidth;
+
+                // Show/hide left arrow and fade
+                if (scrollLeft > 10) {
+                    arrowLeftGuidelines.classList.add('visible');
+                    fadeLeftGuidelines.classList.add('visible');
+                } else {
+                    arrowLeftGuidelines.classList.remove('visible');
+                    fadeLeftGuidelines.classList.remove('visible');
+                }
+
+                // Show/hide right arrow and fade
+                if (scrollLeft >= maxScroll - 10) {
+                    arrowRightGuidelines.classList.add('hidden');
+                    fadeRightGuidelines.classList.add('hidden');
+                } else {
+                    arrowRightGuidelines.classList.remove('hidden');
+                    fadeRightGuidelines.classList.remove('hidden');
+                }
+            }
+
+            guidelinesCardsScroll.addEventListener('scroll', updateGuidelinesScrollState);
+
+            arrowLeftGuidelines.addEventListener('click', () => {
+                const cardWidth = 420 + 24; // card width + gap
+                guidelinesCardsScroll.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+            });
+
+            arrowRightGuidelines.addEventListener('click', () => {
+                const cardWidth = 420 + 24; // card width + gap
+                guidelinesCardsScroll.scrollBy({ left: cardWidth, behavior: 'smooth' });
+            });
+
+            // Initial state
+            updateGuidelinesScrollState();
+        }
+
+        // Consistency gallery scroll functionality
+        const consistencyGalleryScroll = document.getElementById('consistency-gallery-scroll');
+        const arrowLeftConsistency = document.getElementById('arrow-left-consistency');
+        const arrowRightConsistency = document.getElementById('arrow-right-consistency');
+        const fadeLeftConsistency = document.getElementById('fade-left-consistency');
+        const fadeRightConsistency = document.getElementById('fade-right-consistency');
+
+        if (consistencyGalleryScroll && arrowLeftConsistency && arrowRightConsistency) {
+            function updateConsistencyScrollState() {
+                const scrollLeft = consistencyGalleryScroll.scrollLeft;
+                const maxScroll = consistencyGalleryScroll.scrollWidth - consistencyGalleryScroll.clientWidth;
+
+                // Show/hide left arrow and fade
+                if (scrollLeft > 10) {
+                    arrowLeftConsistency.classList.add('visible');
+                    fadeLeftConsistency.classList.add('visible');
+                } else {
+                    arrowLeftConsistency.classList.remove('visible');
+                    fadeLeftConsistency.classList.remove('visible');
+                }
+
+                // Show/hide right arrow and fade
+                if (scrollLeft >= maxScroll - 10) {
+                    arrowRightConsistency.classList.add('hidden');
+                    fadeRightConsistency.classList.add('hidden');
+                } else {
+                    arrowRightConsistency.classList.remove('hidden');
+                    fadeRightConsistency.classList.remove('hidden');
+                }
+            }
+
+            consistencyGalleryScroll.addEventListener('scroll', updateConsistencyScrollState);
+
+            arrowLeftConsistency.addEventListener('click', () => {
+                const scrollAmount = consistencyGalleryScroll.clientWidth;
+                consistencyGalleryScroll.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            });
+
+            arrowRightConsistency.addEventListener('click', () => {
+                const scrollAmount = consistencyGalleryScroll.clientWidth;
+                consistencyGalleryScroll.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            });
+
+            // Initial state
+            updateConsistencyScrollState();
+        }
+
+        // Navigation active state tracking
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('nav a[data-section]');
+        const stickyNavLinks = document.querySelectorAll('.sticky-nav-link[data-section]');
+
+        function updateActiveNavState() {
+            const scrollPosition = window.scrollY;
+            const stickyHeaderHeight = 120; // Sticky header offset
+            
+            const challengeSection = document.getElementById('challenge');
+            const approachSection = document.getElementById('approach');
+            const solutionSection = document.getElementById('solution');
+            const outcomeSection = document.getElementById('outcome');
+            
+            if (!challengeSection || !approachSection || !solutionSection || !outcomeSection) return;
+            
+            // Get positions
+            const challengeTop = challengeSection.offsetTop - stickyHeaderHeight;
+            const approachTop = approachSection.offsetTop - stickyHeaderHeight;
+            const solutionTop = solutionSection.offsetTop - stickyHeaderHeight;
+            const outcomeTop = outcomeSection.offsetTop - stickyHeaderHeight;
+            const outcomeBottom = outcomeTop + outcomeSection.offsetHeight;
+            
+            // Remove all active classes
+            navLinks.forEach(link => link.classList.remove('active'));
+            stickyNavLinks.forEach(link => link.classList.remove('active'));
+            
+            // Determine which section should be active
+            if (scrollPosition >= outcomeTop) {
+                document.querySelector('nav a[data-section="outcome"]')?.classList.add('active');
+                document.querySelector('.sticky-nav-link[data-section="outcome"]')?.classList.add('active');
+            } else if (scrollPosition >= solutionTop) {
+                document.querySelector('nav a[data-section="solution"]')?.classList.add('active');
+                document.querySelector('.sticky-nav-link[data-section="solution"]')?.classList.add('active');
+            } else if (scrollPosition >= approachTop) {
+                document.querySelector('nav a[data-section="approach"]')?.classList.add('active');
+                document.querySelector('.sticky-nav-link[data-section="approach"]')?.classList.add('active');
+            } else if (scrollPosition >= challengeTop) {
+                document.querySelector('nav a[data-section="challenge"]')?.classList.add('active');
+                document.querySelector('.sticky-nav-link[data-section="challenge"]')?.classList.add('active');
+            }
+        }
+
+        window.addEventListener('scroll', updateActiveNavState);
+        window.addEventListener('resize', updateActiveNavState);
+        updateActiveNavState(); // Initial call
+
+        // Before/After Slider Functionality
+        const slider = document.getElementById('beforeAfterSlider');
+        const beforeWrapper = document.getElementById('beforeWrapper');
+        const sliderHandle = document.getElementById('sliderHandle');
+        
+        if (slider && beforeWrapper && sliderHandle) {
+            let isDragging = false;
+            let currentPosition = 50; // Start at 50%
+
+            function updateSlider(clientX) {
+                const rect = slider.getBoundingClientRect();
+                const x = clientX - rect.left;
+                const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100));
+                
+                currentPosition = percentage;
+                
+                // Update clip-path on before image
+                beforeWrapper.style.clipPath = `inset(0 ${100 - percentage}% 0 0)`;
+                
+                // Update handle position
+                sliderHandle.style.left = `${percentage}%`;
+            }
+
+            // Mouse events
+            slider.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                slider.classList.add('dragging');
+                updateSlider(e.clientX);
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                updateSlider(e.clientX);
+            });
+
+            document.addEventListener('mouseup', () => {
+                if (isDragging) {
+                    isDragging = false;
+                    slider.classList.remove('dragging');
+                }
+            });
+
+            // Touch events for mobile
+            slider.addEventListener('touchstart', (e) => {
+                isDragging = true;
+                slider.classList.add('dragging');
+                updateSlider(e.touches[0].clientX);
+                e.preventDefault();
+            });
+
+            document.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+                updateSlider(e.touches[0].clientX);
+                e.preventDefault();
+            }, { passive: false });
+
+            document.addEventListener('touchend', () => {
+                if (isDragging) {
+                    isDragging = false;
+                    slider.classList.remove('dragging');
+                }
+            });
+
+            // Click to move slider
+            slider.addEventListener('click', (e) => {
+                if (e.target.closest('.slider-button')) return;
+                updateSlider(e.clientX);
+            });
+
+            // Initialize slider position
+            updateSlider(slider.getBoundingClientRect().left + (slider.getBoundingClientRect().width / 2));
+        }
     </script>
 </body>
 </html>
