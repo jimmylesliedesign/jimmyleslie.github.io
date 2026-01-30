@@ -1438,7 +1438,7 @@
               muted 
               loop 
               playsinline 
-              preload="none"
+              preload="metadata"
               poster="/assets/travelperk-hero.jpeg"
             >
               <source src="/assets/TK_new_design.mp4" type="video/mp4">
@@ -2009,6 +2009,31 @@
             // Initialize slider position
             updateSlider(slider.getBoundingClientRect().left + (slider.getBoundingClientRect().width / 2));
         }
+
+        // Video autoplay on scroll into view
+            const caseStudyVideo = document.getElementById('travelperk-video');
+            
+            if (caseStudyVideo) {
+                // Force load the video
+                caseStudyVideo.load();
+                
+                const videoObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            caseStudyVideo.play().catch(err => {
+                                console.log('Video autoplay failed:', err);
+                            });
+                        } else {
+                            caseStudyVideo.pause();
+                        }
+                    });
+                }, { 
+                    threshold: 0.3  // Play when 30% visible
+                });
+            
+                videoObserver.observe(caseStudyVideo);
+            }
+        
     </script>
 </body>
 </html>
