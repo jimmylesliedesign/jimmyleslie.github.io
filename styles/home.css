@@ -412,15 +412,16 @@ nav a:hover {
         padding: 24px 24px;
     }
         
+    .hero-section {
+        margin-top: 32px;
+        margin-bottom: 60px;
+    }
+
     .hero-box {
         padding: 60px 32px;
     }
 
     .section {
-        margin-bottom: 60px;
-    }
-
-    .hero-section {
         margin-bottom: 60px;
     }
 
