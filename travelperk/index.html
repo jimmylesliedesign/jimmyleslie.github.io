@@ -1,178 +1,492 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jimmy Leslie</title>
+    <title>Managing conflicting stakeholder visions - Jimmy Leslie</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles/global.css">
-    <link rel="stylesheet" href="/styles/home.css">
+    <link rel="stylesheet" href="/styles/case-study.css">
+    <link rel="stylesheet" href="/styles/travelperk.css">
 </head>
-
 <body>
     <!-- Custom Cursor -->
     <div id="custom-cursor">
         <span class="cursor-text">Click to copy</span>
     </div>
 
+    <!-- Mobile Nav Overlay -->
+    <div class="mobile-nav-overlay" id="mobile-nav-overlay">
+        <nav>
+            <a href="#challenge" data-section="challenge" class="mobile-nav-link">Challenge</a>
+            <a href="#approach" data-section="approach" class="mobile-nav-link">Approach</a>
+            <a href="#solution" data-section="solution" class="mobile-nav-link">Solution</a>
+            <a href="#outcome" data-section="outcome" class="mobile-nav-link">Outcome</a>
+        </nav>
+    </div>
+
     <!-- Sticky Header Clone -->
     <div class="header-sticky" id="header-sticky">
         <div class="header-container">
+            <button class="hamburger" id="hamburger-sticky">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <nav>
-                <a href="#about" data-section="about" class="sticky-nav-link">About</a>
-                <a href="#work" data-section="work" class="sticky-nav-link">Work</a>
-                <a href="#contact" data-section="contact" class="sticky-nav-link">Contact</a>
+                <a href="#challenge" data-section="challenge" class="sticky-nav-link">Challenge</a>
+                <a href="#approach" data-section="approach" class="sticky-nav-link">Approach</a>
+                <a href="#solution" data-section="solution" class="sticky-nav-link">Solution</a>
+                <a href="#outcome" data-section="outcome" class="sticky-nav-link">Outcome</a>
             </nav>
-            <span class="time">BCN &bull; <span id="time-sticky">--:-- --</span></span>
+            <span class="time">BCN â€¢ <span id="time-sticky">--:-- --</span></span>
         </div>
+        <div class="progress-bar" id="progress-bar"></div>
     </div>
 
     <!-- Static Header -->
     <div class="header-container">
         <header>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <nav>
-                <a href="#about" data-section="about">About</a>
-                <a href="#work" data-section="work">Work</a>
-                <a href="#contact" data-section="contact">Contact</a>
+                <a href="#challenge" data-section="challenge">Challenge</a>
+                <a href="#approach" data-section="approach">Approach</a>
+                <a href="#solution" data-section="solution">Solution</a>
+                <a href="#outcome" data-section="outcome">Outcome</a>
             </nav>
-            <span class="time" id="barcelona-time">BCN &bull; <span id="time">--:-- --</span></span>
+            <span class="time" id="barcelona-time">BCN â€¢ <span id="time">--:-- --</span></span>
         </header>
     </div>
 
     <div class="container">
-
-        <!-- Hero Section -->
-        <section class="hero-section">
-            <div class="hero-box">
-                <div class="hero-content">
-                    <h1>I'm Jimmy, an outcome-focused Design Leader with over 10 years experience building products and teams that people genuinely love.</h1>
-                </div>
-            </div>
-        </section>
-
-        <!-- What I Do Section -->
-        <section class="section" id="about">
+        <!-- Title Section -->
+        <section class="title-section">
             <div class="section-content">
-                <h3>What I do</h3>
-                <p class="body-text">Currently, I'm part of the Design Leadership Team at <a href="https://perk.com">Perk</a>, leading a brilliant team of designers who are reimagining the future of business travel. I also play a leading role in shaping strategic product initiatives.</p>
-                <p class="body-text">Previously, I led mobile design at <a href="https://airwallex.com">Airwallex</a>, taking their native app from 0-1. Before that, I led mobile and ecommerce design at <a href="https://AKQA.com">AKQA</a> in Melbourne, helping Australia's favourite retailer go from no online presence to $2million in daily sales in two years.</p>
-                <p class="body-text">Recently, I left my dead phone in a taxi in Thailand, and realised how f**ked that scenario is. So, I created <a href="https://foundit-tags.com">Foundit</a> to help others in the same situation.</p>
-                <p class="body-text"><a href="#contact">Get in touch <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: inline-block; vertical-align: middle; margin-left: 4px;"><path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
+                <!-- Back Link -->
+                <a href="index.html#work" class="back-link">
+                    <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Back to work
+                </a>
+
+                <h1>Managing conflicting stakeholder visions</h1>
+                <p class="subtitle">TravelPerk / Delta Airlines</p>
             </div>
         </section>
 
-        <!-- Keyline -->
-        <div class="keyline keyline-below-about"></div>
-
-        <!-- My Work Section -->
-        <section class="section" id="work">
-            <!-- Keyline -->
-            <div class="keyline keyline-above-work"></div>
-            
-            <div class="section-content">
-                <h3>My work</h3>
-            </div>
-            
-            <!-- Work Cards Gallery -->
-            <div class="work-cards-container">
-                <div class="fade-left" id="fade-left"></div>
-                <div class="fade-right" id="fade-right"></div>
-                <button class="scroll-arrow scroll-arrow-left" id="arrow-left"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 3L5 8L10 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-                <button class="scroll-arrow scroll-arrow-right" id="arrow-right"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-                <div class="work-cards-scroll" id="work-cards-scroll">
-                    <div class="work-card">
-                        <div class="work-card-company">Perk</div>
-                        <div class="work-card-role">Design Lead</div>
-                        <div class="work-card-dates">2022 &ndash; present</div>
-                    </div>
-                    <div class="work-card">
-                        <div class="work-card-company">Foundit</div>
-                        <div class="work-card-role">Founder</div>
-                        <div class="work-card-dates">2025 &ndash; present</div>
-                    </div>
-                    <div class="work-card">
-                        <div class="work-card-company">Airwallex</div>
-                        <div class="work-card-role">Design Lead</div>
-                        <div class="work-card-dates">2021 &ndash; 2022</div>
-                    </div>
-                    <div class="work-card">
-                        <div class="work-card-company">AKQA</div>
-                        <div class="work-card-role">Senior Designer</div>
-                        <div class="work-card-dates">2018 &ndash; 2021</div>
-                    </div>
-                    <div class="work-card">
-                        <div class="work-card-company">National Australia Bank</div>
-                        <div class="work-card-role">Senior Designer</div>
-                        <div class="work-card-dates">2018 (contract)</div>
-                    </div>
-                    <div class="work-card">
-                        <div class="work-card-company">Papercloud</div>
-                        <div class="work-card-role">Product Designer</div>
-                        <div class="work-card-dates">2017 &ndash; 2018</div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="work-grid">
-                <a href="/travelperk" class="work-item">
-                    <div class="work-image">
-                        <img src="/assets/travelperk-hero.jpeg" alt="TravelPerk and Delta Airlines case study" loading="lazy">
-                    </div>
-                    <div class="work-info">
-                        <div class="work-title">
-                            <h4>Managing conflicting stakeholder visions</h4>
-                            <div class="work-company">TravelPerk / Delta Airlines</div>
-                        </div>
-                        <span class="arrow"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-                    </div>
-                </a>
-
-                <a href="/bunnings" class="work-item">
-                    <div class="work-image">
-                    </div>
-                    <div class="work-info">
-                        <div class="work-title">
-                            <h4>Turning a customer problem into $50million annual revenue</h4>
-                            <div class="work-company">Bunnings Warehouse / AKQA</div>
-                        </div>
-                        <span class="arrow"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-                    </div>
-                </a>
-
-                <a href="#" class="work-item">
-                    <div class="work-image">
-                    </div>
-                    <div class="work-info">
-                        <div class="work-title">
-                            <h4>Creating a 0-1 mobile app launch strategy</h4>
-                            <div class="work-company">Airwallex</div>
-                        </div>
-                        <span class="arrow"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-                    </div>
-                </a>
-            </div>
-        </section>
-
-        <!-- Writing Section -->
-        <section class="section">
-            <!-- Keyline -->
-            <div class="keyline keyline-above-work"></div>
-            
-            <div class="section-content">
-                <h3>Writing</h3>
-                <a href="https://builders.travelperk.com/human-led-design-in-the-age-of-ai-34704893e391" class="writing-item">
-                    <div class="writing-info">
-                        <h4>Human-led Design in the Age of AI</h4>
-                        <div class="writing-source">Substack / 2025</div>
-                    </div>
-                    <span class="arrow"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-                </a>
-            </div>
-        </section>
+        <!-- Hero Image -->
+        <div class="hero-image">
+            <img src="/assets/travelperk-hero.jpeg" alt="TravelPerk and Delta Airlines case study preview" loading="eager" decoding="async">
+        </div>
     </div>
+
+    <!-- Overview Section -->
+    <section class="case-study-section bg-white">
+        <div class="container">
+            <div class="section-content">
+                <h1>Overview</h1>
+                <p class="body-text">I led a critical redesign project that rescued a crucial partnership, improved our user experience, and created a unified design language across our booking platform. In the process, I also uncovered a significant revenue opportunity that substantially increased our flight booking revenue.</p>
+
+                <!-- Stats Grid -->
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <h2 class="stat-label">Critical</h2>
+                        <div class="stat-value">Partnership preserved</div>
+                    </div>
+                    <div class="stat-item">
+                        <h2 class="stat-label">18%</h2>
+                        <div class="stat-value">CES increase</div>
+                    </div>
+                    <div class="stat-item">
+                        <h2 class="stat-label">1.6x</h2>
+                        <div class="stat-value">Key product attachment</div>
+                    </div>
+                </div>
+
+                <!-- Keyline separator -->
+                <div style="height: 0.5px; background-color: rgba(0, 0, 0, 0.08); margin-top: 80px; margin-bottom: 80px;"></div>
+
+                <div class="info-section">
+                    <h3>Problem</h3>
+                    <p class="body-text">Delta Airlines' B2C-focused design requirements conflicted with TravelPerk's B2B user needs. The project also faced technical constraints, misaligned stakeholder expectations, and a rigid deadline.</p>
+                </div>
+
+                <div class="info-section">
+                    <h3>My role</h3>
+                    <p class="body-text">As Product Design Lead and de facto project manager, I was responsible for establishing clear processes, aligning stakeholders, and balancing Delta's requirements with user needs.</p>
+                </div>
+
+                <div class="info-section">
+                    <h3>Approach</h3>
+                    <p class="body-text">I led all design work from concept to implementation, created a scope document with clear success criteria, conducted a heuristic review to identify improvement opportunities, and discovered an opportunity to expand revenue by extending flexible fare offerings.</p>
+                </div>
+
+                <div class="info-section">
+                    <h3>Outcome</h3>
+                    <p class="body-text">We secured the Delta partnership while improving key metrics, fixed legacy UX issues, established a unified design system, and increased revenue through expanded cancellation coverage availability.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Challenge Section -->
+    <section class="case-study-section bg-gray" id="challenge">
+        <div class="container">
+            <div class="section-content">
+                <h1>The challenge</h1>
+                
+                <h3>A B2B business</h3>
+                <p class="body-text">TravelPerk is a B2B tool that makes it easy for people to book and manage company travel. Flights are the most-commonly-booked type of travel.</p>
+            </div>
+            
+            <!-- Images -->
+            <div class="content-image"><img src="/assets/TK_b2b_world.webp" alt="The old TravelPerk search UI" loading="lazy"></div>
+            
+            <div class="section-content">
+                <h3>B2C requirements</h3>
+                <p class="body-text">Delta Airlines was enforcing new guidelines for how vendors should display their products. The guidelines were created for leisure travel, as a way to promote and upsell more profitable flight fares.</p>
+            </div>
+
+            <div class="content-image"><img src="/assets/TK_b2c_requirement.webp" alt="Delta's new visual design guidelines" loading="lazy"></div>
+
+            <div class="section-content">
+                <h3>The root of the conflict</h3>
+                <p class="body-text">
+                     <p class="body-text">Employers actively instruct employees using TravelPerk to avoid upselling attempts, in order to maintain strict policy budgets</p>
+                     <p class="body-text">This creates a fundamental misalignment between Delta's goals and TravelPerk users' goals</p>
+                     <p class="body-text">Not adhering to the guidelines meant risking losing Delta's inventory, which would have been detrimental to TravelPerk's US market presence</p>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Approach Section -->
+    <section class="case-study-section bg-white" id="approach">
+        <div class="container">
+            <div class="section-content">
+                <h1>Approach</h1>
+                
+            </div>
+            
+            <div class="section-content">
+                <h3>Creating clear guidelines</h3>
+            </div>
+
+            <!-- Guidelines Cards Gallery -->
+            <div class="guidelines-cards-container">
+                <div class="fade-left-guidelines" id="fade-left-guidelines"></div>
+                <div class="fade-right-guidelines" id="fade-right-guidelines"></div>
+                <button class="scroll-arrow scroll-arrow-left-guidelines" id="arrow-left-guidelines"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 3L5 8L10 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                <button class="scroll-arrow scroll-arrow-right-guidelines" id="arrow-right-guidelines"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                <div class="guidelines-cards-scroll" id="guidelines-cards-scroll">
+                    <div class="guidelines-card">
+                        <h4 class="guidelines-card-title">Defining success</h4>
+                        <ul class="guidelines-card-list">
+                            <li>I led the creation of a comprehensive definition of done document that was agreed on by both TravelPerk and Delta stakeholders</li>
+                            <li>This became our guiding reference, helping us maintain focus, prevent scope creep, and ground contentious conversations</li>
+                        </ul>
+                    </div>
+                    <div class="guidelines-card">
+                        <h4 class="guidelines-card-title">Encouraging feedback</h4>
+                        <ul class="guidelines-card-list">
+                            <li>Fortnightly critiques with designers from other product verticals to maintain alignment</li>
+                            <li>Weekly reviews with engineering to prevent surprises</li>
+                            <li>Regular usability testing for frequent design evaluation</li>
+                        </ul>
+                    </div>
+                    <div class="guidelines-card">
+                        <h4 class="guidelines-card-title">Balancing communication</h4>
+                        <ul class="guidelines-card-list">
+                            <li>Avoiding technical language where possible when working with Delta stakeholders</li>
+                            <li>Moving contentious feedback offline to evaluate against our agreed scope, avoiding unproductive debates while preserving collaboration</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-content">
+                <div class="approach-list">
+
+                    <div class="approach-item">
+                        <h3>Leaning on behavioural research</h3>
+                        <p class="body-text">
+                             <p class="body-text">I surveyed 1,000 customers about their flight booking behaviour</p>
+                             <p class="body-text">The research conclusively showed flight time as customers' top priority when booking flights</p>
+                             <p class="body-text">Delta's guidelines proposed hiding return flight time options until the user selected an outbound flight</p>
+                             <p class="body-text">TravelPerk users can only book in-policy journeys, so visibility of outbound and return combinations that are in-policy is critical</p>
+                        </p>
+                    </div>
+
+                    <div class="approach-item">
+                        <h3>Capitalising on a redesign opportunity</h3>
+                        <p class="body-text">The redesign provided a great opportunity to address legacy usability issues. Through a heuristic evaluation with designers from all booking verticals, we identified several improvement opportunities.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Approach Images -->
+            <div class="content-image"><img src="/assets/TK_heuristic_review.webp" alt="Delta's new visual design guidelines" loading="lazy"></div>
+
+            <div class="section-content">
+                <div class="approach-list">
+                    <div class="approach-item">
+                        <h3>Evaluating at each turn</h3>
+                        <p class="body-text">We usability tested all changes and implemented a phased rollout to monitor metrics. Observing real user sessions throughout the rollout also revealed great actionable insights. We also implemented a CES widget to quantify and monitor usability.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-image"><img src="/assets/TK_fullstory.webp" alt="Delta's new visual design guidelines" loading="lazy"></div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="case-study-section bg-dark" id="solution">
+        <div class="container">
+
+            <div class="section-content">
+                <h1>The solution</h1>
+            </div>
+
+            <video 
+              class="case-study-video" 
+              id="travelperk-video" 
+              muted 
+              loop 
+              playsinline 
+              preload="metadata"
+              poster="/assets/travelperk-hero.jpeg"
+            >
+              <source src="/assets/TK_new_design.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+
+            <div class="section-content">
+                <h3>Focusing on the details</h3>
+                <p class="body-text">Our heuristic evaluation revealed many overlooked areas for improvement. Redesigning the entire flow gave us the ability to apply a more-considered approach to every visual element.</p>
+            </div>
+
+            <!-- Gallery -->
+            <div class="consistency-gallery-container">
+                <div class="fade-left-consistency" id="fade-left-consistency-1"></div>
+                <div class="fade-right-consistency" id="fade-right-consistency-1"></div>
+                <div class="consistency-gallery-scroll" id="consistency-gallery-scroll-1">
+                    <div class="content-image"><img src="/assets/TK_flight_card.webp" alt="The new flight results card" loading="eager" decoding="async"></div>
+                    <div class="content-image"><img src="/assets/TK_filter_panel.webp" alt="The new flight filter panel" loading="eager" decoding="async"></div>
+                    <div class="content-image"><img src="/assets/TK_flight_card.webp" alt="The new flight results card" loading="eager" decoding="async"></div>
+                </div>
+                <div class="consistency-gallery-arrows">
+                    <button class="scroll-arrow scroll-arrow-left-guidelines" id="arrow-left-consistency-1">
+                        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 3L5 8L10 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <button class="scroll-arrow scroll-arrow-right-guidelines" id="arrow-right-consistency-1">
+                        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+            <div class="section-content">
+                <h3>Strategic wins</h3>
+                <p class="body-text">Despite Delta's rigid guidelines, I negotiated some key adjustments: keeping the outbound and return flight overview, and reducing fare categories from 6 to 4. These adaptations prioritise customer needs and reduce upselling intensity, while meeting Delta's core requirements.</p>
+            </div>
+
+            <!-- Before/After Slider Component -->
+            <div class="before-after-container" id="beforeAfterSlider">
+                <!-- Before Image (left side, clipped) -->
+                <div class="before-image-wrapper" id="beforeWrapper">
+                    <img src="/mnt/user-data/uploads/1769699096497_image.png" alt="Before" class="before-image">
+                </div>
+                
+                <!-- After Image (right side, full) -->
+                <div class="after-image-wrapper">
+                    <img src="/mnt/user-data/uploads/1769699096497_image.png" alt="After" class="after-image">
+                </div>
+                
+                <!-- Slider Handle -->
+                <div class="slider-handle" id="sliderHandle">
+                    <div class="slider-button">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 5L14 12L9 19M15 5L20 12L15 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M15 5L10 12L15 19M9 5L4 12L9 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                </div>
+                
+                <!-- Labels -->
+                <div class="ba-label ba-label-before">Before</div>
+                <div class="ba-label ba-label-after">After</div>
+            </div>
+
+            <div class="section-content">
+                <h3>Searching and filtering</h3>
+                <p class="body-text">In the old design, search parameters were hidden behind a click-to-reveal interaction, despite how frequently users would adjust terms when exploring flight options.</p>
+            </div>
+
+            <div class="content-image"><img src="/assets/TK_edit_old.jpg" alt="Delta's new visual design guidelines" loading="lazy"></div>
+
+            <div class="section-content">
+                <p class="body-text">In the new design, search parameters are front-and-centre. They move out of view when a user scrolls down the page, but re-appear wherever they scroll up, making it easy to adjust them at any time. We also added a date nudge button to make it easier to explore flights on different days.</p>
+            </div>
+
+            <div class="content-image"></div>
+
+            <div class="section-content">
+                <p class="body-text">Updating the filtering experience from a side panel to a horizontal progressive disclosure pattern accommodated Delta's requirement for more horizontal space, while fixing IA and visual hierarchy issues that had plagued the previous design.</p>
+            </div>
+
+            <video 
+              class="case-study-video" 
+              id="travelperk-video-2" 
+              muted 
+              loop 
+              playsinline 
+              preload="metadata"
+              poster="/assets/TK_filtervideo_frame.jpg"
+            >
+              <source src="/assets/TK_filtervideo.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+
+            <div class="section-content">
+                <h3>A localised experience</h3>
+                <p class="body-text">After discovering that the new design resulted in a many empty results for European searches, we created separate region-specific designs: North American results follow Delta's guidelines, while other markets see a simpler design to accommodate fewer product variations.</p>
+            </div>
+
+            <!-- Before/After Slider Component -->
+            <div class="before-after-container" id="beforeAfterSlider">
+                <!-- Before Image (left side, clipped) -->
+                <div class="before-image-wrapper" id="beforeWrapper">
+                    <img src="/mnt/user-data/uploads/1769699096497_image.png" alt="Before" class="before-image">
+                </div>
+                
+                <!-- After Image (right side, full) -->
+                <div class="after-image-wrapper">
+                    <img src="/mnt/user-data/uploads/1769699096497_image.png" alt="After" class="after-image">
+                </div>
+                
+                <!-- Slider Handle -->
+                <div class="slider-handle" id="sliderHandle">
+                    <div class="slider-button">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 5L14 12L9 19M15 5L20 12L15 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M15 5L10 12L15 19M9 5L4 12L9 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                </div>
+                
+                <!-- Labels -->
+                <div class="ba-label ba-label-before">Before</div>
+                <div class="ba-label ba-label-after">After</div>
+            </div>
+
+            <div class="section-content">
+                <h3>Fixing consistency across verticals</h3>
+                <p class="body-text">We prioritised standardising the booking experience across all verticals as a core redesign goal. Each pattern was designed for cross-vertical compatibility and evaluated by all teams throughout the process.</p>
+            </div>
+
+            <!-- Consistency Gallery -->
+            <div class="consistency-gallery-container">
+                <div class="fade-left-consistency" id="fade-left-consistency-2"></div>
+                <div class="fade-right-consistency" id="fade-right-consistency-2"></div>
+                <div class="consistency-gallery-scroll" id="consistency-gallery-scroll-2">
+                    <div class="content-image"><img src="/assets/TK_consistencyflights.jpg"></div>
+                    <div class="content-image"><img src="/assets/TK_consistencycars.jpg"></div>
+                    <div class="content-image"><img src="/assets/TK_consistencytrains.jpg"></div>
+                </div>
+                <div class="consistency-gallery-arrows">
+                    <button class="scroll-arrow scroll-arrow-left-guidelines" id="arrow-left-consistency-2">
+                        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 3L5 8L10 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <button class="scroll-arrow scroll-arrow-right-guidelines" id="arrow-right-consistency-2">
+                        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bonus Section -->
+    <section class="case-study-section bg-white">
+        <div class="container">
+            <div class="section-content">
+                <h1>Bonus</h1>
+                <h3>A hidden revenue opportunity</h3>
+                <p class="body-text">In the previous design, all users would see the FlexiFare option as part of the booking flow. In the new single-screen flow, only users that selected the "Basic" category would see a FlexiFare, risking a reduction in visibility.</p>
+            </div>
+
+            <div class="content-image"><img src="/assets/TK_oldfares.jpg" alt="The old TravelPerk fares UI" loading="lazy"></div>
+
+            <div class="section-content">
+                <h3>Increasing visibility</h3>
+                <p class="body-text">I proposed expanding FlexiFare to the Basic and Standard categories, which would boost visibility and increase revenue potential due to the percentage-based pricing.</p>
+            </div>
+
+            <div class="content-image"><img src="/assets/TK_newfares1.jpg" alt="The new TravelPerk fares UI" loading="lazy"></div>
+            
+        </div>
+    </section>
+
+    <!-- Outcome Section -->
+    <section class="case-study-section bg-gray" id="outcome">
+        <div class="container">
+            <div class="section-content">
+                <h1>Outcome</h1>
+                
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <h2 class="stat-label">Critical</h2>
+                        <div class="stat-value">Partnership preserved</div>
+                    </div>
+                    <div class="stat-item">
+                        <h2 class="stat-label">18%</h2>
+                        <div class="stat-value">CES increase</div>
+                    </div>
+                    <div class="stat-item">
+                        <h2 class="stat-label">1.6x</h2>
+                        <div class="stat-value">FlexiFare attachment</div>
+                    </div>
+                </div>
+
+                <p class="body-text" style="margin-bottom: 40px;">The project succeeded on multiple fronts, delivering both business and user experience improvements. The new 'standard' Flexifare variant increased attachment, representing a huge revenue increase. Most importantly, we reaffirmed our partnership with Delta while improving the user experience across all TravelPerk's booking verticals.</p>
+
+                <!-- Keyline separator -->
+                <div style="height: 0.5px; background-color: rgba(0, 0, 0, 0.08); margin-bottom: 40px; max-width: 640px;"></div>
+
+                <h3 style="margin-top: 0; margin-bottom: 40px;">Learnings</h3>
+
+                <div class="info-section">
+                    <h4 style="margin-bottom: 16px;">Establish shared goals early</h4>
+                    <p class="body-text" style="margin-bottom: 0;">The definition of done document became our most-valuable tool for alignment and decision-making. By securing upfront agreement on scope and success criteria, we could resolve conflicts efficiently and maintain momentum.</p>
+                </div>
+
+                <div class="info-section">
+                    <h4 style="margin-bottom: 16px;">Observation beyond release</h4>
+                    <p class="body-text" style="margin-bottom: 0;">Post-launch user behaviour observation revealed improvement opportunities invisible in pre-release testing. Real-world interactions provided insights that testing and quantitative data alone couldn't capture.</p>
+                </div>
+
+                <div class="info-section" style="margin-bottom: 0;">
+                    <h4 style="margin-bottom: 16px;">Find opportunity in constraints</h4>
+                    <p class="body-text" style="margin-bottom: 0;">What began as a challenging and disruptive project ultimately became a platform for fixing cross-vertical design issues and opening new revenue streams. The constraints forced creative thinking, proving that unexpected challenges can often lead to innovative change.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Contact Section -->
     <section class="contact-section" id="contact">
@@ -200,123 +514,102 @@
         updateBarcelonaTime();
         setInterval(updateBarcelonaTime, 60000);
 
-        // Intersection Observer for active nav states
-        const sections = document.querySelectorAll('section[id]');
-        const navLinks = document.querySelectorAll('nav a[data-section]');
-        const stickyNavLinks = document.querySelectorAll('.sticky-nav-link[data-section]');
+        // Hamburger menu functionality
+        const hamburger = document.getElementById('hamburger');
+        const hamburgerSticky = document.getElementById('hamburger-sticky');
+        const mobileNavOverlay = document.getElementById('mobile-nav-overlay');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
 
-        // Custom scroll handler for better control
-        function updateActiveNavState() {
-            const scrollPosition = window.scrollY;
-            const stickyHeaderHeight = 100; // Approximate sticky header height
-            
-            const aboutSection = document.getElementById('about');
-            const workSection = document.getElementById('work');
-            const contactSection = document.getElementById('contact');
-            
-            // Get positions
-            const aboutTop = aboutSection.offsetTop - 40;
-            const workTop = workSection.offsetTop;
-            const contactTop = contactSection.offsetTop;
-            const windowHeight = window.innerHeight;
-            
-            // Remove all active classes
-            navLinks.forEach(link => link.classList.remove('active'));
-            stickyNavLinks.forEach(link => link.classList.remove('active'));
-            
-            // Determine which section should be active
-            // Contact activates when its heading is visible in viewport
-            if (scrollPosition + windowHeight > contactTop && scrollPosition < contactTop + contactSection.offsetHeight) {
-                document.querySelector('nav a[data-section="contact"]')?.classList.add('active');
-                document.querySelector('.sticky-nav-link[data-section="contact"]')?.classList.add('active');
-            } else if (scrollPosition + stickyHeaderHeight >= workTop && scrollPosition + stickyHeaderHeight < contactTop) {
-                // Work section has scrolled past sticky nav
-                document.querySelector('nav a[data-section="work"]')?.classList.add('active');
-                document.querySelector('.sticky-nav-link[data-section="work"]')?.classList.add('active');
-            } else if (scrollPosition + stickyHeaderHeight >= aboutTop) {
-                // About section is active
-                document.querySelector('nav a[data-section="about"]')?.classList.add('active');
-                document.querySelector('.sticky-nav-link[data-section="about"]')?.classList.add('active');
-            }
+        function toggleMobileNav() {
+            hamburger.classList.toggle('active');
+            hamburgerSticky.classList.toggle('active');
+            mobileNavOverlay.classList.toggle('active');
+            document.body.style.overflow = mobileNavOverlay.classList.contains('active') ? 'hidden' : '';
         }
 
-        window.addEventListener('scroll', updateActiveNavState);
-        window.addEventListener('resize', updateActiveNavState);
-        updateActiveNavState(); // Initial call
+        function closeMobileNav() {
+            hamburger.classList.remove('active');
+            hamburgerSticky.classList.remove('active');
+            mobileNavOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
 
-        // Sticky header visibility based on hero section
-        const heroSection = document.querySelector('.hero-section');
-        const stickyHeader = document.getElementById('header-sticky');
+        hamburger.addEventListener('click', toggleMobileNav);
+        hamburgerSticky.addEventListener('click', toggleMobileNav);
 
-        const heroObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    // Hero is visible, hide sticky header
-                    stickyHeader.classList.remove('visible');
-                } else {
-                    // Hero is out of view, show sticky header
-                    stickyHeader.classList.add('visible');
-                }
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                closeMobileNav();
             });
-        }, {
-            root: null,
-            threshold: 0.1
         });
 
-        heroObserver.observe(heroSection);
+        // Sticky header on scroll
+        const stickyHeader = document.getElementById('header-sticky');
+        const darkSection = document.getElementById('solution');
+        const progressBar = document.getElementById('progress-bar');
+        let lastScroll = 0;
 
-        // Work cards scroll functionality
-        const workCardsScroll = document.getElementById('work-cards-scroll');
-        const arrowLeft = document.getElementById('arrow-left');
-        const arrowRight = document.getElementById('arrow-right');
-        const fadeLeft = document.getElementById('fade-left');
-        const fadeRight = document.getElementById('fade-right');
-
-        function updateScrollState() {
-            const scrollLeft = workCardsScroll.scrollLeft;
-            const maxScroll = workCardsScroll.scrollWidth - workCardsScroll.clientWidth;
-
-            // Show/hide left arrow and fade
-            if (scrollLeft > 10) {
-                arrowLeft.classList.add('visible');
-                fadeLeft.classList.add('visible');
-            } else {
-                arrowLeft.classList.remove('visible');
-                fadeLeft.classList.remove('visible');
-            }
-
-            // Show/hide right arrow and fade
-            if (scrollLeft >= maxScroll - 10) {
-                arrowRight.classList.add('hidden');
-                fadeRight.classList.add('hidden');
-            } else {
-                arrowRight.classList.remove('hidden');
-                fadeRight.classList.remove('hidden');
-            }
+        function updateProgressBar() {
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight;
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            // Calculate scroll percentage
+            const scrollableHeight = documentHeight - windowHeight;
+            const scrollPercentage = (scrollTop / scrollableHeight) * 100;
+            
+            // Update progress bar width
+            progressBar.style.width = `${Math.min(scrollPercentage, 100)}%`;
         }
 
-        workCardsScroll.addEventListener('scroll', updateScrollState);
-
-        arrowLeft.addEventListener('click', () => {
-            const cardWidth = 280 + 16; // card width + gap
-            workCardsScroll.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 200) {
+                stickyHeader.classList.add('visible');
+            } else {
+                stickyHeader.classList.remove('visible');
+            }
+            
+            // Check if sticky header overlaps with dark section
+            if (darkSection) {
+                const headerRect = stickyHeader.getBoundingClientRect();
+                const sectionRect = darkSection.getBoundingClientRect();
+                
+                // If the sticky header overlaps with the dark section
+                if (headerRect.bottom > sectionRect.top && headerRect.top < sectionRect.bottom) {
+                    stickyHeader.classList.add('dark');
+                } else {
+                    stickyHeader.classList.remove('dark');
+                }
+            }
+            
+            // Update progress bar
+            updateProgressBar();
+            
+            lastScroll = currentScroll;
         });
 
-        arrowRight.addEventListener('click', () => {
-            const cardWidth = 280 + 16; // card width + gap
-            workCardsScroll.scrollBy({ left: cardWidth, behavior: 'smooth' });
-        });
+        // Initial progress bar update
+        updateProgressBar();
 
-        // Initial state
-        updateScrollState();
-
-        // Custom Cursor
+        // Custom Cursor - Update based on dark section
         const cursor = document.getElementById('custom-cursor');
         
         // Update cursor position
         document.addEventListener('mousemove', (e) => {
             cursor.style.left = e.clientX + 'px';
             cursor.style.top = e.clientY + 'px';
+            
+            // Check if cursor is over dark section
+            if (darkSection) {
+                const rect = darkSection.getBoundingClientRect();
+                if (e.clientY >= rect.top && e.clientY <= rect.bottom) {
+                    cursor.classList.add('dark-section');
+                } else {
+                    cursor.classList.remove('dark-section');
+                }
+            }
         });
 
         // Add hover effect for interactive elements (excluding email-copy which has special behavior)
@@ -403,6 +696,251 @@
                 }, 2000);
             });
         }
+
+        // Guidelines cards scroll functionality
+        const guidelinesCardsScroll = document.getElementById('guidelines-cards-scroll');
+        const arrowLeftGuidelines = document.getElementById('arrow-left-guidelines');
+        const arrowRightGuidelines = document.getElementById('arrow-right-guidelines');
+        const fadeLeftGuidelines = document.getElementById('fade-left-guidelines');
+        const fadeRightGuidelines = document.getElementById('fade-right-guidelines');
+
+        if (guidelinesCardsScroll && arrowLeftGuidelines && arrowRightGuidelines) {
+            function updateGuidelinesScrollState() {
+                const scrollLeft = guidelinesCardsScroll.scrollLeft;
+                const maxScroll = guidelinesCardsScroll.scrollWidth - guidelinesCardsScroll.clientWidth;
+
+                // Show/hide left arrow and fade
+                if (scrollLeft > 10) {
+                    arrowLeftGuidelines.classList.add('visible');
+                    fadeLeftGuidelines.classList.add('visible');
+                } else {
+                    arrowLeftGuidelines.classList.remove('visible');
+                    fadeLeftGuidelines.classList.remove('visible');
+                }
+
+                // Show/hide right arrow and fade
+                if (scrollLeft >= maxScroll - 10) {
+                    arrowRightGuidelines.classList.add('hidden');
+                    fadeRightGuidelines.classList.add('hidden');
+                } else {
+                    arrowRightGuidelines.classList.remove('hidden');
+                    fadeRightGuidelines.classList.remove('hidden');
+                }
+            }
+
+            guidelinesCardsScroll.addEventListener('scroll', updateGuidelinesScrollState);
+
+            arrowLeftGuidelines.addEventListener('click', () => {
+                const cardWidth = 420 + 24; // card width + gap
+                guidelinesCardsScroll.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+            });
+
+            arrowRightGuidelines.addEventListener('click', () => {
+                const cardWidth = 420 + 24; // card width + gap
+                guidelinesCardsScroll.scrollBy({ left: cardWidth, behavior: 'smooth' });
+            });
+
+            // Initial state
+            updateGuidelinesScrollState();
+        }
+
+        // Consistency gallery scroll functionality - Scalable for multiple instances
+        function initConsistencyGallery(galleryId) {
+            const consistencyGalleryScroll = document.getElementById(`consistency-gallery-scroll-${galleryId}`);
+            const arrowLeftConsistency = document.getElementById(`arrow-left-consistency-${galleryId}`);
+            const arrowRightConsistency = document.getElementById(`arrow-right-consistency-${galleryId}`);
+            const fadeLeftConsistency = document.getElementById(`fade-left-consistency-${galleryId}`);
+            const fadeRightConsistency = document.getElementById(`fade-right-consistency-${galleryId}`);
+
+            if (consistencyGalleryScroll && arrowLeftConsistency && arrowRightConsistency) {
+                function updateConsistencyScrollState() {
+                    const scrollLeft = consistencyGalleryScroll.scrollLeft;
+                    const maxScroll = consistencyGalleryScroll.scrollWidth - consistencyGalleryScroll.clientWidth;
+
+                    // Show/hide left arrow and fade
+                    if (scrollLeft > 10) {
+                        arrowLeftConsistency.classList.add('visible');
+                        fadeLeftConsistency.classList.add('visible');
+                    } else {
+                        arrowLeftConsistency.classList.remove('visible');
+                        fadeLeftConsistency.classList.remove('visible');
+                    }
+
+                    // Show/hide right arrow and fade
+                    if (scrollLeft >= maxScroll - 10) {
+                        arrowRightConsistency.classList.add('hidden');
+                        fadeRightConsistency.classList.add('hidden');
+                    } else {
+                        arrowRightConsistency.classList.remove('hidden');
+                        fadeRightConsistency.classList.remove('hidden');
+                    }
+                }
+
+                consistencyGalleryScroll.addEventListener('scroll', updateConsistencyScrollState);
+
+                arrowLeftConsistency.addEventListener('click', () => {
+                    const scrollAmount = consistencyGalleryScroll.clientWidth;
+                    consistencyGalleryScroll.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+                });
+
+                arrowRightConsistency.addEventListener('click', () => {
+                    const scrollAmount = consistencyGalleryScroll.clientWidth;
+                    consistencyGalleryScroll.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                });
+
+                // Initial state
+                updateConsistencyScrollState();
+            }
+        }
+
+        // Initialize both consistency galleries
+        initConsistencyGallery(1);
+        initConsistencyGallery(2);
+
+        // Navigation active state tracking
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('nav a[data-section]');
+        const stickyNavLinks = document.querySelectorAll('.sticky-nav-link[data-section]');
+
+        function updateActiveNavState() {
+            const scrollPosition = window.scrollY;
+            const stickyHeaderHeight = 120; // Sticky header offset
+            
+            const challengeSection = document.getElementById('challenge');
+            const approachSection = document.getElementById('approach');
+            const solutionSection = document.getElementById('solution');
+            const outcomeSection = document.getElementById('outcome');
+            
+            if (!challengeSection || !approachSection || !solutionSection || !outcomeSection) return;
+            
+            // Get positions
+            const challengeTop = challengeSection.offsetTop - stickyHeaderHeight;
+            const approachTop = approachSection.offsetTop - stickyHeaderHeight;
+            const solutionTop = solutionSection.offsetTop - stickyHeaderHeight;
+            const outcomeTop = outcomeSection.offsetTop - stickyHeaderHeight;
+            const outcomeBottom = outcomeTop + outcomeSection.offsetHeight;
+            
+            // Remove all active classes
+            navLinks.forEach(link => link.classList.remove('active'));
+            stickyNavLinks.forEach(link => link.classList.remove('active'));
+            
+            // Determine which section should be active
+            if (scrollPosition >= outcomeTop) {
+                document.querySelector('nav a[data-section="outcome"]')?.classList.add('active');
+                document.querySelector('.sticky-nav-link[data-section="outcome"]')?.classList.add('active');
+            } else if (scrollPosition >= solutionTop) {
+                document.querySelector('nav a[data-section="solution"]')?.classList.add('active');
+                document.querySelector('.sticky-nav-link[data-section="solution"]')?.classList.add('active');
+            } else if (scrollPosition >= approachTop) {
+                document.querySelector('nav a[data-section="approach"]')?.classList.add('active');
+                document.querySelector('.sticky-nav-link[data-section="approach"]')?.classList.add('active');
+            } else if (scrollPosition >= challengeTop) {
+                document.querySelector('nav a[data-section="challenge"]')?.classList.add('active');
+                document.querySelector('.sticky-nav-link[data-section="challenge"]')?.classList.add('active');
+            }
+        }
+
+        window.addEventListener('scroll', updateActiveNavState);
+        window.addEventListener('resize', updateActiveNavState);
+        updateActiveNavState(); // Initial call
+
+        // Before/After Slider Functionality
+        const slider = document.getElementById('beforeAfterSlider');
+        const beforeWrapper = document.getElementById('beforeWrapper');
+        const sliderHandle = document.getElementById('sliderHandle');
+        
+        if (slider && beforeWrapper && sliderHandle) {
+            let isDragging = false;
+            let currentPosition = 50; // Start at 50%
+
+            function updateSlider(clientX) {
+                const rect = slider.getBoundingClientRect();
+                const x = clientX - rect.left;
+                const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100));
+                
+                currentPosition = percentage;
+                
+                // Update clip-path on before image
+                beforeWrapper.style.clipPath = `inset(0 ${100 - percentage}% 0 0)`;
+                
+                // Update handle position
+                sliderHandle.style.left = `${percentage}%`;
+            }
+
+            // Mouse events
+            slider.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                slider.classList.add('dragging');
+                updateSlider(e.clientX);
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                updateSlider(e.clientX);
+            });
+
+            document.addEventListener('mouseup', () => {
+                if (isDragging) {
+                    isDragging = false;
+                    slider.classList.remove('dragging');
+                }
+            });
+
+            // Touch events for mobile
+            slider.addEventListener('touchstart', (e) => {
+                isDragging = true;
+                slider.classList.add('dragging');
+                updateSlider(e.touches[0].clientX);
+                e.preventDefault();
+            });
+
+            document.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+                updateSlider(e.touches[0].clientX);
+                e.preventDefault();
+            }, { passive: false });
+
+            document.addEventListener('touchend', () => {
+                if (isDragging) {
+                    isDragging = false;
+                    slider.classList.remove('dragging');
+                }
+            });
+
+            // Click to move slider
+            slider.addEventListener('click', (e) => {
+                if (e.target.closest('.slider-button')) return;
+                updateSlider(e.clientX);
+            });
+
+            // Initialize slider position
+            updateSlider(slider.getBoundingClientRect().left + (slider.getBoundingClientRect().width / 2));
+        }
+
+        // Video autoplay on scroll into view - handles all case study videos
+        const caseStudyVideos = document.querySelectorAll('.case-study-video');
+        
+        caseStudyVideos.forEach(video => {
+            // Force load the video
+            video.load();
+            
+            const videoObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.play().catch(err => {
+                            console.log('Video autoplay failed:', err);
+                        });
+                    } else {
+                        entry.target.pause();
+                    }
+                });
+            }, { 
+                threshold: 0.3  // Play when 30% visible
+            });
+        
+            videoObserver.observe(video);
+        });
+        
     </script>
 </body>
 </html>
