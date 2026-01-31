@@ -147,7 +147,7 @@ nav a:hover {
 /* Work Cards Gallery */
 .work-cards-container {
     position: relative;
-    margin-top: 24;
+    margin-top: 24px;
     margin-bottom: 40px;
     max-width: 640px;
     margin-left: auto;
