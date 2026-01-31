@@ -315,14 +315,9 @@
         
         // Update cursor position
         document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-            
-            // Show cursor on first move if it's hidden
-            if (cursor.style.opacity === '0' || cursor.style.opacity === '') {
-                cursor.style.opacity = '1';
-            }
-        });
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+        }
 
         // Add hover effect for interactive elements (excluding email-copy which has special behavior)
         const interactiveElements = document.querySelectorAll('a, button');
