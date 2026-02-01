@@ -5,11 +5,6 @@
 /* Note: Base case study styles are in case-study.css */
 /* Note: TravelPerk's sticky header with progress bar is now the standard in case-study.css */
 
-/* Hide static header on TravelPerk (it has display: none in original) */
-.header-container {
-    display: none;
-}
-
 /* Guidelines Cards Gallery (TravelPerk only) */
 .guidelines-cards-container {
     position: relative;
