@@ -9,9 +9,6 @@
     left: 0;
     right: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     background-color: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
@@ -21,12 +18,27 @@
     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
 
+.header-sticky-wrapper {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 32px 40px;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.header-sticky .back-link-sticky {
+    margin-bottom: 0;
+}
+
 .header-sticky .header-container {
-    padding: 32px 0;
+    padding: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    max-width: 640px;
+    margin: 0 auto;
 }
 
 .header-sticky.visible {
@@ -36,6 +48,18 @@
 
 .header-sticky.dark {
     background-color: rgba(34, 34, 34, 0.85);
+}
+
+.header-sticky.dark .back-link-sticky {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.header-sticky.dark .back-link-sticky:hover {
+    color: #ffffff;
+}
+
+.header-sticky.dark .back-link-sticky svg {
+    color: rgba(255, 255, 255, 0.6);
 }
 
 .header-sticky.dark .time {
@@ -515,22 +539,36 @@ nav a:hover {
 
 /* Responsive - Case Studies */
 @media (max-width: 768px) {
-    /* Show hamburger, hide desktop nav */
-    .hamburger {
+    /* Mobile sticky header - simplified layout */
+    .header-sticky-wrapper {
+        padding: 24px;
+        justify-content: space-between;
+    }
+
+    .header-sticky .back-link-sticky {
         display: flex;
     }
 
+    .header-sticky .header-container {
+        max-width: none;
+        width: auto;
+        margin: 0;
+        justify-content: flex-end;
+    }
+
+    /* Hide hamburger and nav on mobile */
+    .hamburger,
+    .header-sticky .hamburger {
+        display: none !important;
+    }
+
     .mobile-nav-overlay {
-        display: block;
+        display: none !important;
     }
 
     header nav,
     .header-sticky nav {
-        display: none;
-    }
-
-    .header-sticky .hamburger {
-        display: flex;
+        display: none !important;
     }
 
     /* Keep time visible on mobile */
