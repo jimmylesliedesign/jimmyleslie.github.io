@@ -20,16 +20,6 @@
         <span class="cursor-text">Click to copy</span>
     </div>
 
-    <!-- Mobile Nav Overlay -->
-    <div class="mobile-nav-overlay" id="mobile-nav-overlay">
-        <nav>
-            <a href="#problem" data-section="problem" class="mobile-nav-link">Problem</a>
-            <a href="#approach" data-section="approach" class="mobile-nav-link">Approach</a>
-            <a href="#solution" data-section="solution" class="mobile-nav-link">Solution</a>
-            <a href="#outcome" data-section="outcome" class="mobile-nav-link">Outcome</a>
-        </nav>
-    </div>
-
     <!-- Sticky Header Clone -->
     <div class="header-sticky" id="header-sticky">
         <div class="header-sticky-wrapper">
@@ -40,11 +30,6 @@
                 Back
             </a>
             <div class="header-container">
-                <button class="hamburger" id="hamburger-sticky">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
                 <nav>
                     <a href="#problem" data-section="problem" class="sticky-nav-link">Problem</a>
                     <a href="#approach" data-section="approach" class="sticky-nav-link">Approach</a>
@@ -55,24 +40,6 @@
             </div>
         </div>
         <div class="progress-bar" id="progress-bar"></div>
-    </div>
-
-    <!-- Static Header -->
-    <div class="header-container">
-        <header>
-            <button class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <nav>
-                <a href="#problem" data-section="problem">Problem</a>
-                <a href="#approach" data-section="approach">Approach</a>
-                <a href="#solution" data-section="solution">Solution</a>
-                <a href="#outcome" data-section="outcome">Outcome</a>
-            </nav>
-            <span class="time" id="barcelona-time">BCN • <span id="time">--:-- --</span></span>
-        </header>
     </div>
 
     <div class="container">
@@ -527,35 +494,6 @@
         // Update time immediately and then every minute
         updateBarcelonaTime();
         setInterval(updateBarcelonaTime, 60000);
-
-        // Hamburger menu functionality
-        const hamburger = document.getElementById('hamburger');
-        const hamburgerSticky = document.getElementById('hamburger-sticky');
-        const mobileNavOverlay = document.getElementById('mobile-nav-overlay');
-        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
-
-        function toggleMobileNav() {
-            hamburger.classList.toggle('active');
-            hamburgerSticky.classList.toggle('active');
-            mobileNavOverlay.classList.toggle('active');
-            document.body.style.overflow = mobileNavOverlay.classList.contains('active') ? 'hidden' : '';
-        }
-
-        function closeMobileNav() {
-            hamburger.classList.remove('active');
-            hamburgerSticky.classList.remove('active');
-            mobileNavOverlay.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        hamburger.addEventListener('click', toggleMobileNav);
-        hamburgerSticky.addEventListener('click', toggleMobileNav);
-
-        mobileNavLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                closeMobileNav();
-            });
-        });
 
         // Sticky header on scroll
         const stickyHeader = document.getElementById('header-sticky');
