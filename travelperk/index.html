@@ -41,11 +41,6 @@
                 Back
             </a>
             <div class="header-container">
-                <button class="hamburger" id="hamburger-sticky">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
                 <nav>
                     <a href="#challenge" data-section="challenge" class="sticky-nav-link">Challenge</a>
                     <a href="#approach" data-section="approach" class="sticky-nav-link">Approach</a>
@@ -61,11 +56,6 @@
     <!-- Static Header -->
     <div class="header-container">
         <header>
-            <button class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
             <nav>
                 <a href="#challenge" data-section="challenge">Challenge</a>
                 <a href="#approach" data-section="approach">Approach</a>
@@ -519,35 +509,6 @@
         // Update time immediately and then every minute
         updateBarcelonaTime();
         setInterval(updateBarcelonaTime, 60000);
-
-        // Hamburger menu functionality
-        const hamburger = document.getElementById('hamburger');
-        const hamburgerSticky = document.getElementById('hamburger-sticky');
-        const mobileNavOverlay = document.getElementById('mobile-nav-overlay');
-        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
-
-        function toggleMobileNav() {
-            hamburger.classList.toggle('active');
-            hamburgerSticky.classList.toggle('active');
-            mobileNavOverlay.classList.toggle('active');
-            document.body.style.overflow = mobileNavOverlay.classList.contains('active') ? 'hidden' : '';
-        }
-
-        function closeMobileNav() {
-            hamburger.classList.remove('active');
-            hamburgerSticky.classList.remove('active');
-            mobileNavOverlay.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        hamburger.addEventListener('click', toggleMobileNav);
-        hamburgerSticky.addEventListener('click', toggleMobileNav);
-
-        mobileNavLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                closeMobileNav();
-            });
-        });
 
         // Sticky header on scroll
         const stickyHeader = document.getElementById('header-sticky');
