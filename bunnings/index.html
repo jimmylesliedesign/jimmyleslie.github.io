@@ -556,23 +556,23 @@
         let lastScroll = 0;
 
         function updateProgressBar() {
-    const windowHeight = window.innerHeight;
-    const documentHeight = document.documentElement.scrollHeight;
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    
-        // Calculate scroll percentage
-        const scrollableHeight = documentHeight - windowHeight;
-        const scrollPercentage = (scrollTop / scrollableHeight) * 100;
-        
-        // Update progress bar width
-        progressBar.style.width = `${Math.min(scrollPercentage, 100)}%`;
-        
-        // Add color-cycle animation at 100%
-        if (scrollPercentage >= 99.5) {
-            progressBar.classList.add('color-cycle');
-        } else {
-            progressBar.classList.remove('color-cycle');
-        }
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight;
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            // Calculate scroll percentage
+            const scrollableHeight = documentHeight - windowHeight;
+            const scrollPercentage = (scrollTop / scrollableHeight) * 100;
+            
+            // Update progress bar width
+            progressBar.style.width = `${Math.min(scrollPercentage, 100)}%`;
+
+            // Fade out progress bar at 100%
+            if (scrollPercentage >= 99.9) {
+                progressBar.style.opacity = '0';
+            } else {
+                progressBar.style.opacity = '1';
+            }
             
         }
 
