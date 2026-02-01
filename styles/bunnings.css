@@ -4,11 +4,6 @@
 
 /* Note: Base case study styles are in case-study.css */
 
-/* Bunnings uses scroll-margin-top: 120px instead of 80px */
-.case-study-section {
-    scroll-margin-top: 120px;
-}
-
 /* Numbered List (Bunnings only) */
 .approach-list {
     margin-bottom: 40px;
