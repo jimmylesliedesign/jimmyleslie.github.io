@@ -436,6 +436,56 @@ nav a:hover {
     font-family: 'Inter', sans-serif;
 }
 
+/* Image Card Variant */
+.guidelines-card-image {
+    flex: 0 0 420px;
+    background: #FAFAFA;
+    border: 1px solid rgba(34, 34, 34, 0.1);
+    border-radius: 16px;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.guidelines-card-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+.guidelines-card-image-caption {
+    padding: 24px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.6em;
+    color: #919191;
+}
+
+/* Dark section variant */
+.case-study-section.bg-dark .guidelines-card-image {
+    background: #1A1A1A;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.case-study-section.bg-dark .guidelines-card-image-caption {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Responsive */
+@media (max-width: 860px) {
+    .guidelines-card-image {
+        flex: 0 0 340px;
+    }
+}
+
+@media (max-width: 480px) {
+    .guidelines-card-image {
+        flex: 0 0 300px;
+    }
+}
+
 .consistency-gallery-arrows .scroll-arrow svg {
     width: 16px;
     height: 16px;
