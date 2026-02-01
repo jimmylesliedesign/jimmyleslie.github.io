@@ -75,7 +75,7 @@
 
 .header-sticky.dark .progress-bar {
     background-color: #ffffff;
-    opacity: 0.25;
+    opacity: 1;
 }
 
 /* Static Header */
