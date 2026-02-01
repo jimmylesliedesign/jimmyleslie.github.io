@@ -2,20 +2,6 @@
 <html lang="en">
 
 <head>
-    <!-- Password Protection Check -->
-    <script>
-        // Check if user is authenticated
-        const isAuthenticated = sessionStorage.getItem('case-study-auth') === 'authenticated';
-        
-        if (!isAuthenticated) {
-            // Store current page for return after password entry
-            const currentPath = window.location.pathname;
-            localStorage.setItem('case-study-return', currentPath);
-            
-            // Redirect to password page
-            window.location.href = '/password.html?return=' + encodeURIComponent(currentPath);
-        }
-    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Turning customer's number one problem into a $500m revenue channel - Jimmy Leslie</title>
@@ -500,6 +486,21 @@
             <p class="body-text">If you'd like to get in touch, feel free to connect with me on <a href="https://www.linkedin.com/in/jimmy-leslie-652180107/">LinkedIn</a>, or send me an email at <span class="email-copy" data-email="jimmyleslie.design@gmail.com">jimmyleslie.design@gmail.com</span></p>
         </div>
     </section>
+
+    <!-- Password Protection Check -->
+    <script>
+        // Check if user is authenticated
+        const isAuthenticated = sessionStorage.getItem('case-study-auth') === 'authenticated';
+        
+        if (!isAuthenticated) {
+            // Store current page for return after password entry
+            const currentPath = window.location.pathname;
+            localStorage.setItem('case-study-return', currentPath);
+            
+            // Redirect to password page
+            window.location.href = '/password.html?return=' + encodeURIComponent(currentPath);
+        }
+    </script>
     
     <script>
         function updateBarcelonaTime() {
@@ -565,16 +566,6 @@
             
             // Update progress bar width
             progressBar.style.width = `${Math.min(scrollPercentage, 100)}%`;
-
-            // Fade out progress bar at 100%
-            if (scrollPercentage >= 99.9) {
-                progressBar.style.opacity = '0';
-            } else {
-                progressBar.style.opacity = '1';
-            }
-            
-        }
-            
         }
 
         window.addEventListener('scroll', () => {
