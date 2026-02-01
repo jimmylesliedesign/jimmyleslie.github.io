@@ -936,5 +936,21 @@
         });
         
     </script>
+
+        <!-- Password Protection Check -->
+    <script>
+        // Check if user is authenticated
+        const isAuthenticated = sessionStorage.getItem('case-study-auth') === 'authenticated';
+        
+        if (!isAuthenticated) {
+            // Store current page for return after password entry
+            const currentPath = window.location.pathname;
+            localStorage.setItem('case-study-return', currentPath);
+            
+            // Redirect to password page
+            window.location.href = '/password.html?return=' + encodeURIComponent(currentPath);
+        }
+    </script>
+    
 </body>
 </html>
