@@ -478,6 +478,7 @@ nav a:hover {
     }
 
     .header-sticky .back-link-sticky {
+        position: static;
         display: flex;
     }
 
