@@ -543,7 +543,7 @@ nav a:hover {
 }
 
 /* Responsive - Case Studies */
-@media (max-width: 768px) {
+@media (max-width: 860px) {
     /* Mobile sticky header - simplified layout */
     .header-sticky-wrapper {
         padding: 24px;
