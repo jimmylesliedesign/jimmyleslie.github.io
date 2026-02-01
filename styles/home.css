@@ -152,6 +152,7 @@ nav a:hover {
     max-width: 640px;
     margin-left: auto;
     margin-right: auto;
+   display: none;
 }
 
 .work-cards-scroll {
