@@ -70,7 +70,11 @@
     opacity: 1;
     width: 0%;
     transition: width 0.1s ease-out;
-    z-index: 101;
+    z-index: 101;  
+}
+
+.progress-bar.color-cycle {
+    animation: colorCycle 30s ease-in-out infinite;
 }
 
 .header-sticky.dark .progress-bar {
