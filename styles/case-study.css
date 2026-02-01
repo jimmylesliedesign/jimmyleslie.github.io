@@ -2,6 +2,11 @@
    CASE STUDY STYLES - Shared between Bunnings and TravelPerk
    ========================================================================== */
 
+/* Hide static header on case study pages - only show sticky header on scroll */
+.header-container {
+    display: none;
+}
+
 /* Sticky Header (Advanced version with dark mode + progress bar) */
 .header-sticky {
     position: fixed;
