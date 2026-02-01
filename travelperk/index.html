@@ -204,41 +204,42 @@
             </div>
 
             <div class="section-content">
-                <div class="approach-list">
+                <h2>Building confidence through research</h2>
+                <p class="body-text">Every major decision was backed by customer data and behavioral evidence.</p>
+            </div>
 
-                    <div class="approach-item">
-                        <h2>Building confidence through research</h2>
-                        <p class = "body-text">Every major decision was backed by customer data and behavioral evidence.</p>
+            <!-- Research Cards Gallery -->
+            <div class="guidelines-cards-container">
+                <div class="fade-left-guidelines" id="fade-left-research"></div>
+                <div class="fade-right-guidelines" id="fade-right-research"></div>
+                <button class="scroll-arrow scroll-arrow-left-guidelines" id="arrow-left-research"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 3L5 8L10 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                <button class="scroll-arrow scroll-arrow-right-guidelines" id="arrow-right-research"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                <div class="guidelines-cards-scroll" id="research-cards-scroll">
+                    <div class="guidelines-card">
+                        <h4 class="guidelines-card-title">Understanding user priorities</h4>
+                        <p class="body-text">I surveyed 1,000 customers about their flight booking behaviour</p>
+                        <p class="body-text">The research conclusively showed flight time as customers' top priority</p>
+                        <p class="body-text">Delta's guidelines proposed hiding return times until outbound selection</p>
+                        <p class="body-text">TravelPerk users need to see in-policy journey combinations</p>
                     </div>
-
-                    <div class="approach-item">
-                        <h3>Understanding user priorities</h3>
-                             <li>I surveyed 1,000 customers about their flight booking behaviour</ul>
-                             <li>The research conclusively showed flight time as customers' top priority when booking flights</li>
-                             <li>Delta's guidelines proposed hiding return flight time options until the user selected an outbound flight</li>
-                             <li>TravelPerk users can only book in-policy journeys, so visibility of outbound and return combinations that are in-policy is critical</li>
+                    <div class="guidelines-card">
+                        <h4 class="guidelines-card-title">Identifying heuristic gaps</h4>
+                        <p class="body-text">The redesign provided an opportunity to address legacy usability issues</p>
+                        <p class="body-text">Conducted heuristic evaluation with designers from all booking verticals</p>
+                        <p class="body-text">Identified several improvement opportunities</p>
                     </div>
-                        
-                    <div class="approach-item">
-                        <h3>Identifying heuristics gaps</h3>
-                        <p class="body-text">The redesign provided an opportunity to address legacy usability issues. Through a heuristic evaluation with designers from all booking verticals, we identified several improvement opportunities.</p>
+                    <div class="guidelines-card">
+                        <h4 class="guidelines-card-title">Continuous testing</h4>
+                        <p class="body-text">Usability tested all changes with phased rollout</p>
+                        <p class="body-text">Observed real user sessions throughout for actionable insights</p>
+                        <p class="body-text">Implemented CES widget to quantify and monitor usability</p>
                     </div>
                 </div>
             </div>
 
             <!-- Approach Images -->
-            <div class="content-image"><img src="/assets/TK_heuristic_review.webp" alt="Delta's new visual design guidelines" loading="lazy"></div>
-
-            <div class="section-content">
-                <div class="approach-list">
-                    <div class="approach-item">
-                        <h3>Continuous testing</h3>
-                        <p class="body-text">We usability tested all changes and implemented a phased rollout to monitor metrics. Observing real user sessions throughout revealed actionable insights. We also implemented a CES widget to quantify and monitor usability.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="content-image"><img src="/assets/TK_fullstory.webp" alt="Delta's new visual design guidelines" loading="lazy"></div>
+            <div class="content-image"><img src="/assets/TK_heuristic_review.webp" alt="Heuristic review findings" loading="lazy"></div>
+            <div class="content-image"><img src="/assets/TK_fullstory.webp" alt="User session analysis" loading="lazy"></div>
         </div>
     </section>
 
@@ -715,6 +716,53 @@
 
             // Initial state
             updateGuidelinesScrollState();
+        }
+
+        // Research cards scroll functionality
+        const researchCardsScroll = document.getElementById('research-cards-scroll');
+        const arrowLeftResearch = document.getElementById('arrow-left-research');
+        const arrowRightResearch = document.getElementById('arrow-right-research');
+        const fadeLeftResearch = document.getElementById('fade-left-research');
+        const fadeRightResearch = document.getElementById('fade-right-research');
+
+        if (researchCardsScroll && arrowLeftResearch && arrowRightResearch) {
+            function updateResearchScrollState() {
+                const scrollLeft = researchCardsScroll.scrollLeft;
+                const maxScroll = researchCardsScroll.scrollWidth - researchCardsScroll.clientWidth;
+
+                // Show/hide left arrow and fade
+                if (scrollLeft > 10) {
+                    arrowLeftResearch.classList.add('visible');
+                    fadeLeftResearch.classList.add('visible');
+                } else {
+                    arrowLeftResearch.classList.remove('visible');
+                    fadeLeftResearch.classList.remove('visible');
+                }
+
+                // Show/hide right arrow and fade
+                if (scrollLeft >= maxScroll - 10) {
+                    arrowRightResearch.classList.add('hidden');
+                    fadeRightResearch.classList.add('hidden');
+                } else {
+                    arrowRightResearch.classList.remove('hidden');
+                    fadeRightResearch.classList.remove('hidden');
+                }
+            }
+
+            researchCardsScroll.addEventListener('scroll', updateResearchScrollState);
+
+            arrowLeftResearch.addEventListener('click', () => {
+                const cardWidth = 420 + 24; // card width + gap
+                researchCardsScroll.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+            });
+
+            arrowRightResearch.addEventListener('click', () => {
+                const cardWidth = 420 + 24; // card width + gap
+                researchCardsScroll.scrollBy({ left: cardWidth, behavior: 'smooth' });
+            });
+
+            // Initial state
+            updateResearchScrollState();
         }
 
         // Consistency gallery scroll functionality - Scalable for multiple instances
