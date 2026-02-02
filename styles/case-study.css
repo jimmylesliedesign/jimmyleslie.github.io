@@ -490,6 +490,14 @@ nav a:hover {
     color: rgba(255, 255, 255, 0.8);
 }
 
+.guidelines-card .body-text {
+    margin-bottom: 8px;
+}
+
+.guidelines-card .body-text:last-child {
+    margin-bottom: 0;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .guidelines-card-image {
