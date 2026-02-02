@@ -15,6 +15,10 @@
     margin-right: auto;
 }
 
+#research-gallery-wider {
+    max-width: 960px;
+}
+
 .guidelines-cards-scroll {
     display: flex;
     gap: 24px;
