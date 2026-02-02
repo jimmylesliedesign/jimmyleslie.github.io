@@ -495,7 +495,7 @@ nav a:hover {
 }
 
 .guidelines-card .body-text:last-child {
-    margin-bottom: 0;
+    margin-bottom: 16px;
 }
 
 /* Responsive */
