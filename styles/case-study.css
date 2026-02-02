@@ -453,6 +453,163 @@ nav a:hover {
     font-family: 'Inter', sans-serif;
 }
 
+/* Guidelines Cards Gallery (TravelPerk only) */
+.guidelines-cards-container {
+    position: relative;
+    margin-top: 40px;
+    margin-bottom: 80px;
+    max-width: 860px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.guidelines-cards-scroll {
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 0;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.guidelines-cards-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+.guidelines-card {
+    flex: 0 0 420px;
+    background: #FAFAFA;
+    border: 1px solid rgba(34, 34, 34, 0.1);
+    border-radius: 16px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.guidelines-card-wide {
+       flex: 0 0 600px;
+    background: #FAFAFA;
+    border: 1px solid rgba(34, 34, 34, 0.1);
+    border-radius: 16px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.guidelines-card-title {
+    margin-bottom: 16px;
+}
+
+.guidelines-card-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.guidelines-card-list li {
+    font-family: 'Inter', sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.5em;
+    color: #919191;
+    padding-left: 20px;
+    position: relative;
+}
+
+.guidelines-card-list li::before {
+    content: 'â€¢';
+    position: absolute;
+    left: 0;
+    color: #919191;
+}
+
+/* Fade overlays for guidelines */
+.fade-left-guidelines,
+.fade-right-guidelines {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 120px;
+    pointer-events: none;
+    z-index: 10;
+    transition: opacity 0.3s;
+}
+
+.fade-left-guidelines {
+    left: 0;
+    background: linear-gradient(to right, #ffffff 0%, rgba(255, 255, 255, 0) 100%);
+    opacity: 0;
+}
+
+.fade-left-guidelines.visible {
+    opacity: 1;
+}
+
+.fade-right-guidelines {
+    right: 0;
+    background: linear-gradient(to left, #ffffff 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+.fade-right-guidelines.hidden {
+    opacity: 0;
+}
+
+/* Navigation arrows for guidelines */
+.guidelines-cards-container .scroll-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    background: #ffffff;
+    border: 1px solid rgba(34, 34, 34, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 20;
+    transition: opacity 0.3s, background-color 0.2s;
+    color: #1D1D1D;
+    font-family: 'Inter', sans-serif;
+}
+
+.guidelines-cards-container .scroll-arrow svg {
+    width: 16px;
+    height: 16px;
+}
+
+.guidelines-cards-container .scroll-arrow:hover {
+    background-color: #f5f5f5;
+}
+
+.scroll-arrow-left-guidelines {
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.scroll-arrow-left-guidelines.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.scroll-arrow-right-guidelines {
+    right: 0;
+}
+
+.scroll-arrow-right-guidelines.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
 /* Image Card Variant */
 .guidelines-card-image {
     flex: 0 0 420px;
@@ -479,6 +636,10 @@ nav a:hover {
     line-height: 1.6em;
     color: #919191;
 }
+
+/* Wider card variant*/
+.guidelines-card-wider {
+   width
 
 /* Dark section variant */
 .case-study-section.bg-dark .guidelines-card-image {
