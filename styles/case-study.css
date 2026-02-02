@@ -349,6 +349,15 @@ nav a:hover {
     font-style: italic;
 }
 
+/* SPACING FIX: Consistent spacing for section-content blocks */
+/* Add margin-top to section-content when it follows a video or gallery */
+.case-study-video + .section-content,
+.consistency-gallery-container + .section-content,
+.guidelines-cards-container + .section-content,
+.before-after-container + .section-content {
+    margin-top: 80px;
+}
+
 /* Consistency Gallery */
 .consistency-gallery-container {
     position: relative;
