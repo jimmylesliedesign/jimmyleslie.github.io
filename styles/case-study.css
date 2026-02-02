@@ -610,33 +610,6 @@ nav a:hover {
     pointer-events: none;
 }
 
-/* Image Card Variant */
-.guidelines-card-image {
-    flex: 0 0 420px;
-    background: #FAFAFA;
-    border: 1px solid rgba(34, 34, 34, 0.1);
-    border-radius: 16px;
-    padding: 0;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-}
-
-.guidelines-card-image img {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
-}
-
-.guidelines-card-image-caption {
-    padding: 24px;
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
-    line-height: 1.6em;
-    color: #919191;
-}
-
 /* Wider card variant*/
 .guidelines-card-wider {
    width
