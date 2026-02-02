@@ -488,17 +488,6 @@ nav a:hover {
     gap: 16px;
 }
 
-.guidelines-card-wider {
-    flex: 0 0 600px;
-    background: #FAFAFA;
-    border: 1px solid rgba(34, 34, 34, 0.1);
-    border-radius: 16px;
-    padding: 32px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
 .guidelines-card-title {
     margin-bottom: 16px;
 }
@@ -609,10 +598,6 @@ nav a:hover {
     opacity: 0;
     pointer-events: none;
 }
-
-/* Wider card variant*/
-.guidelines-card-wider {
-   width
 
 /* Dark section variant */
 .case-study-section.bg-dark .guidelines-card-image {
