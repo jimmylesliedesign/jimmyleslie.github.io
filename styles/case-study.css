@@ -358,6 +358,14 @@ nav a:hover {
     margin-top: 80px;
 }
 
+/* Add margin-top to videos and galleries when they follow section-content */
+.section-content + .case-study-video,
+.section-content + .consistency-gallery-container,
+.section-content + .guidelines-cards-container,
+.section-content + .before-after-container {
+    margin-top: 80px;
+}
+
 /* Consistency Gallery */
 .consistency-gallery-container {
     position: relative;
