@@ -611,9 +611,8 @@ nav a:hover {
 
 .guidelines-card .body-text {
     margin-bottom: 0px;
-    padding-left: 36px;
-    position: relative;
-    text-indent: -36px;
+    display: flex;
+    gap: 12px;
 }
 
 .guidelines-card .body-text:last-child {
