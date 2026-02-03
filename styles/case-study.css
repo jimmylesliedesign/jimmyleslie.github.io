@@ -454,13 +454,12 @@ nav a:hover {
 }
 
 /* Gallery Video - for videos inside consistency galleries */
-.consistency-gallery-scroll .gallery-video {
+.consistency-gallery-scroll .content-image .gallery-video {
     width: 100%;
     height: 100%;
     object-fit: contain;
     display: block;
 }
-
 /* Guidelines Cards Gallery (TravelPerk only) */
 .guidelines-cards-container {
     position: relative;
