@@ -619,6 +619,10 @@ nav a:hover {
     margin-bottom: 16px;
 }
 
+.guidelines-card img {
+    margin-top: 16px;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .guidelines-card-image {
