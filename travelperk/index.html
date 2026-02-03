@@ -992,26 +992,24 @@
             const sectionLabel = progressIndicator.querySelector('.section-label');
             const navLinks = document.querySelectorAll('nav a[data-section]');
             
-            // Get all sections with IDs from nav links
             const sectionData = Array.from(navLinks).map(link => ({
                 id: link.getAttribute('data-section'),
                 element: document.getElementById(link.getAttribute('data-section')),
                 name: link.textContent.trim()
             })).filter(item => item.element);
 
-            // Calculate the perimeter of the pill shape for stroke-dasharray
-            const radius = 30;
-            const straightLength = 40;
-            const totalPerimeter = (2 * Math.PI * radius) + (2 * straightLength);
+            // Calculate perimeter for pill shape
+            const width = 100;
+            const height = 56;
+            const totalPerimeter = (2 * width) + (Math.PI * height);
 
             let currentSectionIndex = -1;
-            let isFirstSectionActive = false;
+            let hasFirstSectionBeenActive = false;
 
             function updateSectionProgress() {
                 const scrollPosition = window.scrollY;
                 const stickyHeaderHeight = 120;
 
-                // Find which section we're currently in
                 let activeSectionIndex = -1;
                 let sectionProgress = 0;
 
@@ -1029,16 +1027,18 @@
                     }
                 }
 
-                // Check if first section is active
+                // Check if first section has ever been active
                 const firstNavLink = navLinks[0];
                 const isFirstActive = firstNavLink && firstNavLink.classList.contains('active');
 
-                // Show/hide indicator
-                if (isFirstActive && !isFirstSectionActive) {
-                    isFirstSectionActive = true;
+                if (isFirstActive) {
+                    hasFirstSectionBeenActive = true;
+                }
+
+                // Show indicator once first section has been active, keep it visible
+                if (hasFirstSectionBeenActive) {
                     progressIndicator.classList.add('visible');
-                } else if (!isFirstActive && isFirstSectionActive) {
-                    isFirstSectionActive = false;
+                } else {
                     progressIndicator.classList.remove('visible');
                 }
 
