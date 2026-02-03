@@ -457,9 +457,8 @@ nav a:hover {
 .consistency-gallery-scroll .gallery-video {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     display: block;
-    border-radius: 16px;
 }
 
 /* Guidelines Cards Gallery (TravelPerk only) */
