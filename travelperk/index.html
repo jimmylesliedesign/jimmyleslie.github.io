@@ -32,6 +32,29 @@
         <span class="cursor-text">Click to copy</span>
     </div>
 
+    <!-- Section Progress Indicator -->
+    <div class="section-progress-indicator" id="section-progress">
+        <svg class="progress-ring" width="120" height="60" viewBox="0 0 120 60">
+            <path
+                class="progress-ring-bg"
+                d="M 60 0 A 30 30 0 0 1 90 30 A 30 30 0 0 1 60 60 L 60 60 A 30 30 0 0 1 30 30 A 30 30 0 0 1 60 0"
+                fill="none"
+                stroke="rgba(29, 29, 29, 0.1)"
+                stroke-width="2"
+            />
+            <path
+                class="progress-ring-fill"
+                d="M 60 0 A 30 30 0 0 1 90 30 A 30 30 0 0 1 60 60 L 60 60 A 30 30 0 0 1 30 30 A 30 30 0 0 1 60 0"
+                fill="none"
+                stroke="#1D1D1D"
+                stroke-width="2"
+                stroke-dasharray="0 1000"
+                stroke-dashoffset="0"
+            />
+        </svg>
+        <span class="section-label">Challenge</span>
+    </div>
+    
     <!-- Sticky Header Clone -->
     <div class="header-sticky" id="header-sticky">
         <div class="header-sticky-wrapper">
@@ -959,6 +982,83 @@
         
             videoObserver.observe(video);
         });
+
+// Section Progress Indicator
+        (function() {
+            const progressIndicator = document.getElementById('section-progress');
+            if (!progressIndicator) return;
+
+            const progressRingFill = progressIndicator.querySelector('.progress-ring-fill');
+            const sectionLabel = progressIndicator.querySelector('.section-label');
+            const navLinks = document.querySelectorAll('nav a[data-section]');
+            
+            // Get all sections with IDs from nav links
+            const sectionData = Array.from(navLinks).map(link => ({
+                id: link.getAttribute('data-section'),
+                element: document.getElementById(link.getAttribute('data-section')),
+                name: link.textContent.trim()
+            })).filter(item => item.element);
+
+            // Calculate the perimeter of the pill shape for stroke-dasharray
+            const radius = 30;
+            const straightLength = 40;
+            const totalPerimeter = (2 * Math.PI * radius) + (2 * straightLength);
+
+            let currentSectionIndex = -1;
+            let isFirstSectionActive = false;
+
+            function updateSectionProgress() {
+                const scrollPosition = window.scrollY;
+                const stickyHeaderHeight = 120;
+
+                // Find which section we're currently in
+                let activeSectionIndex = -1;
+                let sectionProgress = 0;
+
+                for (let i = 0; i < sectionData.length; i++) {
+                    const section = sectionData[i].element;
+                    const sectionTop = section.offsetTop - stickyHeaderHeight;
+                    const sectionBottom = sectionTop + section.offsetHeight;
+
+                    if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+                        activeSectionIndex = i;
+                        const sectionScrolled = scrollPosition - sectionTop;
+                        const sectionHeight = section.offsetHeight;
+                        sectionProgress = Math.min(Math.max(sectionScrolled / sectionHeight, 0), 1);
+                        break;
+                    }
+                }
+
+                // Check if first section is active
+                const firstNavLink = navLinks[0];
+                const isFirstActive = firstNavLink && firstNavLink.classList.contains('active');
+
+                // Show/hide indicator
+                if (isFirstActive && !isFirstSectionActive) {
+                    isFirstSectionActive = true;
+                    progressIndicator.classList.add('visible');
+                } else if (!isFirstActive && isFirstSectionActive) {
+                    isFirstSectionActive = false;
+                    progressIndicator.classList.remove('visible');
+                }
+
+                // Update section label if section changed
+                if (activeSectionIndex !== -1 && activeSectionIndex !== currentSectionIndex) {
+                    currentSectionIndex = activeSectionIndex;
+                    sectionLabel.textContent = sectionData[activeSectionIndex].name;
+                }
+
+                // Update progress ring
+                if (activeSectionIndex !== -1) {
+                    const progressLength = totalPerimeter * sectionProgress;
+                    progressRingFill.style.strokeDasharray = `${progressLength} ${totalPerimeter}`;
+                }
+            }
+
+            window.addEventListener('scroll', updateSectionProgress);
+            window.addEventListener('resize', updateSectionProgress);
+            updateSectionProgress();
+        })();
         
     </script>
     
