@@ -95,7 +95,7 @@ h4 {
     font-weight: 400;
     font-size: 20px;
     line-height: 1.5em;
-    color: #919191;
+    color: #616161;
 }
 
 .body-text {
@@ -104,7 +104,7 @@ h4 {
     font-weight: 400;
     font-size: 20px;
     line-height: 1.5em;
-    color: #919191;
+    color: #616161;
     margin-bottom: 32px;
 }
 
@@ -118,7 +118,7 @@ h4 {
     font-weight: 400;
     font-size: 16px;
     line-height: 1.6em;
-    color: #919191;
+    color: #616161;
 }
 
 /* Custom Cursor */
@@ -178,7 +178,7 @@ a, button, .email-copy {
 .time {
     font-size: 16px;
     font-weight: 400;
-    color: #919191;
+    color: #616161;
     opacity: 0.5;
 }
 
