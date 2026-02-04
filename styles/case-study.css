@@ -453,6 +453,14 @@ nav a:hover {
     font-family: 'Inter', sans-serif;
 }
 
+.case-study-section .container + .case-study-video {
+    margin-top: 80px;
+}
+
+.case-study-video + .container .section-content {
+    margin-top: 80px;
+}
+
 /* Gallery Video - for videos inside consistency galleries */
 .consistency-gallery-scroll .content-image .gallery-video {
     width: 100%;
