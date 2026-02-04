@@ -226,6 +226,7 @@ a, button, .email-copy {
 
 .contact-content .body-text a {
     color: #1D1D1D;
+    opacity: 1!;
     text-decoration: none;
 }
 
