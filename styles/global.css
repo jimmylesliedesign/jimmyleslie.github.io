@@ -110,6 +110,11 @@ h4 {
     margin-bottom: 32px;
 }
 
+a {
+   color: #1d1d1d;
+   opacity: 1.0!;
+}
+
 .body-text:last-child {
     margin-bottom: 0;
 }
@@ -135,7 +140,7 @@ h4 {
     z-index: 9999;
     transform: translate(-50%, -50%);
     transition: opacity 0.2s;
-    opacity: 1;
+    opacity: 1.0;
     background-color: #ffffff;
     display: flex;
     align-items: center;
@@ -226,7 +231,7 @@ a, button, .email-copy {
 
 .contact-content .body-text a {
     color: #1D1D1D;
-    opacity: 1!;
+    opacity: 1.0!;
     text-decoration: none;
 }
 
