@@ -104,8 +104,19 @@ h4 {
     font-weight: 400;
     font-size: 20px;
     line-height: 1.5em;
-    color: rgba(29, 29, 29, 0.65);
+    color: #1d1d1d;
     margin-bottom: 32px;
+}
+
+/* Apply opacity only to direct text content, not child elements */
+.body-text {
+    opacity: 0.65;
+}
+
+.body-text a {
+    color: #1D1D1D;
+    opacity: 1.0 !important; /* Override parent opacity */
+    text-decoration: none;
 }
 
 .body-text:last-child {
