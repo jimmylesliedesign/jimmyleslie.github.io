@@ -34,7 +34,7 @@
     max-width: 860px;
     margin: 80px auto;
     aspect-ratio: 16/10;
-    border-radius: 16px;
+    border-radius: var(--radius-lg);
     overflow: hidden;
     border: 1px solid rgba(29, 29, 29, 0.1);
     background-color: #F7F7F9;
@@ -96,7 +96,7 @@
     height: 56px;
     background: #ffffff;
     border: 2px solid #1D1D1D;
-    border-radius: 50%;
+    border-radius: var(--radius-full);
     transform: translate(-50%, -50%);
     display: flex;
     align-items: center;
@@ -131,7 +131,7 @@
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
     font-size: 14px;
     font-weight: 400;
     color: #1D1D1D;
@@ -154,7 +154,7 @@
     max-width: 1080px;
     margin: 48px auto;
     display: block;
-    border-radius: 16px;
+    border-radius: var(--radius-lg);
     border: 1px solid rgba(29, 29, 29, 0.1);
 }
 
@@ -195,7 +195,7 @@
 
     .case-study-video {
         margin: 32px auto;
-        border-radius: 12px;
+        border-radius: var(--radius-md);
     }
 }
 
@@ -235,6 +235,6 @@
 
     .case-study-video {
         margin: 24px auto;
-        border-radius: 8px;
+        border-radius: var(--radius-sm);
     }
 }
