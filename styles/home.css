@@ -529,10 +529,8 @@ nav a:hover {
     align-items: center;
     gap: 16px;
     padding: 32px;
-    border: 1px solid rgba(29, 29, 29, 0.1);
     border-radius: 16px;
-    transition: border-color 0.2s, border-width 0.2s;
-    background-color: #ffffff;
+    background-color: #F7F7F9;
 }
 
 .writing-info h4 {
