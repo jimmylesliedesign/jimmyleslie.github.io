@@ -97,7 +97,8 @@ nav a:hover {
 }
 
 .hero-box {
-    background-color: #F4FEC1;
+    background-color: #DDEBD4;
+    box-shadow: 0 0 80px rgba(221, 235, 212, 0.65);
     max-width: 860px;
     width: 100%;
     min-height: 480px;
@@ -106,7 +107,6 @@ nav a:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    animation: colorCycle 30s ease-in-out infinite;
     transform-origin: center center;
 }
 
