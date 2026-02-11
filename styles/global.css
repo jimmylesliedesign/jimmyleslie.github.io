@@ -53,7 +53,7 @@ h1 {
 }
 
 h1 + .body-text {
-    margin-top: -48px;
+    margin-top: -32px;
 }
 
 h2 {
@@ -73,7 +73,7 @@ h3 {
     font-size: 25px;
     line-height: 1.5em;
     color: #1D1D1D;
-    margin-bottom: 16px;
+    margin-bottom: 32px;
     margin-top: 80px;
 }
 
