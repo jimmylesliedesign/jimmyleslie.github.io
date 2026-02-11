@@ -2,6 +2,16 @@
    GLOBAL STYLES - Shared across all pages
    ========================================================================== */
 
+/* Design tokens - Border radius */
+:root {
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 20px;
+    --radius-2xl: 24px;
+    --radius-full: 50%;
+}
+
 /* Reset */
 * {
     margin: 0;
@@ -137,7 +147,7 @@ h4 {
     width: 20px;
     height: 20px;
     border: 2px solid #1D1D1D;
-    border-radius: 50%;
+    border-radius: var(--radius-full);
     position: fixed;
     pointer-events: none;
     z-index: 9999;
@@ -163,7 +173,7 @@ h4 {
 #custom-cursor.copy-mode {
     width: auto;
     height: auto;
-    border-radius: 20px;
+    border-radius: var(--radius-xl);
     padding: 8px 16px;
     transform: translate(-50%, -50%) scale(1);
 }
