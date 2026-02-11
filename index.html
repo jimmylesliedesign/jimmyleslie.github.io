@@ -49,7 +49,7 @@
         <section class="hero-section">
             <div class="hero-box">
                 <div class="hero-content">
-                    <h1>I'm Jimmy, an outcome-focused Design Leader with over 10 years experience building <span class="glitch-word-wrapper"><span class="glitch-word">products</span></span> that people love.</h1>
+                    <h1>I'm Jimmy, an outcome-focused Design Leader with over 10 years experience building <span class="glitch-word-wrapper"><span class="glitch-word" data-text="products">products</span></span> that people love.</h1>
                 </div>
             </div>
         </section>
@@ -206,12 +206,18 @@
             let idx = 0;
             setInterval(function() {
                 idx = (idx + 1) % words.length;
+                const newWord = words[idx];
+                wordEl.setAttribute('data-text', newWord);
+                wordEl.textContent = newWord;
+                const intensity = 0.85 + Math.random() * 0.3;
+                const duration = 0.45 + Math.random() * 0.15;
+                wordEl.style.setProperty('--glitch-intensity', intensity);
+                wordEl.style.setProperty('--glitch-duration', duration + 's');
                 wordEl.classList.add('glitch-active');
-                wordEl.textContent = words[idx];
                 setWrapperWidth();
                 setTimeout(function() {
                     wordEl.classList.remove('glitch-active');
-                }, 400);
+                }, duration * 1000);
             }, 3000);
         })();
 
