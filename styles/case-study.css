@@ -175,7 +175,6 @@ nav a:hover {
 /* Case Study Sections */
 .case-study-section {
     width: 100%;
-    border-top: 1px solid rgba(29, 29, 29, 0.1);
     padding: 120px 0;
     scroll-margin-top: 80px;
 }
@@ -190,7 +189,6 @@ nav a:hover {
 
 .case-study-section.bg-dark {
     background-color: #1D1D1D;
-    border-top: 1px solid rgba(29, 29, 29, 0.1);
 }
 
 .case-study-section.bg-dark h1,
@@ -229,7 +227,6 @@ nav a:hover {
 }
 
 .case-study-section:first-of-type {
-    border-top: none;
     padding-top: 80px;
 }
 
