@@ -206,13 +206,34 @@ a, button, .email-copy {
 }
 
 @keyframes colorCycle {
-    0% { background-color: #F4FEC1; }
-    16.66% { background-color: #D4F4DD; }
-    33.33% { background-color: #D4E4F4; }
-    50% { background-color: #E8D4F4; }
-    66.66% { background-color: #F4D4D4; }
-    83.33% { background-color: #F4E8D4; }
-    100% { background-color: #F4FEC1; }
+    0% {
+        background-color: #F4FEC1;
+        box-shadow: 0 0 80px rgba(244, 254, 193, 0.5);
+    }
+    16.66% {
+        background-color: #D4F4DD;
+        box-shadow: 0 0 80px rgba(212, 244, 221, 0.5);
+    }
+    33.33% {
+        background-color: #D4E4F4;
+        box-shadow: 0 0 80px rgba(212, 228, 244, 0.5);
+    }
+    50% {
+        background-color: #E8D4F4;
+        box-shadow: 0 0 80px rgba(232, 212, 244, 0.5);
+    }
+    66.66% {
+        background-color: #F4D4D4;
+        box-shadow: 0 0 80px rgba(244, 212, 212, 0.5);
+    }
+    83.33% {
+        background-color: #F4E8D4;
+        box-shadow: 0 0 80px rgba(244, 232, 212, 0.5);
+    }
+    100% {
+        background-color: #F4FEC1;
+        box-shadow: 0 0 80px rgba(244, 254, 193, 0.5);
+    }
 }
 
 .contact-content {
