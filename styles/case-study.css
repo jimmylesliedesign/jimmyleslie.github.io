@@ -165,7 +165,7 @@ nav a:hover {
     margin: 0 auto 80px auto;
     aspect-ratio: 16/10;
     background-color: #F7F7F9;
-    border-radius: 16px;
+    border-radius: var(--radius-lg);
     overflow: hidden;
 }
 
@@ -279,7 +279,7 @@ nav a:hover {
     margin: 80px auto;
     aspect-ratio: auto;
     background-color: #F7F7F9;
-    border-radius: 16px;
+    border-radius: var(--radius-lg);
     overflow: hidden;
 }
 
@@ -333,7 +333,7 @@ nav a:hover {
     border-left: 4px solid #1D1D1D;
     padding: 24px 32px;
     margin: 48px 0;
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
 }
 
 .quote-box h4 {
@@ -447,7 +447,7 @@ nav a:hover {
     height: 48px;
     background: #ffffff;
     border: 1px solid rgba(29, 29, 29, 0.1);
-    border-radius: 50%;
+    border-radius: var(--radius-full);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -499,7 +499,7 @@ nav a:hover {
 .guidelines-card {
     flex: 0 0 420px;
     background: #F7F7F9;
-    border-radius: 16px;
+    border-radius: var(--radius-lg);
     padding: 32px;
     display: flex;
     flex-direction: column;
@@ -577,7 +577,7 @@ nav a:hover {
     height: 48px;
     background: #ffffff;
     border: 1px solid rgba(29, 29, 29, 0.1);
-    border-radius: 50%;
+    border-radius: var(--radius-full);
     display: flex;
     align-items: center;
     justify-content: center;
