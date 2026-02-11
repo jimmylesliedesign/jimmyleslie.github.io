@@ -457,6 +457,11 @@ nav a:hover {
     font-family: 'Inter', sans-serif;
 }
 
+/* Dark section: ensure visible keyline (bg-dark .scroll-arrow overrides with nearly-invisible rgba) */
+.case-study-section.bg-dark .consistency-gallery-arrows .scroll-arrow {
+    border: 1px solid #919191;
+}
+
 .case-study-section .container + .case-study-video {
     margin-top: 80px;
 }
