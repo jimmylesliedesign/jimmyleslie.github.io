@@ -2,6 +2,11 @@
    CASE STUDY STYLES - Shared between Bunnings and TravelPerk
    ========================================================================== */
 
+/* Contact Section - ensure light grey background on case study pages */
+.contact-section {
+    background-color: #F7F7F9;
+}
+
 /* Hide static header on case study pages - only show sticky header on scroll */
 .header-container {
     display: none;
