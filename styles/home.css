@@ -465,13 +465,12 @@ nav a:hover {
     border-radius: 16px;
     margin-bottom: 24px;
     overflow: hidden;
-    border: 1px solid rgba(34, 34, 34, 0.1);
-    transition: border-color 0.2s, border-width 0.2s;
+    border: 1px solid transparent;
+    transition: border-color 0.2s;
 }
 
 .work-item:hover .work-image {
-    border-width: 2px;
-    border-color: #1D1D1D;
+    border-color: #919191;
 }
 
 .work-image img {
@@ -520,9 +519,6 @@ nav a:hover {
     height: 24px;
 }
 
-.work-item:hover .arrow {
-    transform: translateX(4px);
-}
 
 /* Writing Section */
 .writing-item {
@@ -539,8 +535,7 @@ nav a:hover {
 }
 
 .writing-item:hover {
-    border-width: 2px;
-    border-color: #1D1D1D;
+    border-color: #919191;
 }
 
 .writing-info h4 {
