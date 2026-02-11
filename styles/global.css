@@ -107,7 +107,7 @@ h4 {
     font-weight: 400;
     font-size: 20px;
     line-height: 1.5em;
-    color: rgba(29, 29, 29, 0.5);
+    color: #919191;
 }
 
 .body-text {
@@ -116,7 +116,7 @@ h4 {
     font-weight: 400;
     font-size: 20px;
     line-height: 1.5em;
-    color: rgba(29, 29, 29, 0.5);
+    color: #919191;
     margin-bottom: 32px;
 }
 
@@ -139,7 +139,7 @@ h4 {
     font-weight: 400;
     font-size: 16px;
     line-height: 1.6em;
-    color: rgba(29, 29, 29, 0.5);
+    color: #919191;
 }
 
 /* Custom Cursor */
@@ -227,7 +227,7 @@ a, button, .email-copy {
 }
 
 .contact-content .body-text {
-    color: rgba(29, 29, 29, 0.5);
+    color: #919191;
 }
 
 .contact-content .body-text a {
