@@ -114,6 +114,26 @@ nav a:hover {
     position: relative;
 }
 
+/* Case study / writing titles - allow wrapping for long text */
+.glitch-title {
+    white-space: normal;
+}
+
+.glitch-title::before,
+.glitch-title::after {
+    white-space: normal;
+}
+
+/* When showing alt text on hover - prevent wrapping during glitch */
+.glitch-title.glitch-showing-alt {
+    white-space: nowrap;
+}
+
+.glitch-title.glitch-showing-alt::before,
+.glitch-title.glitch-showing-alt::after {
+    white-space: nowrap;
+}
+
 /* RGB split / chromatic aberration - offset red and cyan copies */
 .glitch-word::before,
 .glitch-word::after {
@@ -466,16 +486,19 @@ nav a:hover {
 }
 
 .arrow {
-    width: 24px;
-    height: 24px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: #1D1D1D;
     transition: transform 0.2s;
     flex-shrink: 0;
 }
 
 .arrow svg {
-    width: 100%;
-    height: 100%;
+    width: 24px;
+    height: 24px;
 }
 
 .work-item:hover .arrow {
