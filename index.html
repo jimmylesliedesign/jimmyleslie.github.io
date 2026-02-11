@@ -257,8 +257,9 @@
             const workSection = document.getElementById('work');
             const contactSection = document.getElementById('contact');
             
-            // Get positions
-            const aboutTop = aboutSection.offsetTop - 40;
+            // Get positions (aboutActiveOffset: About becomes active this many px sooner)
+            const aboutActiveOffset = 40;
+            const aboutTop = aboutSection.offsetTop - 40 - aboutActiveOffset;
             const workTop = workSection.offsetTop;
             const contactTop = contactSection.offsetTop;
             const windowHeight = window.innerHeight;
@@ -310,11 +311,12 @@
         function updateHeroParallax() {
             const scrollY = window.scrollY;
             const stickyHeaderHeight = 100;
+            const stickyShowOffset = 40; // Show sticky nav this many px sooner
             const aboutActiveThreshold = aboutSection ? aboutSection.offsetTop - 40 - stickyHeaderHeight : 0;
 
-            // Sticky header: show when About nav becomes active (same threshold)
+            // Sticky header: show when About nav becomes active (same threshold, minus offset to appear sooner)
             if (stickyHeader) {
-                if (scrollY >= aboutActiveThreshold) {
+                if (scrollY >= aboutActiveThreshold - stickyShowOffset) {
                     stickyHeader.classList.add('visible');
                 } else {
                     stickyHeader.classList.remove('visible');
@@ -323,12 +325,12 @@
 
             if (prefersReducedMotion || !heroBox || !aboutSection) return;
             const scrollRange = Math.max(aboutActiveThreshold, 1);
-            // Use 65% of scroll range so hero disappears quicker
-            const progress = Math.min(Math.max(scrollY / (scrollRange * 0.65), 0), 1);
+            // Use 70% of scroll range so hero disappears quicker
+            const progress = Math.min(Math.max(scrollY / (scrollRange * 0.7), 0), 1);
 
             const opacity = 1 - progress;
             const scale = 1 - 0.2 * progress;
-            const translateY = -scrollY * 0.55;
+            const translateY = -scrollY * 0.58;
 
             heroBox.style.opacity = opacity;
             heroBox.style.transform = 'translateY(' + translateY + 'px) scale(' + scale + ')';
