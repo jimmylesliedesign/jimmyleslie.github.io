@@ -79,7 +79,7 @@ nav a:hover {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    padding-top: 40px; /* 40px below static nav bar */
+    padding-top: 48px; /* 48px below static nav bar */
     z-index: -1;
     pointer-events: none;
 }
@@ -102,7 +102,7 @@ nav a:hover {
     max-width: 860px;
     width: 100%;
     min-height: 480px;
-    padding: 80px 60px;
+    padding: 80px 48px;
     border-radius: 24px;
     display: flex;
     justify-content: center;
@@ -294,7 +294,7 @@ nav a:hover {
 }
 
 .keyline-above-work {
-    margin-bottom: 40px;
+    margin-bottom: 48px;
 }
 
 .keyline-below-about {
@@ -305,7 +305,7 @@ nav a:hover {
 .work-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 48px;
     max-width: 860px;
     margin: 0 auto;
 }
@@ -314,7 +314,7 @@ nav a:hover {
 .work-cards-container {
     position: relative;
     margin-top: 24px;
-    margin-bottom: 40px;
+    margin-bottom: 48px;
     max-width: 640px;
     margin-left: auto;
     margin-right: auto;
@@ -406,8 +406,8 @@ nav a:hover {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    width: 40px;
-    height: 40px;
+    width: 48px;
+    height: 48px;
     background: #ffffff;
     border: 1px solid #e5e5e5;
     border-radius: 50%;
@@ -461,7 +461,7 @@ nav a:hover {
     max-width: 700px;
     margin: 0 auto;
     aspect-ratio: 1771/1057;
-    background-color: #FAFAFA;
+    background-color: #F7F7F9;
     border-radius: 16px;
     margin-bottom: 24px;
     overflow: hidden;
@@ -469,14 +469,15 @@ nav a:hover {
     transition: border-color 0.2s, border-width 0.2s;
 }
 
-.work-item:hover .work-image {
-    border: 2px solid rgba(29, 29, 29, 0.15);
-}
-
 .work-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.work-item:hover .work-image img {
+    transform: scale(1.03);
 }
 
 .work-info {
@@ -494,7 +495,7 @@ nav a:hover {
 
 .work-item h4 {
     text-decoration: none;
-    margin-bottom: 4px;
+    margin-bottom: 8px;
 }
 
 .work-company {
@@ -527,19 +528,15 @@ nav a:hover {
     justify-content: space-between;
     align-items: center;
     gap: 16px;
-    padding: 40px;
+    padding: 48px;
     border: 1px solid rgba(34, 34, 34, 0.1);
     border-radius: 24px;
     transition: border-color 0.2s, border-width 0.2s;
     background-color: #ffffff;
 }
 
-.writing-item:hover {
-    border: 2px solid rgba(29, 29, 29, 0.15);
-}
-
 .writing-info h4 {
-    margin-bottom: 4px;
+    margin-bottom: 8px;
 }
 
 .writing-source {
@@ -581,7 +578,7 @@ nav a:hover {
     }
 
     .hero-parallax-wrapper {
-        padding-top: 40px;
+        padding-top: 48px;
         margin-left: -8px;
         margin-right: -8px;
         width: calc(100% + 16px);
@@ -589,12 +586,12 @@ nav a:hover {
         
     .hero-section {
         margin-top: 24px;
-        margin-bottom: 60px;
+        margin-bottom: 48px;
         padding: 0;
     }
 
     .hero-box {
-        padding: 60px 32px;
+        padding: 48px 32px;
     }
 
     .hero-spacer {
@@ -602,18 +599,18 @@ nav a:hover {
     }
 
     .section {
-        margin-bottom: 60px;
+        margin-bottom: 48px;
     }
 
     .contact-section {
         margin-top: 80px;
-        padding: 60px 24px;
+        padding: 48px 24px;
     }
 }
 
 @media (max-width: 480px) {
     .hero-box {
-        padding: 48px 24px;
+        padding: 32px 24px;
         border-radius: 16px;
     }
 
