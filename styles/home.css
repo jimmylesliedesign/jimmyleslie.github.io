@@ -103,7 +103,7 @@ nav a:hover {
 /* Glitch word - dynamic hero text with smooth width transition */
 .glitch-word-wrapper {
     display: inline-block;
-    overflow: hidden;
+    overflow: visible;
     vertical-align: bottom;
     transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -111,36 +111,119 @@ nav a:hover {
 .glitch-word {
     display: inline-block;
     white-space: nowrap;
+    position: relative;
+}
+
+/* RGB split / chromatic aberration - offset red and cyan copies */
+.glitch-word::before,
+.glitch-word::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+}
+
+.glitch-word.glitch-active::before {
+    color: #FF0040;
+    text-shadow: 0 0 2px #FF0040;
+    animation: glitch-rgb-before var(--glitch-duration, 0.5s) steps(6) forwards;
+}
+
+.glitch-word.glitch-active::after {
+    color: #00D4FF;
+    text-shadow: 0 0 2px #00D4FF;
+    animation: glitch-rgb-after var(--glitch-duration, 0.5s) steps(6) forwards;
+}
+
+@keyframes glitch-rgb-before {
+    0%, 100% { transform: translate(0, 0); opacity: 0; }
+    16% { transform: translate(calc(-3px * var(--glitch-intensity, 1)), calc(1px * var(--glitch-intensity, 1))); opacity: 0.85; }
+    33% { transform: translate(calc(2px * var(--glitch-intensity, 1)), calc(-2px * var(--glitch-intensity, 1))); opacity: 0.85; }
+    50% { transform: translate(calc(-2px * var(--glitch-intensity, 1)), calc(2px * var(--glitch-intensity, 1))); opacity: 0.85; }
+    66% { transform: translate(calc(3px * var(--glitch-intensity, 1)), calc(-1px * var(--glitch-intensity, 1))); opacity: 0.85; }
+    83% { transform: translate(0, 0); opacity: 0; }
+}
+
+@keyframes glitch-rgb-after {
+    0%, 100% { transform: translate(0, 0); opacity: 0; }
+    16% { transform: translate(calc(3px * var(--glitch-intensity, 1)), calc(-1px * var(--glitch-intensity, 1))); opacity: 0.85; }
+    33% { transform: translate(calc(-2px * var(--glitch-intensity, 1)), calc(2px * var(--glitch-intensity, 1))); opacity: 0.85; }
+    50% { transform: translate(calc(2px * var(--glitch-intensity, 1)), calc(-2px * var(--glitch-intensity, 1))); opacity: 0.85; }
+    66% { transform: translate(calc(-3px * var(--glitch-intensity, 1)), calc(1px * var(--glitch-intensity, 1))); opacity: 0.85; }
+    83% { transform: translate(0, 0); opacity: 0; }
 }
 
 .glitch-word.glitch-active {
-    animation: glitch 0.4s ease-in-out;
+    animation: glitch var(--glitch-duration, 0.5s) steps(6) forwards;
 }
 
 @keyframes glitch {
     0%, 100% {
         text-shadow: none;
         transform: translate(0) skew(0deg);
+        font-style: normal;
+        filter: none;
+        opacity: 1;
     }
-    10% {
-        text-shadow: -2px 0 #FF0040, 2px 0 #00D4FF;
-        transform: translate(-1px, 1px) skew(-3deg);
+    8% {
+        text-shadow: calc(-4px * var(--glitch-intensity, 1)) 0 2px #FF0040, calc(4px * var(--glitch-intensity, 1)) 0 2px #00D4FF, calc(-2px * var(--glitch-intensity, 1)) calc(2px * var(--glitch-intensity, 1)) 3px #FF0040;
+        transform: translate(calc(-4px * var(--glitch-intensity, 1)), calc(3px * var(--glitch-intensity, 1))) skew(calc(-12deg * var(--glitch-intensity, 1)));
+        font-style: italic;
+        filter: brightness(1.3) blur(0.5px);
     }
-    20% {
-        text-shadow: 2px 0 #FF0040, -2px 0 #00D4FF;
-        transform: translate(1px, -1px) skew(3deg);
+    16% {
+        text-shadow: calc(4px * var(--glitch-intensity, 1)) 0 2px #00D4FF, calc(-4px * var(--glitch-intensity, 1)) 0 2px #FF0040, calc(2px * var(--glitch-intensity, 1)) calc(-2px * var(--glitch-intensity, 1)) 3px #00D4FF;
+        transform: translate(calc(4px * var(--glitch-intensity, 1)), calc(-3px * var(--glitch-intensity, 1))) skew(calc(12deg * var(--glitch-intensity, 1)));
+        font-style: italic;
+        filter: blur(0.5px);
     }
-    30% {
-        text-shadow: -1px 0 #FF0040, 1px 0 #00D4FF;
-        transform: translate(-2px, -1px) skew(-2deg);
+    24% {
+        text-shadow: calc(-3px * var(--glitch-intensity, 1)) calc(2px * var(--glitch-intensity, 1)) 2px #FF0040, calc(3px * var(--glitch-intensity, 1)) calc(-2px * var(--glitch-intensity, 1)) 2px #00D4FF;
+        transform: translate(calc(-3px * var(--glitch-intensity, 1)), calc(-4px * var(--glitch-intensity, 1))) skew(calc(-8deg * var(--glitch-intensity, 1)));
+        font-style: italic;
+        filter: brightness(1.2) blur(0.5px);
     }
-    40% {
-        text-shadow: 1px 0 #FF0040, -1px 0 #00D4FF;
-        transform: translate(2px, 1px) skew(2deg);
+    32% {
+        text-shadow: calc(3px * var(--glitch-intensity, 1)) calc(-2px * var(--glitch-intensity, 1)) 2px #00D4FF, calc(-3px * var(--glitch-intensity, 1)) calc(2px * var(--glitch-intensity, 1)) 2px #FF0040;
+        transform: translate(calc(3px * var(--glitch-intensity, 1)), calc(4px * var(--glitch-intensity, 1))) skew(calc(8deg * var(--glitch-intensity, 1)));
+        font-style: normal;
+        filter: blur(0.5px);
     }
-    50% {
+    42% {
+        text-shadow: calc(-5px * var(--glitch-intensity, 1)) 0 3px #FF0040, calc(5px * var(--glitch-intensity, 1)) 0 3px #00D4FF;
+        transform: translate(calc(-2px * var(--glitch-intensity, 1)), calc(2px * var(--glitch-intensity, 1))) skew(calc(-15deg * var(--glitch-intensity, 1)));
+        font-style: italic;
+        filter: brightness(1.35) blur(0.5px);
+    }
+    52% {
+        text-shadow: calc(5px * var(--glitch-intensity, 1)) 0 3px #00D4FF, calc(-5px * var(--glitch-intensity, 1)) 0 3px #FF0040;
+        transform: translate(calc(2px * var(--glitch-intensity, 1)), calc(-2px * var(--glitch-intensity, 1))) skew(calc(15deg * var(--glitch-intensity, 1)));
+        font-style: italic;
+        filter: blur(0.5px);
+    }
+    62% {
+        text-shadow: calc(-1px * var(--glitch-intensity, 1)) calc(1px * var(--glitch-intensity, 1)) 1px rgba(255, 0, 64, 0.4), calc(1px * var(--glitch-intensity, 1)) calc(-1px * var(--glitch-intensity, 1)) 1px rgba(0, 212, 255, 0.4);
+        transform: translate(calc(-1px * var(--glitch-intensity, 1)), calc(1px * var(--glitch-intensity, 1))) skew(calc(-5deg * var(--glitch-intensity, 1)));
+        font-style: italic;
+        filter: brightness(1.15) blur(0.4px);
+    }
+    72% {
+        text-shadow: calc(-2px * var(--glitch-intensity, 1)) 0 2px #FF0040, calc(2px * var(--glitch-intensity, 1)) 0 2px #00D4FF;
+        transform: translate(calc(1px * var(--glitch-intensity, 1)), calc(-1px * var(--glitch-intensity, 1))) skew(calc(5deg * var(--glitch-intensity, 1)));
+        font-style: normal;
+        filter: blur(0.5px);
+    }
+    85% {
         text-shadow: none;
         transform: translate(0) skew(0deg);
+        font-style: normal;
+        filter: none;
+        opacity: 1;
     }
 }
 
