@@ -103,7 +103,7 @@ nav a:hover {
     width: 100%;
     min-height: 480px;
     padding: 80px 48px;
-    border-radius: 24px;
+    border-radius: var(--radius-2xl);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -339,7 +339,7 @@ nav a:hover {
     flex: 0 0 280px;
     background: #ffffff;
     border: 1px solid rgba(29, 29, 29, 0.1);
-    border-radius: 12px;
+    border-radius: var(--radius-md);
     padding: 24px;
     display: flex;
     flex-direction: column;
@@ -410,7 +410,7 @@ nav a:hover {
     height: 48px;
     background: #ffffff;
     border: 1px solid rgba(29, 29, 29, 0.1);
-    border-radius: 50%;
+    border-radius: var(--radius-full);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -462,7 +462,7 @@ nav a:hover {
     margin: 0 auto;
     aspect-ratio: 1771/1057;
     background-color: #F7F7F9;
-    border-radius: 16px;
+    border-radius: var(--radius-lg);
     margin-bottom: 24px;
     overflow: hidden;
     border: 1px solid transparent;
@@ -529,7 +529,7 @@ nav a:hover {
     align-items: center;
     gap: 16px;
     padding: 32px;
-    border-radius: 16px;
+    border-radius: var(--radius-lg);
     background-color: #F7F7F9;
 }
 
@@ -609,7 +609,7 @@ nav a:hover {
 @media (max-width: 480px) {
     .hero-box {
         padding: 32px 24px;
-        border-radius: 16px;
+        border-radius: var(--radius-lg);
     }
 
     .hero-spacer {
