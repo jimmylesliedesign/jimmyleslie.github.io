@@ -70,19 +70,16 @@ nav a:hover {
     color: #1D1D1D;
 }
 
-/* Hero Parallax Wrapper - sticky so it participates in overscroll rubber band, sits behind content so it scrolls over */
+/* Hero Parallax Wrapper - sticky so it participates in overscroll rubber band, sits behind content so it scrolls over. Height set by JS to match hero + gaps. */
 .hero-parallax-wrapper {
     position: sticky;
     top: 0;
     left: 0;
     right: 0;
-    height: 0;
-    min-height: 0;
-    overflow: visible;
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    padding-top: 120px;
+    padding-top: 40px; /* 40px below static nav bar */
     z-index: -1;
     pointer-events: none;
 }
@@ -589,7 +586,7 @@ nav a:hover {
     }
 
     .hero-parallax-wrapper {
-        padding-top: 112px;
+        padding-top: 40px;
     }
         
     .hero-section {
