@@ -42,7 +42,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #ffffff;
+    background-color: transparent;
     z-index: 100;
     position: relative;
 }
@@ -70,12 +70,30 @@ nav a:hover {
     color: #1D1D1D;
 }
 
+/* Hero Parallax Wrapper - fixed, sits behind content so it scrolls over */
+.hero-parallax-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: -1;
+    pointer-events: none;
+}
+
 /* Hero Section */
 .hero-section {
     display: flex;
     justify-content: center;
     margin-top: 60px;
     margin-bottom: 80px;
+    width: 100%;
+    max-width: 860px;
+    padding: 0 24px;
+    box-sizing: border-box;
 }
 
 .hero-box {
@@ -89,6 +107,7 @@ nav a:hover {
     justify-content: center;
     align-items: center;
     animation: colorCycle 30s ease-in-out infinite;
+    transform-origin: center center;
 }
 
 .hero-content {
@@ -537,6 +556,13 @@ nav a:hover {
 /* Contact Section - Home specific positioning */
 .contact-section {
     margin-top: 120px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Hero spacer - maintains document flow when hero is fixed (JS updates on load/resize) */
+.hero-spacer {
+    min-height: 780px;
 }
 
 /* Responsive */
@@ -568,6 +594,10 @@ nav a:hover {
         padding: 60px 32px;
     }
 
+    .hero-spacer {
+        min-height: 692px;
+    }
+
     .section {
         margin-bottom: 60px;
     }
@@ -582,5 +612,9 @@ nav a:hover {
     .hero-box {
         padding: 48px 24px;
         border-radius: 16px;
+    }
+
+    .hero-spacer {
+        min-height: 656px;
     }
 }
