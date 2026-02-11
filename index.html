@@ -245,8 +245,8 @@
             const contactSection = document.getElementById('contact');
             
             // Get positions (aboutActiveOffset: About becomes active this many px sooner)
-            const aboutActiveOffset = 40;
-            const aboutTop = aboutSection.offsetTop - 40 - aboutActiveOffset;
+            const aboutActiveOffset = 48;
+            const aboutTop = aboutSection.offsetTop - 48 - aboutActiveOffset;
             const workTop = workSection.offsetTop;
             const contactTop = contactSection.offsetTop;
             const windowHeight = window.innerHeight;
@@ -298,7 +298,7 @@
             const heroSection = heroBox.closest('.hero-section');
             const heroWrapper = heroSection?.closest('.hero-parallax-wrapper');
             const GAP_BELOW_HERO = 80;  /* 80px between hero container and "What I do" */
-            const GAP_BELOW_NAV = 40;   /* 40px between nav bar and hero container */
+            const GAP_BELOW_NAV = 48;   /* 48px between nav bar and hero container */
             if (heroSection && heroWrapper) {
                 const sectionStyle = getComputedStyle(heroSection);
                 const wrapperStyle = getComputedStyle(heroWrapper);
@@ -317,8 +317,8 @@
         function updateHeroParallax() {
             const scrollY = window.scrollY;
             const stickyHeaderHeight = 100;
-            const stickyShowOffset = 40; // Show sticky nav this many px sooner
-            const aboutActiveThreshold = aboutSection ? aboutSection.offsetTop - 40 - stickyHeaderHeight : 0;
+            const stickyShowOffset = 48; // Show sticky nav this many px sooner
+            const aboutActiveThreshold = aboutSection ? aboutSection.offsetTop - 48 - stickyHeaderHeight : 0;
 
             // Sticky header: show when About nav becomes active (same threshold, minus offset to appear sooner)
             if (stickyHeader) {
