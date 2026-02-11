@@ -26,7 +26,7 @@
 .header-sticky-wrapper {
     max-width: 1440px;
     margin: 0 auto;
-    padding: 32px 40px;
+    padding: 32px 48px;
     display: flex;
     align-items: center;
     position: relative;
@@ -34,7 +34,7 @@
 
 .header-sticky .back-link-sticky {
     position: absolute;
-    left: 40px;
+    left: 48px;
     margin-bottom: 0;
 }
 
@@ -54,7 +54,7 @@
 }
 
 .header-sticky.dark {
-    background-color: rgba(34, 34, 34, 0.85);
+    background-color: rgba(29, 29, 29, 0.85);
 }
 
 .header-sticky.dark .back-link-sticky {
@@ -145,8 +145,8 @@ nav a:hover {
 
 /* Title Section */
 .title-section {
-    margin-top: 100px;
-    margin-bottom: 60px;
+    margin-top: 80px;
+    margin-bottom: 48px;
 }
 
 .title-section h1 {
@@ -159,9 +159,9 @@ nav a:hover {
     max-width: 860px;
     margin: 0 auto 80px auto;
     aspect-ratio: 16/10;
-    background-color: #FAFAFA;
+    background-color: #F7F7F9;
     border-radius: 16px;
-    border: 1px solid rgba(34, 34, 34, 0.1);
+    border: 1px solid rgba(29, 29, 29, 0.1);
     overflow: hidden;
 }
 
@@ -175,7 +175,7 @@ nav a:hover {
 /* Case Study Sections */
 .case-study-section {
     width: 100%;
-    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    border-top: 1px solid rgba(29, 29, 29, 0.1);
     padding: 120px 0;
     scroll-margin-top: 80px;
 }
@@ -185,12 +185,12 @@ nav a:hover {
 }
 
 .case-study-section.bg-gray {
-    background-color: #FAFAFA;
+    background-color: #F7F7F9;
 }
 
 .case-study-section.bg-dark {
     background-color: #1D1D1D;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 1px solid rgba(29, 29, 29, 0.1);
 }
 
 .case-study-section.bg-dark h1,
@@ -206,26 +206,26 @@ nav a:hover {
 }
 
 .case-study-section.bg-dark .content-image {
-    background-color: #1A1A1A;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: #1D1D1D;
+    border: 1px solid rgba(29, 29, 29, 0.1);
 }
 
 .case-study-section.bg-dark .fade-left-consistency {
-    background: linear-gradient(to right, #1D1D1D 0%, rgba(34, 34, 34, 0) 100%);
+    background: linear-gradient(to right, #1D1D1D 0%, rgba(29, 29, 29, 0) 100%);
 }
 
 .case-study-section.bg-dark .fade-right-consistency {
-    background: linear-gradient(to left, #1D1D1D 0%, rgba(34, 34, 34, 0) 100%);
+    background: linear-gradient(to left, #1D1D1D 0%, rgba(29, 29, 29, 0) 100%);
 }
 
 .case-study-section.bg-dark .scroll-arrow {
-    background: #1A1A1A;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: #1D1D1D;
+    border: 1px solid rgba(29, 29, 29, 0.1);
     color: #FFFFFF;
 }
 
 .case-study-section.bg-dark .scroll-arrow:hover {
-    background-color: #2A2A2A;
+    background-color: #1D1D1D;
 }
 
 .case-study-section:first-of-type {
@@ -237,8 +237,8 @@ nav a:hover {
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
-    margin-top: 40px;
+    gap: 48px;
+    margin-top: 48px;
     margin-bottom: 32px;
 }
 
@@ -261,7 +261,7 @@ nav a:hover {
 
 /* Info Section (Problem/Role/Approach/Outcome sections) */
 .info-section {
-    margin-bottom: 40px;
+    margin-bottom: 48px;
 }
 
 .info-section h3 {
@@ -278,9 +278,9 @@ nav a:hover {
     max-width: 860px;
     margin: 80px auto;
     aspect-ratio: auto;
-    background-color: #FAFAFA;
+    background-color: #F7F7F9;
     border-radius: 16px;
-    border: 1px solid rgba(34, 34, 34, 0.1);
+    border: 1px solid rgba(29, 29, 29, 0.1);
     overflow: hidden;
 }
 
@@ -297,7 +297,7 @@ nav a:hover {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 24px;
-    margin-bottom: 40px;
+    margin-bottom: 48px;
 }
 
 .image-grid .content-image {
@@ -314,7 +314,7 @@ nav a:hover {
     font-size: 16px;
     font-weight: 400;
     transition: color 0.2s;
-    margin-bottom: 40px;
+    margin-bottom: 48px;
 }
 
 .back-link:hover {
@@ -330,10 +330,10 @@ nav a:hover {
 
 /* Quote Box */
 .quote-box {
-    background-color: #FAFAFA;
+    background-color: #F7F7F9;
     border-left: 4px solid #1D1D1D;
     padding: 24px 32px;
-    margin: 40px 0;
+    margin: 48px 0;
     border-radius: 8px;
 }
 
@@ -369,7 +369,7 @@ nav a:hover {
 /* Consistency Gallery */
 .consistency-gallery-container {
     position: relative;
-    margin-top: 40px;
+    margin-top: 48px;
     margin-bottom: 80px;
     max-width: 860px;
     margin-left: auto;
@@ -410,7 +410,7 @@ nav a:hover {
 
 .fade-left-consistency {
     left: 0;
-    background: linear-gradient(to right, #FAFAFA 0%, rgba(250, 250, 250, 0) 100%);
+    background: linear-gradient(to right, #F7F7F9 0%, rgba(247, 247, 249, 0) 100%);
     opacity: 0;
 }
 
@@ -420,7 +420,7 @@ nav a:hover {
 
 .fade-right-consistency {
     right: 0;
-    background: linear-gradient(to left, #FAFAFA 0%, rgba(250, 250, 250, 0) 100%);
+    background: linear-gradient(to left, #F7F7F9 0%, rgba(247, 247, 249, 0) 100%);
 }
 
 .fade-right-consistency.hidden {
@@ -430,7 +430,7 @@ nav a:hover {
 /* Arrows container at bottom right */
 .consistency-gallery-arrows {
     display: flex;
-    gap: 12px;
+    gap: 16px;
     justify-content: flex-end;
     padding-right: 0;
 }
@@ -439,10 +439,10 @@ nav a:hover {
 .consistency-gallery-arrows .scroll-arrow {
     position: static;
     transform: none;
-    width: 40px;
-    height: 40px;
+    width: 48px;
+    height: 48px;
     background: #ffffff;
-    border: 1px solid rgba(34, 34, 34, 0.1);
+    border: 1px solid rgba(29, 29, 29, 0.1);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -471,7 +471,7 @@ nav a:hover {
 /* Guidelines Cards Gallery (TravelPerk only) */
 .guidelines-cards-container {
     position: relative;
-    margin-top: 40px;
+    margin-top: 48px;
     margin-bottom: 80px;
     max-width: 860px;
     margin-left: auto;
@@ -494,8 +494,8 @@ nav a:hover {
 
 .guidelines-card {
     flex: 0 0 420px;
-    background: #FAFAFA;
-    border: 1px solid rgba(34, 34, 34, 0.1);
+    background: #F7F7F9;
+    border: 1px solid rgba(29, 29, 29, 0.1);
     border-radius: 16px;
     padding: 32px;
     display: flex;
@@ -523,7 +523,7 @@ nav a:hover {
     font-size: 18px;
     line-height: 1.5em;
     color: #919191;
-    padding-left: 20px;
+    padding-left: 16px;
     position: relative;
 }
 
@@ -570,10 +570,10 @@ nav a:hover {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    width: 40px;
-    height: 40px;
+    width: 48px;
+    height: 48px;
     background: #ffffff;
-    border: 1px solid rgba(34, 34, 34, 0.1);
+    border: 1px solid rgba(29, 29, 29, 0.1);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -591,7 +591,7 @@ nav a:hover {
 }
 
 .guidelines-cards-container .scroll-arrow:hover {
-    background-color: #f5f5f5;
+    background-color: #F7F7F9;
 }
 
 .scroll-arrow-left-guidelines {
@@ -616,8 +616,8 @@ nav a:hover {
 
 /* Dark section variant */
 .case-study-section.bg-dark .guidelines-card-image {
-    background: #1A1A1A;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: #1D1D1D;
+    border: 1px solid rgba(29, 29, 29, 0.1);
 }
 
 .case-study-section.bg-dark .guidelines-card-image-caption {
@@ -627,7 +627,7 @@ nav a:hover {
 .guidelines-card .body-text {
     margin-bottom: 0px;
     display: flex;
-    gap: 12px;
+    gap: 16px;
 }
 
 .guidelines-card .body-text:last-child {
@@ -657,7 +657,7 @@ nav a:hover {
 }
 
 .consistency-gallery-arrows .scroll-arrow:hover {
-    background-color: #f5f5f5;
+    background-color: #F7F7F9;
 }
 
 .consistency-gallery-arrows .scroll-arrow-left-guidelines {
@@ -715,7 +715,7 @@ nav a:hover {
     }
 
     .case-study-section {
-        padding: 60px 0;
+        padding: 48px 0;
     }
 
     .stats-grid {
