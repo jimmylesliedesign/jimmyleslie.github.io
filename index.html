@@ -299,11 +299,11 @@
         function updateHeroSpacerHeight() {
             if (!heroSpacer || !heroBox) return;
             const heroSection = heroBox.closest('.hero-section');
+            const GAP_BELOW_HERO = 80;
             if (heroSection) {
                 const style = getComputedStyle(heroSection);
                 const marginTop = parseFloat(style.marginTop) || 0;
-                const marginBottom = parseFloat(style.marginBottom) || 0;
-                heroSpacer.style.height = (heroSection.offsetHeight + marginTop + marginBottom) + 'px';
+                heroSpacer.style.height = (heroBox.offsetHeight + marginTop + GAP_BELOW_HERO) + 'px';
             }
         }
 
@@ -323,11 +323,12 @@
 
             if (prefersReducedMotion || !heroBox || !aboutSection) return;
             const scrollRange = Math.max(aboutActiveThreshold, 1);
-            const progress = Math.min(Math.max(scrollY / scrollRange, 0), 1);
+            // Use 70% of scroll range so hero disappears quicker
+            const progress = Math.min(Math.max(scrollY / (scrollRange * 0.7), 0), 1);
 
             const opacity = 1 - progress;
             const scale = 1 - 0.2 * progress;
-            const translateY = -scrollY * 0.45;
+            const translateY = -scrollY * 0.58;
 
             heroBox.style.opacity = opacity;
             heroBox.style.transform = 'translateY(' + translateY + 'px) scale(' + scale + ')';
