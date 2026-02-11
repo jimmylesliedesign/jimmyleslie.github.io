@@ -390,6 +390,11 @@ nav a:hover {
 .consistency-gallery-scroll .content-image {
     flex: 0 0 calc(100% - 120px);
     margin: 0;
+    border: none;
+}
+
+.case-study-section.bg-dark .consistency-gallery-scroll .content-image {
+    border: none;
 }
 
 /* Fade overlays for consistency gallery */
@@ -491,7 +496,6 @@ nav a:hover {
 .guidelines-card {
     flex: 0 0 420px;
     background: #F7F7F9;
-    border: 1px solid rgba(29, 29, 29, 0.1);
     border-radius: 16px;
     padding: 32px;
     display: flex;
@@ -613,7 +617,6 @@ nav a:hover {
 /* Dark section variant */
 .case-study-section.bg-dark .guidelines-card-image {
     background: #1D1D1D;
-    border: 1px solid rgba(29, 29, 29, 0.1);
 }
 
 .case-study-section.bg-dark .guidelines-card-image-caption {
