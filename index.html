@@ -284,9 +284,17 @@
             }
         }
 
-        window.addEventListener('scroll', updateActiveNavState);
-        window.addEventListener('resize', updateActiveNavState);
-        updateActiveNavState(); // Initial call
+        let navRafId = null;
+        function onScrollNav() {
+            if (navRafId) return;
+            navRafId = requestAnimationFrame(() => {
+                updateActiveNavState();
+                navRafId = null;
+            });
+        }
+        window.addEventListener('scroll', onScrollNav, { passive: true });
+        window.addEventListener('resize', onScrollNav);
+        updateActiveNavState();
 
         // Hero parallax scroll effect - scale and opacity as content scrolls into view
         const heroBox = document.getElementById('hero-box');
@@ -430,11 +438,14 @@
                 const wrapper = wordEl.closest('.glitch-title-wrapper') || wordEl.parentElement;
                 const alt = wordEl.getAttribute('data-alt') || 'View case study';
                 const primary = wordEl.textContent.trim();
+                let glitchTimeoutId = null;
 
                 const parent = wordEl.closest('.work-item, .writing-item');
                 if (!parent) return;
 
                 parent.addEventListener('mouseenter', function() {
+                    if (glitchTimeoutId) clearTimeout(glitchTimeoutId);
+                    glitchTimeoutId = null;
                     wordEl.classList.add('glitch-showing-alt');
                     wordEl.setAttribute('data-text', alt);
                     wordEl.textContent = alt;
@@ -442,13 +453,18 @@
                     wordEl.style.setProperty('--glitch-intensity', 0.8);
                     wordEl.style.setProperty('--glitch-duration', glitchDuration + 's');
                     wordEl.classList.add('glitch-active');
-                    setTimeout(function() {
+                    glitchTimeoutId = setTimeout(function() {
+                        glitchTimeoutId = null;
                         wordEl.classList.remove('glitch-active');
                         setWrapperWidth(wrapper, wordEl);
                     }, glitchDuration * 1000);
                 });
 
                 parent.addEventListener('mouseleave', function() {
+                    if (glitchTimeoutId) {
+                        clearTimeout(glitchTimeoutId);
+                        glitchTimeoutId = null;
+                    }
                     wordEl.classList.remove('glitch-active', 'glitch-showing-alt');
                     wordEl.textContent = primary;
                     wordEl.setAttribute('data-text', primary);
