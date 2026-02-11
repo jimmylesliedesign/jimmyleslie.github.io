@@ -45,14 +45,19 @@
 
     <div class="container">
 
-        <!-- Hero Section -->
-        <section class="hero-section">
-            <div class="hero-box">
-                <div class="hero-content">
-                    <h1>I'm Jimmy, an outcome-focused Design Leader with over 10 years experience building <span class="glitch-word-wrapper"><span class="glitch-word" data-text="products">products</span></span> that people love.</h1>
+        <!-- Hero Parallax Wrapper (fixed, content scrolls over) -->
+        <div class="hero-parallax-wrapper">
+            <section class="hero-section">
+                <div class="hero-box" id="hero-box">
+                    <div class="hero-content">
+                        <h1>I'm Jimmy, an outcome-focused Design Leader with over 10 years experience building <span class="glitch-word-wrapper"><span class="glitch-word" data-text="products">products</span></span> that people love.</h1>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </div>
+
+        <!-- Spacer to maintain document flow -->
+        <div class="hero-spacer" id="hero-spacer"></div>
 
         <!-- What I Do Section -->
         <section class="section" id="about">
@@ -282,26 +287,72 @@
         window.addEventListener('resize', updateActiveNavState);
         updateActiveNavState(); // Initial call
 
-        // Sticky header visibility based on hero section
-        const heroSection = document.querySelector('.hero-section');
+        // Hero parallax scroll effect - scale and opacity as content scrolls into view
+        const heroBox = document.getElementById('hero-box');
+        const heroSpacer = document.getElementById('hero-spacer');
         const stickyHeader = document.getElementById('header-sticky');
+        const aboutSection = document.getElementById('about');
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-        const heroObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    // Hero is visible, hide sticky header
-                    stickyHeader.classList.remove('visible');
-                } else {
-                    // Hero is out of view, show sticky header
+        let rafId = null;
+
+        function updateHeroSpacerHeight() {
+            if (!heroSpacer || !heroBox) return;
+            const heroSection = heroBox.closest('.hero-section');
+            if (heroSection) {
+                const style = getComputedStyle(heroSection);
+                const marginTop = parseFloat(style.marginTop) || 0;
+                const marginBottom = parseFloat(style.marginBottom) || 0;
+                heroSpacer.style.height = (heroSection.offsetHeight + marginTop + marginBottom) + 'px';
+            }
+        }
+
+        function updateHeroParallax() {
+            const scrollY = window.scrollY;
+            const stickyHeaderHeight = 100;
+            const aboutActiveThreshold = aboutSection ? aboutSection.offsetTop - 40 - stickyHeaderHeight : 0;
+
+            // Sticky header: show when About nav becomes active (same threshold)
+            if (stickyHeader) {
+                if (scrollY >= aboutActiveThreshold) {
                     stickyHeader.classList.add('visible');
+                } else {
+                    stickyHeader.classList.remove('visible');
                 }
-            });
-        }, {
-            root: null,
-            threshold: 0.1
-        });
+            }
 
-        heroObserver.observe(heroSection);
+            if (prefersReducedMotion || !heroBox || !aboutSection) return;
+            const scrollRange = Math.max(aboutActiveThreshold, 1);
+            const progress = Math.min(Math.max(scrollY / scrollRange, 0), 1);
+
+            const opacity = 1 - progress;
+            const scale = 1 - 0.2 * progress;
+            const translateY = -scrollY * 0.45;
+
+            heroBox.style.opacity = opacity;
+            heroBox.style.transform = 'translateY(' + translateY + 'px) scale(' + scale + ')';
+        }
+
+        function onScroll() {
+            if (rafId) return;
+            rafId = requestAnimationFrame(function() {
+                updateHeroParallax();
+                rafId = null;
+            });
+        }
+
+        if (heroBox && aboutSection) {
+            updateHeroParallax();
+            window.addEventListener('scroll', onScroll, { passive: true });
+        }
+
+        if (heroSpacer) {
+            updateHeroSpacerHeight();
+            window.addEventListener('resize', function() {
+                updateHeroSpacerHeight();
+                if (heroBox && aboutSection) updateHeroParallax();
+            });
+        }
 
         // Work cards scroll functionality
         const workCardsScroll = document.getElementById('work-cards-scroll');
