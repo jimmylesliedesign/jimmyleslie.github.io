@@ -161,7 +161,6 @@ nav a:hover {
     aspect-ratio: 16/10;
     background-color: #F7F7F9;
     border-radius: 16px;
-    border: 1px solid rgba(29, 29, 29, 0.1);
     overflow: hidden;
 }
 
