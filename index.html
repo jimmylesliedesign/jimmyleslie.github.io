@@ -291,6 +291,7 @@
         // Hero parallax scroll effect - scale and opacity as content scrolls into view
         const heroBox = document.getElementById('hero-box');
         const heroSpacer = document.getElementById('hero-spacer');
+        const heroParallaxWrapper = document.querySelector('.hero-parallax-wrapper');
         const stickyHeader = document.getElementById('header-sticky');
         const aboutSection = document.getElementById('about');
         const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -298,13 +299,23 @@
         let rafId = null;
 
         function updateHeroSpacerHeight() {
-            if (!heroSpacer || !heroBox) return;
+            if (!heroBox) return;
             const heroSection = heroBox.closest('.hero-section');
-            const GAP_BELOW_HERO = 80;
-            if (heroSection) {
-                const style = getComputedStyle(heroSection);
-                const marginTop = parseFloat(style.marginTop) || 0;
-                heroSpacer.style.height = (heroBox.offsetHeight + marginTop + GAP_BELOW_HERO) + 'px';
+            const heroWrapper = heroSection?.closest('.hero-parallax-wrapper');
+            const GAP_BELOW_HERO = 80;  /* 80px between hero container and "What I do" */
+            const GAP_BELOW_NAV = 40;   /* 40px between nav bar and hero container */
+            if (heroSection && heroWrapper) {
+                const sectionStyle = getComputedStyle(heroSection);
+                const wrapperStyle = getComputedStyle(heroWrapper);
+                const marginTop = parseFloat(sectionStyle.marginTop) || 0;
+                const paddingTop = parseFloat(wrapperStyle.paddingTop) || GAP_BELOW_NAV;
+                const height = paddingTop + marginTop + heroBox.offsetHeight + GAP_BELOW_HERO;
+                const heightPx = height + 'px';
+                if (heroParallaxWrapper) heroParallaxWrapper.style.height = heightPx;
+                if (heroSpacer) {
+                    heroSpacer.style.height = '0';
+                    heroSpacer.style.minHeight = '0';
+                }
             }
         }
 
@@ -325,8 +336,8 @@
 
             if (prefersReducedMotion || !heroBox || !aboutSection) return;
             const scrollRange = Math.max(aboutActiveThreshold, 1);
-            // Use 70% of scroll range so hero disappears quicker
-            const progress = Math.min(Math.max(scrollY / (scrollRange * 0.7), 0), 1);
+            // Use 90% of scroll range - slightly slower fade to 0 opacity
+            const progress = Math.min(Math.max(scrollY / (scrollRange * 0.9), 0), 1);
 
             const opacity = 1 - progress;
             const scale = 1 - 0.2 * progress;
