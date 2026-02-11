@@ -49,7 +49,7 @@
         <section class="hero-section">
             <div class="hero-box">
                 <div class="hero-content">
-                    <h1>I'm Jimmy, an outcome-focused Design Leader with over 10 years experience building products and teams that people genuinely love.</h1>
+                    <h1>I'm Jimmy, an outcome-focused Designer with over 10 years experience building great <span class="glitch-word-wrapper"><span class="glitch-word">products</span></span> that people love.</h1>
                 </div>
             </div>
         </section>
@@ -186,6 +186,35 @@
     </section>
 
     <script>
+        // Hero dynamic word rotation with glitch and smooth width transition
+        (function() {
+            const words = ['products', 'experiences', 'teams', 'services'];
+            const wrapper = document.querySelector('.glitch-word-wrapper');
+            const wordEl = document.querySelector('.glitch-word');
+            if (!wrapper || !wordEl) return;
+
+            function setWrapperWidth() {
+                requestAnimationFrame(function() {
+                    requestAnimationFrame(function() {
+                        wrapper.style.width = wordEl.offsetWidth + 'px';
+                    });
+                });
+            }
+
+            setWrapperWidth();
+
+            let idx = 0;
+            setInterval(function() {
+                idx = (idx + 1) % words.length;
+                wordEl.classList.add('glitch-active');
+                wordEl.textContent = words[idx];
+                setWrapperWidth();
+                setTimeout(function() {
+                    wordEl.classList.remove('glitch-active');
+                }, 400);
+            }, 3000);
+        })();
+
         function updateBarcelonaTime() {
             const now = new Date();
             const options = {
