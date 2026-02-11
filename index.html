@@ -323,12 +323,12 @@
 
             if (prefersReducedMotion || !heroBox || !aboutSection) return;
             const scrollRange = Math.max(aboutActiveThreshold, 1);
-            // Use 70% of scroll range so hero disappears quicker
-            const progress = Math.min(Math.max(scrollY / (scrollRange * 0.7), 0), 1);
+            // Use 65% of scroll range so hero disappears quicker
+            const progress = Math.min(Math.max(scrollY / (scrollRange * 0.65), 0), 1);
 
             const opacity = 1 - progress;
             const scale = 1 - 0.2 * progress;
-            const translateY = -scrollY * 0.58;
+            const translateY = -scrollY * 0.55;
 
             heroBox.style.opacity = opacity;
             heroBox.style.transform = 'translateY(' + translateY + 'px) scale(' + scale + ')';
