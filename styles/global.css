@@ -200,10 +200,9 @@ a, button, .email-copy {
 
 /* Contact Section */
 .contact-section {
-    background-color: #F4FEC1;
+    background-color: #F7F7F9;
     padding: 80px 24px;
     margin-top: 0;
-    animation: colorCycle 30s ease-in-out infinite;
 }
 
 @keyframes colorCycle {
