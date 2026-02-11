@@ -466,11 +466,11 @@ nav a:hover {
     margin-bottom: 24px;
     overflow: hidden;
     border: 1px solid transparent;
-    transition: border-color 0.2s;
+    transition: border-color 0.2s, border-width 0.2s;
 }
 
 .work-item:hover .work-image {
-    border-color: #919191;
+    border: 2px solid rgba(29, 29, 29, 0.15);
 }
 
 .work-image img {
@@ -535,7 +535,7 @@ nav a:hover {
 }
 
 .writing-item:hover {
-    border-color: #919191;
+    border: 2px solid rgba(29, 29, 29, 0.15);
 }
 
 .writing-info h4 {
