@@ -525,7 +525,7 @@ nav a:hover {
     nav {
         flex-wrap: wrap;
         justify-content: flex-start;
-        gap: 24px;
+        gap: 16px;
     }
 
     #custom-cursor {
@@ -533,11 +533,11 @@ nav a:hover {
     }
 
     .header-container {
-        padding: 24px 24px;
+        padding: 24px 32px;
     }
 
     .header-sticky .header-container {
-        padding: 24px 24px;
+        padding: 24px 32px;
     }
         
     .hero-section {
