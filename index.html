@@ -124,7 +124,7 @@
                     </div>
                     <div class="work-info">
                         <div class="work-title">
-                            <h4>🔒 Managing conflicting stakeholder visions</h4>
+                            <h4><span class="glitch-word-wrapper glitch-title-wrapper"><span class="glitch-word glitch-title" data-alt="View case study">🔒 Managing conflicting stakeholder visions</span></span></h4>
                             <div class="work-company">TravelPerk / Delta Airlines</div>
                         </div>
                         <span class="arrow"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
@@ -137,7 +137,7 @@
                     </div>
                     <div class="work-info">
                         <div class="work-title">
-                            <h4>🔒 Turning a customer problem into $50million annual revenue</h4>
+                            <h4><span class="glitch-word-wrapper glitch-title-wrapper"><span class="glitch-word glitch-title" data-alt="View case study">🔒 Turning a customer problem into $50million annual revenue</span></span></h4>
                             <div class="work-company">Bunnings Warehouse / AKQA</div>
                         </div>
                         <span class="arrow"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
@@ -150,7 +150,7 @@
                     </div>
                     <div class="work-info">
                         <div class="work-title">
-                            <h4>🔒 Creating a 0-1 mobile app launch strategy</h4>
+                            <h4><span class="glitch-word-wrapper glitch-title-wrapper"><span class="glitch-word glitch-title" data-alt="View case study">🔒 Creating a 0-1 mobile app launch strategy</span></span></h4>
                             <div class="work-company">Airwallex</div>
                         </div>
                         <span class="arrow"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
@@ -168,7 +168,7 @@
                 <h3>Writing</h3>
                 <a href="https://builders.travelperk.com/human-led-design-in-the-age-of-ai-34704893e391" class="writing-item">
                     <div class="writing-info">
-                        <h4>Human-led Design in the Age of AI</h4>
+                        <h4><span class="glitch-word-wrapper glitch-title-wrapper"><span class="glitch-word glitch-title" data-alt="Read article">Human-led Design in the Age of AI</span></span></h4>
                         <div class="writing-source">Substack / 2025</div>
                     </div>
                     <span class="arrow"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
@@ -347,6 +347,50 @@
 
         // Initial state
         updateScrollState();
+
+        // Case study title glitch on hover - text changes to alt, glitch effect plays on new text
+        (function() {
+            const glitchTitles = document.querySelectorAll('.glitch-title');
+            const glitchDuration = 0.25;
+
+            function setWrapperWidth(wrapper, wordEl) {
+                requestAnimationFrame(function() {
+                    requestAnimationFrame(function() {
+                        wrapper.style.width = wordEl.offsetWidth + 'px';
+                    });
+                });
+            }
+
+            glitchTitles.forEach(function(wordEl) {
+                const wrapper = wordEl.closest('.glitch-title-wrapper') || wordEl.parentElement;
+                const alt = wordEl.getAttribute('data-alt') || 'View case study';
+                const primary = wordEl.textContent.trim();
+
+                const parent = wordEl.closest('.work-item, .writing-item');
+                if (!parent) return;
+
+                parent.addEventListener('mouseenter', function() {
+                    wordEl.classList.add('glitch-showing-alt');
+                    wordEl.setAttribute('data-text', alt);
+                    wordEl.textContent = alt;
+                    wrapper.style.width = wordEl.offsetWidth + 'px';
+                    wordEl.style.setProperty('--glitch-intensity', 0.8);
+                    wordEl.style.setProperty('--glitch-duration', glitchDuration + 's');
+                    wordEl.classList.add('glitch-active');
+                    setTimeout(function() {
+                        wordEl.classList.remove('glitch-active');
+                        setWrapperWidth(wrapper, wordEl);
+                    }, glitchDuration * 1000);
+                });
+
+                parent.addEventListener('mouseleave', function() {
+                    wordEl.classList.remove('glitch-active', 'glitch-showing-alt');
+                    wordEl.textContent = primary;
+                    wordEl.setAttribute('data-text', primary);
+                    wrapper.style.width = '';
+                });
+            });
+        })();
 
         // Custom Cursor
         const cursor = document.getElementById('custom-cursor');
