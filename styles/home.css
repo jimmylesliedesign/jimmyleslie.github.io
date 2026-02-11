@@ -587,11 +587,15 @@ nav a:hover {
 
     .hero-parallax-wrapper {
         padding-top: 40px;
+        margin-left: -8px;
+        margin-right: -8px;
+        width: calc(100% + 16px);
     }
         
     .hero-section {
         margin-top: 24px;
         margin-bottom: 60px;
+        padding: 0;
     }
 
     .hero-box {
