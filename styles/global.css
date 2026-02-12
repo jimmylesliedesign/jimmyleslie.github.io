@@ -267,7 +267,7 @@ h4 {
     pointer-events: none;
     z-index: 9999;
     transform: translate(-50%, -50%);
-    transition: opacity 0.2s, transform 0.2s;
+    transition: opacity 0.2s, transform 0.2s, background-color 0.2s, box-shadow 0.2s, color 0.2s;
     opacity: 0; /* Hidden until first mousemove to avoid jump on refresh */
     background-color: rgba(0, 0, 0, 0.5);
     display: flex;
@@ -307,11 +307,14 @@ h4 {
 }
 
 #custom-cursor.dark-section {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
 }
 
 #custom-cursor.copy-mode.dark-section {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
+    color: #1d1d1d;
 }
 
 a, button, .email-copy {
