@@ -63,11 +63,11 @@ nav a {
 }
 
 nav a.active {
-    color: #1D1D1D;
+    color: #2D352D;
 }
 
 nav a:hover {
-    color: #1D1D1D;
+    color: #2D352D;
 }
 
 /* Hero Parallax Wrapper - sticky so it participates in overscroll rubber band, sits behind content so it scrolls over. Height set by JS to match hero + gaps. */
@@ -99,6 +99,7 @@ nav a:hover {
 .hero-box {
     background-color: #DDEBD4;
     box-shadow: 0 0 80px rgba(221, 235, 212, 0.85);
+    transition: background-color 0.6s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     max-width: 860px;
     width: 100%;
     min-height: 480px;
@@ -117,6 +118,7 @@ nav a:hover {
 .hero-content h1 {
     text-align: center;
     margin-bottom: 0;
+    color: #2D352D;
 }
 
 /* Glitch word - dynamic hero text with smooth width transition */
@@ -277,7 +279,7 @@ nav a:hover {
 }
 
 .body-text a {
-    color: #1D1D1D;
+    color: #2D352D;
     text-decoration: none;
 }
 
@@ -351,7 +353,7 @@ nav a:hover {
     font-optical-sizing: auto;
     font-weight: 400;
     font-size: 18px;
-    color: #1D1D1D;
+    color: #2D352D;
 }
 
 .work-card-role {
@@ -417,7 +419,7 @@ nav a:hover {
     cursor: pointer;
     z-index: 20;
     transition: opacity 0.3s, background-color 0.2s;
-    color: #1D1D1D;
+    color: #2D352D;
     font-family: 'Inter', sans-serif;
 }
 
@@ -500,7 +502,7 @@ nav a:hover {
 
 .work-company {
     font-size: 16px;
-    color: #1D1D1D;
+    color: #2D352D;
     opacity: 0.5;
 }
 
@@ -510,7 +512,7 @@ nav a:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #1D1D1D;
+    color: #2D352D;
     transition: transform 0.2s;
     flex-shrink: 0;
 }
@@ -539,7 +541,7 @@ nav a:hover {
 
 .writing-source {
     font-size: 16px;
-    color: #1D1D1D;
+    color: #2D352D;
     opacity: 0.5;
 }
 
