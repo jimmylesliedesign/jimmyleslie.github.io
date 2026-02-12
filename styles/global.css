@@ -146,28 +146,32 @@ h4 {
 #custom-cursor {
     width: 20px;
     height: 20px;
-    border: 2px solid #1D1D1D;
+    border: none;
     border-radius: 50%;
     position: fixed;
     pointer-events: none;
     z-index: 9999;
     transform: translate(-50%, -50%);
-    transition: opacity 0.2s;
+    transition: opacity 0.2s, transform 0.2s;
     opacity: 0; /* Hidden until first mousemove to avoid jump on refresh */
-    background-color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.5);
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 14px;
-    color: #1D1D1D;
+    color: #ffffff;
     font-family: 'Inter', sans-serif;
     white-space: nowrap;
     padding: 0;
 }
 
-#custom-cursor.hover {
+#custom-cursor.cursor-visible {
+    opacity: 1;
+}
+
+#custom-cursor.cursor-visible.hover {
     transform: translate(-50%, -50%) scale(1.5);
-    transition: transform 0.2s, opacity 0.2s;
+    opacity: 0.6;
 }
 
 #custom-cursor.copy-mode {
@@ -176,6 +180,7 @@ h4 {
     border-radius: 20px;
     padding: 8px 16px;
     transform: translate(-50%, -50%) scale(1);
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 #custom-cursor .cursor-text {
@@ -187,8 +192,11 @@ h4 {
 }
 
 #custom-cursor.dark-section {
-    border-color: #ffffff;
-    background-color: #1D1D1D;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+#custom-cursor.copy-mode.dark-section {
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 a, button, .email-copy {
