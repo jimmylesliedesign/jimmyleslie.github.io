@@ -259,14 +259,14 @@ h4 {
 
 /* Custom Cursor */
 #custom-cursor {
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
     border: none;
     border-radius: 50%;
     position: fixed;
     pointer-events: none;
     z-index: 9999;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) scale(1.1);
     transition: opacity 0.2s, transform 0.2s, background-color 0.2s, box-shadow 0.2s, color 0.2s;
     opacity: 0; /* Hidden until first mousemove to avoid jump on refresh */
     background-color: rgba(0, 0, 0, 0.5);
@@ -285,8 +285,20 @@ h4 {
 }
 
 #custom-cursor.cursor-visible.hover {
-    transform: translate(-50%, -50%) scale(1.2);
+    transform: translate(-50%, -50%) scale(1.32);
     opacity: 0.6;
+}
+
+#custom-cursor.active {
+    transform: translate(-50%, -50%) scale(0.88);
+}
+
+#custom-cursor.cursor-visible.hover.active {
+    transform: translate(-50%, -50%) scale(0.88);
+}
+
+#custom-cursor.copy-mode.active {
+    transform: translate(-50%, -50%) scale(0.88);
 }
 
 #custom-cursor.copy-mode {
@@ -294,7 +306,7 @@ h4 {
     height: auto;
     border-radius: 20px;
     padding: 8px 16px;
-    transform: translate(-50%, -50%) scale(1);
+    transform: translate(-50%, -50%) scale(1.1);
     background-color: rgba(0, 0, 0, 0.5);
 }
 
