@@ -11,8 +11,10 @@
             const currentPath = window.location.pathname;
             localStorage.setItem('case-study-return', currentPath);
             
-            // Redirect to password page
-            window.location.href = '/password.html?return=' + encodeURIComponent(currentPath);
+            // Use local password page when on localhost (no API needed)
+            const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+            const passwordPage = isLocal ? '/password-local.html' : '/password.html';
+            window.location.href = passwordPage + '?return=' + encodeURIComponent(currentPath);
         }
     </script>
     <meta charset="UTF-8">
@@ -273,30 +275,35 @@
             </div>
 
             <!-- Before/After Slider Component -->
-            <div class="before-after-container" id="beforeAfterSlider">
+            <div class="before-after-container" data-ba-slider>
                 <!-- Before Image (left side, clipped) -->
-                <div class="before-image-wrapper" id="beforeWrapper">
-                    <img src="/mnt/user-data/uploads/1769699096497_image.png" alt="Before" class="before-image">
+                <div class="ba-before-wrapper">
+                    <img src="/mnt/user-data/uploads/1769699096497_image.png" alt="Before" class="ba-image">
+                    <div class="ba-label ba-label-before">Before</div>
                 </div>
                 
-                <!-- After Image (right side, full) -->
-                <div class="after-image-wrapper">
-                    <img src="/mnt/user-data/uploads/1769699096497_image.png" alt="After" class="after-image">
+                <!-- After Image (right side, clipped from left) -->
+                <div class="ba-after-wrapper">
+                    <img src="/mnt/user-data/uploads/1769699096497_image.png" alt="After" class="ba-image">
+                    <div class="ba-label ba-label-after">After</div>
                 </div>
                 
-                <!-- Slider Handle -->
-                <div class="slider-handle" id="sliderHandle">
-                    <div class="slider-button">
-                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M9 5L14 12L9 19M15 5L20 12L15 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M15 5L10 12L15 19M9 5L4 12L9 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
+                <!-- Divider line + Slider handle (moves together) -->
+                <div class="ba-slider-track">
+                    <div class="ba-divider-line"></div>
+                    <div class="ba-slider-button">
+                        <span class="ba-caret ba-caret-left" aria-hidden="true">
+                            <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M10 3L5 8L10 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <span class="ba-caret ba-caret-right" aria-hidden="true">
+                            <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
                     </div>
                 </div>
-                
-                <!-- Labels -->
-                <div class="ba-label ba-label-before">Before</div>
-                <div class="ba-label ba-label-after">After</div>
             </div>
 
             <div class="section-content">
@@ -305,30 +312,35 @@
             </div>
 
             <!-- Before/After Slider Component -->
-            <div class="before-after-container" id="beforeAfterSlider">
+            <div class="before-after-container" data-ba-slider>
                 <!-- Before Image (left side, clipped) -->
-                <div class="before-image-wrapper" id="beforeWrapper">
-                    <img src="/mnt/user-data/uploads/1769699096497_image.png" alt="Before" class="before-image">
+                <div class="ba-before-wrapper">
+                    <img src="/mnt/user-data/uploads/1769699096497_image.png" alt="Before" class="ba-image">
+                    <div class="ba-label ba-label-before">Before</div>
                 </div>
                 
-                <!-- After Image (right side, full) -->
-                <div class="after-image-wrapper">
-                    <img src="/mnt/user-data/uploads/1769699096497_image.png" alt="After" class="after-image">
+                <!-- After Image (right side, clipped from left) -->
+                <div class="ba-after-wrapper">
+                    <img src="/mnt/user-data/uploads/1769699096497_image.png" alt="After" class="ba-image">
+                    <div class="ba-label ba-label-after">After</div>
                 </div>
                 
-                <!-- Slider Handle -->
-                <div class="slider-handle" id="sliderHandle">
-                    <div class="slider-button">
-                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M9 5L14 12L9 19M15 5L20 12L15 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M15 5L10 12L15 19M9 5L4 12L9 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
+                <!-- Divider line + Slider handle (moves together) -->
+                <div class="ba-slider-track">
+                    <div class="ba-divider-line"></div>
+                    <div class="ba-slider-button">
+                        <span class="ba-caret ba-caret-left" aria-hidden="true">
+                            <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M10 3L5 8L10 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <span class="ba-caret ba-caret-right" aria-hidden="true">
+                            <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
                     </div>
                 </div>
-                
-                <!-- Labels -->
-                <div class="ba-label ba-label-before">Before</div>
-                <div class="ba-label ba-label-after">After</div>
             </div>
 
             <div class="section-content">
@@ -447,7 +459,7 @@
     </section>
 
     <!-- Outcome Section -->
-    <section class="case-study-section bg-white" id="outcome">
+    <section class="case-study-section bg-gray" id="outcome">
         <div class="container">
             <div class="section-content">
                 <h1>Outcome</h1>
@@ -874,78 +886,77 @@
         window.addEventListener('resize', updateActiveNavState);
         updateActiveNavState(); // Initial call
 
-        // Before/After Slider Functionality
-        const slider = document.getElementById('beforeAfterSlider');
-        const beforeWrapper = document.getElementById('beforeWrapper');
-        const sliderHandle = document.getElementById('sliderHandle');
-        
-        if (slider && beforeWrapper && sliderHandle) {
-            let isDragging = false;
-            let currentPosition = 50; // Start at 50%
+        // Before/After Slider Functionality - supports multiple sliders on page
+        let activeBaSlider = null;
 
-            function updateSlider(clientX) {
-                const rect = slider.getBoundingClientRect();
-                const x = clientX - rect.left;
-                const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100));
-                
-                currentPosition = percentage;
-                
-                // Update clip-path on before image
-                beforeWrapper.style.clipPath = `inset(0 ${100 - percentage}% 0 0)`;
-                
-                // Update handle position
-                sliderHandle.style.left = `${percentage}%`;
-            }
+        function updateBaSlider(container, clientX) {
+            const beforeWrapper = container.querySelector('.ba-before-wrapper');
+            const afterWrapper = container.querySelector('.ba-after-wrapper');
+            const track = container.querySelector('.ba-slider-track');
+            if (!beforeWrapper || !afterWrapper || !track) return;
 
-            // Mouse events
-            slider.addEventListener('mousedown', (e) => {
-                isDragging = true;
-                slider.classList.add('dragging');
-                updateSlider(e.clientX);
+            const rect = container.getBoundingClientRect();
+            const x = clientX - rect.left;
+            const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100));
+
+            // Before: clip from right; at 0% hide before, at 100% show full before
+            beforeWrapper.style.clipPath = `inset(0 ${100 - percentage}% 0 0)`;
+            // After: clip from left; at 100% hide after, so labels get clipped too
+            afterWrapper.style.clipPath = `inset(0 0 0 ${percentage}%)`;
+            track.style.left = `${percentage}%`;
+        }
+
+        document.querySelectorAll('[data-ba-slider]').forEach(container => {
+            const beforeWrapper = container.querySelector('.ba-before-wrapper');
+            const track = container.querySelector('.ba-slider-track');
+            if (!beforeWrapper || !track) return;
+
+            container.addEventListener('mousedown', (e) => {
+                activeBaSlider = container;
+                container.classList.add('dragging');
+                updateBaSlider(container, e.clientX);
             });
 
-            document.addEventListener('mousemove', (e) => {
-                if (!isDragging) return;
-                updateSlider(e.clientX);
+            container.addEventListener('click', (e) => {
+                if (e.target.closest('.ba-slider-button')) return;
+                updateBaSlider(container, e.clientX);
             });
 
-            document.addEventListener('mouseup', () => {
-                if (isDragging) {
-                    isDragging = false;
-                    slider.classList.remove('dragging');
-                }
-            });
-
-            // Touch events for mobile
-            slider.addEventListener('touchstart', (e) => {
-                isDragging = true;
-                slider.classList.add('dragging');
-                updateSlider(e.touches[0].clientX);
-                e.preventDefault();
-            });
-
-            document.addEventListener('touchmove', (e) => {
-                if (!isDragging) return;
-                updateSlider(e.touches[0].clientX);
+            container.addEventListener('touchstart', (e) => {
+                activeBaSlider = container;
+                container.classList.add('dragging');
+                updateBaSlider(container, e.touches[0].clientX);
                 e.preventDefault();
             }, { passive: false });
 
-            document.addEventListener('touchend', () => {
-                if (isDragging) {
-                    isDragging = false;
-                    slider.classList.remove('dragging');
-                }
-            });
+            // Initialize to 50%
+            updateBaSlider(container, container.getBoundingClientRect().left + (container.getBoundingClientRect().width / 2));
+        });
 
-            // Click to move slider
-            slider.addEventListener('click', (e) => {
-                if (e.target.closest('.slider-button')) return;
-                updateSlider(e.clientX);
-            });
+        document.addEventListener('mousemove', (e) => {
+            if (activeBaSlider) updateBaSlider(activeBaSlider, e.clientX);
+        });
 
-            // Initialize slider position
-            updateSlider(slider.getBoundingClientRect().left + (slider.getBoundingClientRect().width / 2));
-        }
+        document.addEventListener('mouseup', () => {
+            if (activeBaSlider) {
+                activeBaSlider.classList.remove('dragging');
+                activeBaSlider = null;
+            }
+        });
+
+        document.addEventListener('touchmove', (e) => {
+            if (activeBaSlider && e.touches.length > 0) {
+                updateBaSlider(activeBaSlider, e.touches[0].clientX);
+                e.preventDefault();
+            }
+        }, { passive: false });
+
+        document.addEventListener('touchend', () => {
+            if (activeBaSlider) {
+                activeBaSlider.classList.remove('dragging');
+                activeBaSlider = null;
+            }
+        });
 
         // Video autoplay on scroll into view - handles all case study videos
         const caseStudyVideos = document.querySelectorAll('.case-study-video, .gallery-video');
