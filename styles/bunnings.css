@@ -1,27 +1,15 @@
 /* ==========================================================================
-   BUNNINGS CASE STUDY - Page-specific styles only
+   BUNNINGS CASE STUDY - Page-specific overrides only
    ========================================================================== */
 
-/* Note: Base case study styles are in case-study.css */
+/* Note: Base case study styles, approach-list are in case-study.css */
 
-/* Numbered List (Bunnings only) */
+/* Approach list - Bunnings uses tighter spacing */
 .approach-list {
-    margin-bottom: 48px;
+    margin-bottom: 40px;
 }
 
-.approach-item {
-    margin-bottom: 32px;
-}
-
-.approach-item:last-child {
-    margin-bottom: 0;
-}
-
-.approach-item h3 {
-    margin-top: 0;
-    margin-bottom: 16px;
-}
-
+/* Approach number - Bunnings-specific numbered list variant */
 .approach-number {
     font-family: 'Inter', sans-serif;
     font-optical-sizing: auto;
@@ -29,10 +17,6 @@
     font-size: 16px;
     color: #919191;
     margin-bottom: 8px;
-}
-
-.approach-item .body-text {
-    margin-bottom: 0;
 }
 
 /* Contact Section - Bunnings has no margin-top override */
