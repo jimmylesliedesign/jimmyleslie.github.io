@@ -25,7 +25,7 @@
             <nav>
                 <a href="#about" data-section="about" class="sticky-nav-link">About</a>
                 <a href="#work" data-section="work" class="sticky-nav-link">Work</a>
-                <a href="#side-projects" data-section="side-projects" class="sticky-nav-link">Fun</a>
+                <a href="#side-projects" data-section="side-projects" class="sticky-nav-link nav-link-fun">Fun</a>
                 <a href="#contact" data-section="contact" class="sticky-nav-link">Contact</a>
             </nav>
             <span class="time">BCN &bull; <span id="time-sticky">--:-- --</span></span>
@@ -38,7 +38,7 @@
             <nav>
                 <a href="#about" data-section="about">About</a>
                 <a href="#work" data-section="work">Work</a>
-                <a href="#side-projects" data-section="side-projects">Fun</a>
+                <a href="#side-projects" data-section="side-projects" class="nav-link-fun">Fun</a>
                 <a href="#contact" data-section="contact">Contact</a>
             </nav>
             <span class="time" id="barcelona-time">BCN &bull; <span id="time">--:-- --</span></span>
@@ -533,7 +533,7 @@
             cursor.style.top = e.clientY + 'px';
             if (!cursorPositioned) {
                 cursorPositioned = true;
-                cursor.style.opacity = '1';
+                cursor.classList.add('cursor-visible');
             }
         });
 
@@ -554,11 +554,11 @@
 
         // Hide cursor when leaving the window
         document.addEventListener('mouseleave', () => {
-            cursor.style.opacity = '0';
+            cursor.classList.remove('cursor-visible');
         });
 
         document.addEventListener('mouseenter', () => {
-            if (cursorPositioned) cursor.style.opacity = '1';
+            if (cursorPositioned) cursor.classList.add('cursor-visible');
         });
 
         // Email Copy Functionality
