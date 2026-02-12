@@ -552,9 +552,13 @@
             });
         });
 
+        // Click state - scale down cursor on mousedown
+        document.addEventListener('mousedown', () => cursor.classList.add('active'));
+        document.addEventListener('mouseup', () => cursor.classList.remove('active'));
+
         // Hide cursor when leaving the window
         document.addEventListener('mouseleave', () => {
-            cursor.classList.remove('cursor-visible');
+            cursor.classList.remove('cursor-visible', 'active');
         });
 
         document.addEventListener('mouseenter', () => {
