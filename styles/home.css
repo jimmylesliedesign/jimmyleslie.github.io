@@ -142,14 +142,14 @@ nav a:hover {
     position: relative;
 }
 
-/* Case study / writing titles - allow wrapping for long text */
+/* Case study / writing titles - prevent wrapping of subtext (e.g. "TravelPerk / Delta") */
 .glitch-title {
-    white-space: normal;
+    white-space: nowrap;
 }
 
 .glitch-title::before,
 .glitch-title::after {
-    white-space: normal;
+    white-space: nowrap;
 }
 
 /* When showing alt text on hover - prevent wrapping during glitch */
@@ -160,6 +160,11 @@ nav a:hover {
 .glitch-title.glitch-showing-alt::before,
 .glitch-title.glitch-showing-alt::after {
     white-space: nowrap;
+}
+
+/* Disable width transition on title wrappers so mouseleave snaps back instantly - prevents intermittent wrapping during transition */
+.glitch-title-wrapper {
+    transition: none;
 }
 
 /* RGB split / chromatic aberration - offset red and cyan copies */
