@@ -290,10 +290,6 @@ nav a:hover {
     text-decoration: none;
 }
 
-.body-text a:hover {
-    opacity: 0.7;
-}
-
 /* Keylines */
 .keyline {
     height: 0.5px;
