@@ -34,9 +34,8 @@
     max-width: 860px;
     margin: 80px auto;
     aspect-ratio: 16/10;
-    border-radius: var(--radius-lg);
+    border-radius: 16px;
     overflow: hidden;
-    border: 1px solid rgba(29, 29, 29, 0.1);
     background-color: #F7F7F9;
     cursor: ew-resize;
     user-select: none;
@@ -48,8 +47,8 @@
     cursor: grabbing;
 }
 
-.before-image-wrapper,
-.after-image-wrapper {
+.ba-before-wrapper,
+.ba-after-wrapper {
     position: absolute;
     top: 0;
     left: 0;
@@ -57,70 +56,95 @@
     height: 100%;
 }
 
-.before-image-wrapper {
-    clip-path: inset(0 0 0 0);
+.ba-before-wrapper {
+    clip-path: inset(0 50% 0 0); /* 50% initial - JS will sync */
     z-index: 2;
 }
 
-.after-image-wrapper {
+.ba-after-wrapper {
     z-index: 1;
 }
 
-.before-image,
-.after-image {
+.ba-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
 }
 
-/* Slider Handle */
-.slider-handle {
+/* Slider track: divider line + button, moves together */
+.ba-slider-track {
     position: absolute;
     top: 0;
     left: 50%;
-    width: 4px;
+    width: 0;
     height: 100%;
-    background: #ffffff;
     transform: translateX(-50%);
     z-index: 3;
     pointer-events: none;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.slider-button {
+/* Solid dividing line - spans full height, behind the button */
+.ba-divider-line {
     position: absolute;
-    top: 50%;
     left: 50%;
+    top: 0;
+    width: 2px;
+    height: 100%;
+    background: #ffffff;
+    transform: translateX(-50%);
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Circle button with carets - same icons as consistency-gallery */
+.ba-slider-button {
+    position: relative;
     width: 56px;
     height: 56px;
+    min-width: 56px;
+    min-height: 56px;
+    flex-shrink: 0;
+    align-self: center;
+    aspect-ratio: 1;
     background: #ffffff;
-    border: 2px solid #1D1D1D;
-    border-radius: var(--radius-full);
-    transform: translate(-50%, -50%);
+    border: 1px solid #919191;
+    border-radius: var(--radius-full, 50%);
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    gap: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
     pointer-events: auto;
     cursor: grab;
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+    color: #1D1D1D;
 }
 
-.slider-button:hover {
-    transform: translate(-50%, -50%) scale(1.1);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+.ba-slider-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    background-color: #F7F7F9;
 }
 
-.slider-button:active,
-.before-after-container.dragging .slider-button {
+.ba-slider-button:active,
+.before-after-container.dragging .ba-slider-button {
     cursor: grabbing;
-    transform: translate(-50%, -50%) scale(1.05);
+    transform: scale(1.02);
 }
 
-.slider-button svg {
-    width: 24px;
-    height: 24px;
+/* Carets - same SVG style as consistency-gallery-arrows */
+.ba-caret {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ba-caret svg {
+    width: 16px;
+    height: 16px;
 }
 
 /* Labels */
@@ -131,7 +155,7 @@
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    border-radius: var(--radius-sm);
+    border-radius: 8px;
     font-size: 14px;
     font-weight: 400;
     color: #1D1D1D;
@@ -154,8 +178,7 @@
     max-width: 1080px;
     margin: 48px auto;
     display: block;
-    border-radius: var(--radius-lg);
-    border: 1px solid rgba(29, 29, 29, 0.1);
+    border-radius: 16px;
 }
 
 /* Responsive - TravelPerk specific */
@@ -169,14 +192,14 @@
         font-size: 16px;
     }
 
-    .before-after-container .slider-button {
+    .before-after-container .ba-slider-button {
         width: 48px;
         height: 48px;
     }
 
-    .before-after-container .slider-button svg {
-        width: 20px;
-        height: 20px;
+    .before-after-container .ba-caret svg {
+        width: 14px;
+        height: 14px;
     }
 
     .ba-label {
@@ -195,7 +218,7 @@
 
     .case-study-video {
         margin: 32px auto;
-        border-radius: var(--radius-md);
+        border-radius: 12px;
     }
 }
 
@@ -209,14 +232,14 @@
         font-size: 15px;
     }
 
-    .before-after-container .slider-button {
+    .before-after-container .ba-slider-button {
         width: 48px;
         height: 48px;
     }
 
-    .before-after-container .slider-button svg {
-        width: 16px;
-        height: 16px;
+    .before-after-container .ba-caret svg {
+        width: 12px;
+        height: 12px;
     }
 
     .ba-label {
@@ -235,6 +258,6 @@
 
     .case-study-video {
         margin: 24px auto;
-        border-radius: var(--radius-sm);
+        border-radius: 8px;
     }
 }
