@@ -585,6 +585,10 @@ nav a:hover {
 
 /* Responsive */
 @media (max-width: 768px) {
+    .nav-link-fun {
+        display: none;
+    }
+
     nav {
         flex-wrap: wrap;
         justify-content: flex-start;
