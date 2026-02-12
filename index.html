@@ -257,7 +257,7 @@
                 wordEl.textContent = newWord;
                 setHeroColor(idx);
                 const intensity = 0.85 + Math.random() * 0.3;
-                const duration = 0.45 + Math.random() * 0.15;
+                const duration = 0.25 + Math.random() * 0.2;
                 wordEl.style.setProperty('--glitch-intensity', intensity);
                 wordEl.style.setProperty('--glitch-duration', duration + 's');
                 wordEl.classList.add('glitch-active');
