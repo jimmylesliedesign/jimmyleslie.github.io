@@ -360,12 +360,14 @@
             const heroWrapper = heroSection?.closest('.hero-parallax-wrapper');
             const GAP_BELOW_HERO = 80;  /* 80px between hero container and "What I do" */
             const GAP_BELOW_NAV = 48;   /* 48px between nav bar and hero container */
+            const MIN_VIEWPORT_HEIGHT = window.innerHeight - 96; /* Keep "What I do" below fold */
             if (heroSection && heroWrapper) {
                 const sectionStyle = getComputedStyle(heroSection);
                 const wrapperStyle = getComputedStyle(heroWrapper);
                 const marginTop = parseFloat(sectionStyle.marginTop) || 0;
                 const paddingTop = parseFloat(wrapperStyle.paddingTop) || GAP_BELOW_NAV;
-                const height = paddingTop + marginTop + heroBox.offsetHeight + GAP_BELOW_HERO;
+                const contentHeight = paddingTop + marginTop + heroBox.offsetHeight + GAP_BELOW_HERO;
+                const height = Math.max(contentHeight, MIN_VIEWPORT_HEIGHT);
                 const heightPx = height + 'px';
                 if (heroParallaxWrapper) heroParallaxWrapper.style.height = heightPx;
                 if (heroSpacer) {
