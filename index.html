@@ -181,8 +181,15 @@
         // Hero dynamic word rotation with glitch and smooth width transition
         (function() {
             const words = ['products', 'experiences', 'teams', 'services'];
+            const heroColors = [
+                { bg: '#DDEBD4', shadow: 'rgba(221, 235, 212, 0.85)' }, // products - sage
+                { bg: '#E5DDEB', shadow: 'rgba(229, 221, 235, 0.85)' }, // experiences - lavender
+                { bg: '#DDE8EB', shadow: 'rgba(221, 232, 235, 0.85)' }, // teams - light blue
+                { bg: '#EBE8DD', shadow: 'rgba(235, 232, 221, 0.85)' }  // services - warm stone
+            ];
             const wrapper = document.querySelector('.glitch-word-wrapper');
             const wordEl = document.querySelector('.glitch-word');
+            const heroBox = document.getElementById('hero-box');
             if (!wrapper || !wordEl) return;
 
             function setWrapperWidth() {
@@ -193,7 +200,15 @@
                 });
             }
 
+            function setHeroColor(index) {
+                if (!heroBox) return;
+                const c = heroColors[index];
+                heroBox.style.backgroundColor = c.bg;
+                heroBox.style.boxShadow = '0 0 80px ' + c.shadow;
+            }
+
             setWrapperWidth();
+            setHeroColor(0);
 
             let idx = 0;
             setInterval(function() {
@@ -201,6 +216,7 @@
                 const newWord = words[idx];
                 wordEl.setAttribute('data-text', newWord);
                 wordEl.textContent = newWord;
+                setHeroColor(idx);
                 const intensity = 0.85 + Math.random() * 0.3;
                 const duration = 0.45 + Math.random() * 0.15;
                 wordEl.style.setProperty('--glitch-intensity', intensity);
