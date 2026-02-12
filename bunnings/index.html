@@ -561,11 +561,16 @@
 
         // Custom Cursor - Update based on dark section
         const cursor = document.getElementById('custom-cursor');
+        let cursorPositioned = false;
         
-        // Update cursor position
+        // Update cursor position - only show after first mousemove to avoid jump on refresh
         document.addEventListener('mousemove', (e) => {
             cursor.style.left = e.clientX + 'px';
             cursor.style.top = e.clientY + 'px';
+            if (!cursorPositioned) {
+                cursorPositioned = true;
+                cursor.style.opacity = '1';
+            }
             
             // Check if cursor is over dark section
             let isDark = false;
@@ -604,7 +609,7 @@
         });
 
         document.addEventListener('mouseenter', () => {
-            cursor.style.opacity = '1';
+            if (cursorPositioned) cursor.style.opacity = '1';
         });
 
         // Email Copy Functionality
