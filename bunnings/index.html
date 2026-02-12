@@ -569,7 +569,7 @@
             cursor.style.top = e.clientY + 'px';
             if (!cursorPositioned) {
                 cursorPositioned = true;
-                cursor.style.opacity = '1';
+                cursor.classList.add('cursor-visible');
             }
             
             // Check if cursor is over dark section
@@ -605,11 +605,11 @@
 
         // Hide cursor when leaving the window
         document.addEventListener('mouseleave', () => {
-            cursor.style.opacity = '0';
+            cursor.classList.remove('cursor-visible');
         });
 
         document.addEventListener('mouseenter', () => {
-            if (cursorPositioned) cursor.style.opacity = '1';
+            if (cursorPositioned) cursor.classList.add('cursor-visible');
         });
 
         // Email Copy Functionality
@@ -849,6 +849,7 @@
         updateActiveNavState();
     </script>
     <script src="/scripts/case-study.js"></script>
+    <script src="/scripts/glitch-links.js"></script>
 
 </body>
 </html>
