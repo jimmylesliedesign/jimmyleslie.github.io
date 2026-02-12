@@ -2,7 +2,7 @@
    GLOBAL STYLES - Shared across all pages
    ========================================================================== */
 
-/* Design tokens - Border radius */
+/* Design tokens */
 :root {
     --radius-sm: 8px;
     --radius-md: 12px;
@@ -26,7 +26,7 @@ html {
 body {
     font-family: 'Inter', sans-serif;
     background-color: #ffffff;
-    color: #2D352D;
+    color: #1D1D1D;
     line-height: 1.5;
     cursor: none;
 }
@@ -58,12 +58,12 @@ h1 {
     font-weight: 400;
     font-size: 36px;
     line-height: 1.3em;
-    color: #2D352D;
+    color: #1D1D1D;
     margin-bottom: 80px;
 }
 
 h1 + .body-text {
-    margin-top: -32px;
+    margin-top: -48px;
 }
 
 h2 {
@@ -72,7 +72,7 @@ h2 {
     font-weight: 400;
     font-size: 32px;
     line-height: 1.4em;
-    color: #2D352D;
+    color: #1D1D1D;
     margin-bottom: 8px;
 }
 
@@ -82,8 +82,8 @@ h3 {
     font-weight: 400;
     font-size: 25px;
     line-height: 1.5em;
-    color: #2D352D;
-    margin-bottom: 32px;
+    color: #1D1D1D;
+    margin-bottom: 16px;
     margin-top: 80px;
 }
 
@@ -97,7 +97,7 @@ h4 {
     font-weight: 400;
     font-size: 20px;
     line-height: 1.5em;
-    color: #2D352D;
+    color: #1D1D1D;
     margin-bottom: 0;
 }
 
@@ -107,7 +107,7 @@ h4 {
     font-weight: 400;
     font-size: 20px;
     line-height: 1.5em;
-    color: #919191;
+    color: rgba(29, 29, 29, 0.5);
 }
 
 .body-text {
@@ -116,12 +116,12 @@ h4 {
     font-weight: 400;
     font-size: 20px;
     line-height: 1.5em;
-    color: #919191;
+    color: rgba(29, 29, 29, 0.5);
     margin-bottom: 32px;
 }
 
 .body-text a {
-    color: #2D352D;
+    color: #1D1D1D;
     text-decoration: none;
 }
 
@@ -139,7 +139,7 @@ h4 {
     font-weight: 400;
     font-size: 16px;
     line-height: 1.6em;
-    color: #919191;
+    color: rgba(29, 29, 29, 0.5);
 }
 
 /* Custom Cursor */
@@ -147,19 +147,19 @@ h4 {
     width: 20px;
     height: 20px;
     border: 2px solid #1D1D1D;
-    border-radius: var(--radius-full);
+    border-radius: 50%;
     position: fixed;
     pointer-events: none;
     z-index: 9999;
     transform: translate(-50%, -50%);
     transition: opacity 0.2s;
-    opacity: 1.0;
+    opacity: 0; /* Hidden until first mousemove to avoid jump on refresh */
     background-color: #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 14px;
-    color: #2D352D;
+    color: #1D1D1D;
     font-family: 'Inter', sans-serif;
     white-space: nowrap;
     padding: 0;
@@ -173,7 +173,7 @@ h4 {
 #custom-cursor.copy-mode {
     width: auto;
     height: auto;
-    border-radius: var(--radius-xl);
+    border-radius: 20px;
     padding: 8px 16px;
     transform: translate(-50%, -50%) scale(1);
 }
@@ -188,7 +188,7 @@ h4 {
 
 #custom-cursor.dark-section {
     border-color: #ffffff;
-    background-color: #2D352D;
+    background-color: #1D1D1D;
 }
 
 a, button, .email-copy {
@@ -199,13 +199,13 @@ a, button, .email-copy {
 .time {
     font-size: 16px;
     font-weight: 400;
-    color: #2D352D;
+    color: #1d1d1d;
     opacity: 0.3;
 }
 
 /* Email Copy */
 .email-copy {
-    color: #2D352D;
+    color: #1D1D1D;
     position: relative;
     cursor: none;
 }
@@ -227,11 +227,11 @@ a, button, .email-copy {
 }
 
 .contact-content .body-text {
-    color: #919191;
+    color: rgba(29, 29, 29, 0.5);
 }
 
 .contact-content .body-text a {
-    color: #2D352D;
+    color: #1D1D1D;
     text-decoration: none;
 }
 
