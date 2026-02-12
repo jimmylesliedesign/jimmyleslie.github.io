@@ -12,8 +12,10 @@
         const currentPath = window.location.pathname;
         localStorage.setItem('case-study-return', currentPath);
         
-        // Redirect to password page
-        window.location.href = '/password.html?return=' + encodeURIComponent(currentPath);
+        // Use local password page when on localhost (no API needed)
+        const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+        const passwordPage = isLocal ? '/password-local.html' : '/password.html';
+        window.location.href = passwordPage + '?return=' + encodeURIComponent(currentPath);
     }
     </script>
     <meta charset="UTF-8">
@@ -102,7 +104,7 @@
                 </div>
 
                 <!-- Keyline separator -->
-                <div style="height: 0.5px; background-color: rgba(0, 0, 0, 0.08); margin-top: 80px; margin-bottom: 80px;"></div>
+                <div style="height: 0.5px; background-color: rgba(29, 29, 29, 0.1); margin-top: 80px; margin-bottom: 80px;"></div>
 
                 <div class="info-section">
                     <h3>Problem</h3>
@@ -841,6 +843,7 @@
         window.addEventListener('resize', updateActiveNavState);
         updateActiveNavState();
     </script>
-    
+    <script src="/scripts/case-study.js"></script>
+
 </body>
 </html>
