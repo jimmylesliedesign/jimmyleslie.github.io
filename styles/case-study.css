@@ -59,7 +59,7 @@
 }
 
 .header-sticky.dark {
-    background-color: rgba(29, 29, 29, 0.85);
+    background-color: rgba(0, 0, 0, 0.85);
 }
 
 .header-sticky.dark .back-link-sticky {
@@ -102,7 +102,7 @@
     bottom: 0;
     left: 0;
     height: 2px;
-    background-color: #1d1d1d;
+    background-color: #000000;
     opacity: 1;
     width: 0%;
     transition: width 0.1s ease-out;
@@ -192,7 +192,7 @@ nav a:hover {
 }
 
 .case-study-section.bg-dark {
-    background-color: #1D1D1D;
+    background-color: #000000;
 }
 
 .case-study-section.bg-dark h1,
@@ -208,25 +208,25 @@ nav a:hover {
 }
 
 .case-study-section.bg-dark .content-image {
-    background-color: #1D1D1D;
+    background-color: #000000;
 }
 
 .case-study-section.bg-dark .fade-left-consistency {
-    background: linear-gradient(to right, #1D1D1D 0%, rgba(29, 29, 29, 0) 100%);
+    background: linear-gradient(to right, #000000 0%, rgba(0, 0, 0, 0) 100%);
 }
 
 .case-study-section.bg-dark .fade-right-consistency {
-    background: linear-gradient(to left, #1D1D1D 0%, rgba(29, 29, 29, 0) 100%);
+    background: linear-gradient(to left, #000000 0%, rgba(0, 0, 0, 0) 100%);
 }
 
 .case-study-section.bg-dark .scroll-arrow {
-    background: #1D1D1D;
+    background: #000000;
     border: 1px solid rgba(29, 29, 29, 0.1);
     color: #FFFFFF;
 }
 
 .case-study-section.bg-dark .scroll-arrow:hover {
-    background-color: #1D1D1D;
+    background-color: #000000;
 }
 
 .case-study-section:first-of-type {
@@ -646,7 +646,7 @@ nav a:hover {
 
 /* Dark section variant */
 .case-study-section.bg-dark .guidelines-card-image {
-    background: #1D1D1D;
+    background: #000000;
 }
 
 .case-study-section.bg-dark .guidelines-card-image-caption {
