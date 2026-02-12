@@ -25,6 +25,7 @@
             <nav>
                 <a href="#about" data-section="about" class="sticky-nav-link">About</a>
                 <a href="#work" data-section="work" class="sticky-nav-link">Work</a>
+                <a href="#side-projects" data-section="side-projects" class="sticky-nav-link">Fun</a>
                 <a href="#contact" data-section="contact" class="sticky-nav-link">Contact</a>
             </nav>
             <span class="time">BCN &bull; <span id="time-sticky">--:-- --</span></span>
@@ -37,6 +38,7 @@
             <nav>
                 <a href="#about" data-section="about">About</a>
                 <a href="#work" data-section="work">Work</a>
+                <a href="#side-projects" data-section="side-projects">Fun</a>
                 <a href="#contact" data-section="contact">Contact</a>
             </nav>
             <span class="time" id="barcelona-time">BCN &bull; <span id="time">--:-- --</span></span>
@@ -295,12 +297,14 @@
             
             const aboutSection = document.getElementById('about');
             const workSection = document.getElementById('work');
+            const sideProjectsSection = document.getElementById('side-projects');
             const contactSection = document.getElementById('contact');
             
             // Get positions (aboutActiveOffset: About becomes active this many px sooner)
             const aboutActiveOffset = 48;
             const aboutTop = aboutSection.offsetTop - 48 - aboutActiveOffset;
             const workTop = workSection.offsetTop;
+            const sideProjectsTop = sideProjectsSection.offsetTop;
             const contactTop = contactSection.offsetTop;
             const windowHeight = window.innerHeight;
             
@@ -313,7 +317,11 @@
             if (scrollPosition + windowHeight > contactTop && scrollPosition < contactTop + contactSection.offsetHeight) {
                 document.querySelector('nav a[data-section="contact"]')?.classList.add('active');
                 document.querySelector('.sticky-nav-link[data-section="contact"]')?.classList.add('active');
-            } else if (scrollPosition + stickyHeaderHeight >= workTop && scrollPosition + stickyHeaderHeight < contactTop) {
+            } else if (scrollPosition + stickyHeaderHeight >= sideProjectsTop && scrollPosition + stickyHeaderHeight < contactTop) {
+                // Fun (side projects) section has scrolled past sticky nav
+                document.querySelector('nav a[data-section="side-projects"]')?.classList.add('active');
+                document.querySelector('.sticky-nav-link[data-section="side-projects"]')?.classList.add('active');
+            } else if (scrollPosition + stickyHeaderHeight >= workTop && scrollPosition + stickyHeaderHeight < sideProjectsTop) {
                 // Work section has scrolled past sticky nav
                 document.querySelector('nav a[data-section="work"]')?.classList.add('active');
                 document.querySelector('.sticky-nav-link[data-section="work"]')?.classList.add('active');
