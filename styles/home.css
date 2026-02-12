@@ -70,39 +70,45 @@ nav a:hover {
     color: #2D352D;
 }
 
-/* Hero Parallax Wrapper - sticky so it participates in overscroll rubber band, sits behind content so it scrolls over. Height set by JS to match hero + gaps. */
+/* Hero Parallax Wrapper - sticky so it participates in overscroll rubber band, sits behind content so it scrolls over. */
 .hero-parallax-wrapper {
     position: sticky;
     top: 0;
     left: 0;
     right: 0;
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
-    padding-top: 48px; /* 48px below static nav bar */
+    align-items: center;
+    min-height: calc(100vh - 96px); /* Fill viewport below nav so "What I do" stays below fold */
+    padding-top: 24px; /* Tighter gap below nav – hero sits higher to compensate for nav bar */
     z-index: -1;
     pointer-events: none;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%); /* break out of container for full viewport width */
 }
 
-/* Hero Section */
+/* Hero Section - flexes to fill space, centers the hero box with white space around it */
 .hero-section {
     display: flex;
+    flex: 1;
     justify-content: center;
-    margin-top: 24px;
-    margin-bottom: 80px;
+    align-items: center;
     width: 100%;
-    max-width: 860px;
+    max-width: 60vw;
     padding: 0 24px;
     box-sizing: border-box;
 }
 
+/* Hero box - smaller, centered with white space. 60% viewport on desktop, 70% on mobile */
 .hero-box {
     background-color: #DDEBD4;
     box-shadow: 0 0 80px rgba(221, 235, 212, 0.85);
     transition: background-color 0.6s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    max-width: 860px;
     width: 100%;
-    min-height: 480px;
+    height: calc((100vh - 96px) * 0.7); /* 70% of viewport below nav – smaller with more white space */
+    max-height: 50vw; /* Keep rectangular on desktop – avoid too square on large viewports */
+    min-height: 400px;
     padding: 80px 48px;
     border-radius: var(--radius-2xl);
     display: flex;
@@ -578,19 +584,24 @@ nav a:hover {
     }
 
     .hero-parallax-wrapper {
-        padding-top: 48px;
-        margin-left: -8px;
-        margin-right: -8px;
-        width: calc(100% + 16px);
+        padding: 16px; /* 16px whitespace around hero – reduced gap below nav */
+        max-height: calc(100vh - 96px);
+        overflow: hidden;
     }
         
     .hero-section {
-        margin-top: 24px;
-        margin-bottom: 48px;
         padding: 0;
+        max-width: 100%;
+        width: 100%;
+        align-items: stretch;
     }
 
+    /* Hero fills viewport with 16px whitespace on all sides */
     .hero-box {
+        width: 100%;
+        height: calc(100vh - 96px - 32px); /* viewport minus nav minus 16px top/bottom */
+        max-height: calc(100vh - 96px - 32px); /* prevent overflow on mobile */
+        min-height: 0;
         padding: 48px 32px;
     }
 
