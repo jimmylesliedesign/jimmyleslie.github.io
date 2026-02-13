@@ -14,7 +14,19 @@
     padding-right: 0;
 }
 
-/* Static header only – no white background so hero shows through */
+/* Compensate for absolute static header so content doesn't sit under it */
+.home > .container {
+    padding-top: 96px;
+}
+
+/* Static header only – no white background so hero shows through; absolute so it overlays hero */
+.home > .header-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+}
 .home > .header-container,
 .home > .header-container header {
     background-color: transparent !important;
@@ -97,6 +109,7 @@ nav a:hover {
 
 /* Hero Parallax Wrapper - sticky so it participates in overscroll rubber band, sits behind content so it scrolls over. */
 /* Full viewport height so nav + hero are the only visible content; "What I do" sits just below fold */
+/* margin-top pulls hero up so it extends behind the static header (hero shows through transparent nav) */
 .hero-parallax-wrapper {
     position: sticky;
     top: 0;
@@ -112,6 +125,7 @@ nav a:hover {
     pointer-events: none;
     width: 100vw;
     margin-left: calc(-50vw + 50%); /* break out of container for full viewport width */
+    margin-top: -96px; /* Extend behind static header so hero shows through */
 }
 
 /* Hero Section - centered with responsive width; whitespace around on wider viewports */
