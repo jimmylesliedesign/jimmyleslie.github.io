@@ -14,6 +14,11 @@
     padding-right: 24px;
 }
 
+/* Static header only – no white background so hero shows through */
+.home > .header-container {
+    background: transparent;
+}
+
 /* Home Sticky Header (Simpler version without dark mode or progress bar) */
 .header-sticky {
     position: fixed;
@@ -614,7 +619,7 @@ nav a:hover {
     .home .header-container,
     .home .header-sticky .header-container {
         width: 95%;
-        padding: 24px 16px;
+        padding: 24px 32px;
     }
 
     .hero-parallax-wrapper {
