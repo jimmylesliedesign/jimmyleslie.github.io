@@ -4,19 +4,21 @@
 
 /* Note: Global styles are in global.css */
 
-/* Home: Nav and hero share same width – 75% (max 1080px) on wide, 85% on medium, 95% on mobile */
+/* Home: Nav matches section-content max-width (640px) – flush with body content, no extra padding on desktop */
 .home .header-container {
     width: 75%;
-    max-width: 1080px;
+    max-width: 640px;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 24px;
-    padding-right: 24px;
+    padding-left: 0;
+    padding-right: 0;
 }
 
 /* Static header only – no white background so hero shows through */
-.home > .header-container {
-    background: transparent;
+.home > .header-container,
+.home > .header-container header {
+    background-color: transparent !important;
+    background: transparent !important;
 }
 
 /* Home Sticky Header (Simpler version without dark mode or progress bar) */
@@ -46,12 +48,12 @@
     width: 100%;
 }
 
-/* Home: sticky nav matches hero width */
+/* Home: sticky nav matches section-content max-width (640px) – flush with body content */
 .home .header-sticky .header-container {
     width: 75%;
-    max-width: 1080px;
-    padding-left: 24px;
-    padding-right: 24px;
+    max-width: 640px;
+    padding-left: 0;
+    padding-right: 0;
 }
 
 .header-sticky.visible {
@@ -616,12 +618,18 @@ nav a:hover {
         display: none !important;
     }
 
-    .home .header-container,
+    /* Mobile only: 32px left/right padding so nav/time sit 32px from screen edge (like case study) */
+    .home > .header-container,
     .home .header-sticky .header-container {
         width: 100%;
         max-width: none;
         padding: 24px 32px;
         box-sizing: border-box;
+    }
+
+    .home > .header-container header {
+        padding-left: 0;
+        padding-right: 0;
     }
 
     .hero-parallax-wrapper {
