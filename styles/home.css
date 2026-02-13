@@ -618,8 +618,10 @@ nav a:hover {
 
     .home .header-container,
     .home .header-sticky .header-container {
-        width: 95%;
+        width: 100%;
+        max-width: none;
         padding: 24px 32px;
+        box-sizing: border-box;
     }
 
     .hero-parallax-wrapper {
