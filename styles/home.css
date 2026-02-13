@@ -618,12 +618,26 @@ nav a:hover {
         display: none !important;
     }
 
-    /* Mobile only: 32px left/right padding so nav/time sit 32px from screen edge (like case study) */
-    .home > .header-container,
+    /* Mobile only: 24px margin so menu bar doesn't run edge to edge */
+    .home > .header-container {
+        width: calc(100% - 48px);
+        max-width: none;
+        margin-left: 24px;
+        margin-right: 24px;
+        padding: 24px 0;
+        box-sizing: border-box;
+    }
+
+    /* Sticky header bar itself needs inset so background doesn't run edge to edge */
+    .home .header-sticky {
+        left: 24px;
+        right: 24px;
+    }
+
     .home .header-sticky .header-container {
         width: 100%;
         max-width: none;
-        padding: 24px 32px;
+        padding: 24px 0;
         box-sizing: border-box;
     }
 
